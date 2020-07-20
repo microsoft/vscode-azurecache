@@ -9,6 +9,7 @@ export const StrNonSslPort = 'Non-SSL port';
 export const StrSslPort = 'SSL port';
 export const StrResourceId = 'Resource ID';
 export const StrAccessKeys = 'Access keys';
+export const StrPrimary = 'Primary';
 export const StrPrimaryAccessKey = 'Primary access key';
 export const StrPrimaryConnectionStr = 'Primary connection string (StackExchange.Redis)';
 

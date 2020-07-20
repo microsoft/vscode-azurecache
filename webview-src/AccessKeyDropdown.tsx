@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 import {
     GroupedList,
     IGroup,
@@ -6,11 +9,12 @@ import {
     IGroupRenderProps,
     IRenderFunction,
     IStyle,
+    Label,
     SelectionMode,
 } from '@fluentui/react/lib/';
 import * as React from 'react';
 import { CopyableTextField } from './CopyableTextField';
-import { StrPrimaryAccessKey, StrPrimaryConnectionStr, StrAccessKeys } from './Strings';
+import { StrPrimaryAccessKey, StrPrimaryConnectionStr, StrAccessKeys, StrPrimary } from './Strings';
 
 interface Props {
     accessKey?: string;
@@ -43,8 +47,25 @@ const onRenderHeader: IRenderFunction<IGroupHeaderProps> = (
         return null;
     }
 
+    // Make entire header togglable
+    const onToggleSelectGroup = (): void => {
+        if (headerProps?.onToggleCollapse && headerProps?.group) {
+            headerProps.onToggleCollapse(headerProps.group);
+        }
+    };
+
+    // Hide header count
     const headerCountStyle: IStyle = { display: 'none' };
-    return <span>{defaultRender({ ...headerProps, styles: { headerCount: headerCountStyle } })}</span>;
+
+    return (
+        <span>
+            {defaultRender({
+                ...headerProps,
+                styles: { headerCount: headerCountStyle },
+                onToggleSelectGroup: onToggleSelectGroup,
+            })}
+        </span>
+    );
 };
 
 export function AccessKeyDropdown(props: Props): React.ReactElement | null {
@@ -58,7 +79,7 @@ export function AccessKeyDropdown(props: Props): React.ReactElement | null {
         {
             count: 1,
             key: 'group',
-            name: StrAccessKeys,
+            name: StrPrimary,
             startIndex: 0,
             isCollapsed: true,
         },
@@ -69,6 +90,7 @@ export function AccessKeyDropdown(props: Props): React.ReactElement | null {
 
     return (
         <div>
+            <Label>{StrAccessKeys}</Label>
             <GroupedList
                 items={items}
                 onRenderCell={onRenderCell}

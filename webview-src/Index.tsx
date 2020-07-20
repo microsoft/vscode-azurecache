@@ -74,13 +74,14 @@ class Index extends React.Component<{}, State> {
                     <CopyableTextField id="nonSslPort" label={Strings.StrNonSslPort} value={nonSslPort} />
                     <CopyableTextField id="sslPort" label={Strings.StrSslPort} value={redisResource.sslPort} />
                     <CopyableTextField id="resourceId" label={Strings.StrResourceId} value={redisResource.resourceId} />
+                    <CollapsibleList
+                        label={Strings.StrGeoReplication}
+                        groupName={Strings.StrLinkedServers}
+                        values={redisResource.linkedServers}
+                    />
                     <AccessKeyDropdown accessKey={accessKey} connectionString={connectionString} />
                 </div>
-                <CollapsibleList
-                    label={Strings.StrGeoReplication}
-                    groupName={Strings.StrLinkedServers}
-                    values={redisResource.linkedServers}
-                />
+
                 <GeneralPropertyLabel label={Strings.StrSku} value={redisResource.sku} />
                 <GeneralPropertyLabel label={Strings.StrLocation} value={redisResource.location} />
                 <GeneralPropertyLabel label={Strings.StrRedisVersion} value={redisResource.redisVersion} />

@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { ITooltipHostStyles, Stack, TextField, TooltipDelay, TooltipHost } from '@fluentui/react/lib/';
+import { ITooltipHostStyles, Stack, TextField, TooltipDelay, TooltipHost, IStackTokens } from '@fluentui/react/lib/';
 import * as React from 'react';
 import { CopyButton } from './CopyButton';
 import { StrCopied, StrCopyToClipboard } from './Strings';
@@ -19,6 +19,9 @@ interface Props {
 
 const tooltipProps = { gapSpace: 0 };
 const tooltipStyles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
+const stackTokens: IStackTokens = {
+    childrenGap: 5,
+};
 
 export class CopyableTextField extends React.Component<Props, State> {
     state = {
@@ -50,7 +53,7 @@ export class CopyableTextField extends React.Component<Props, State> {
         const tooltipText = this.state.showClicked ? StrCopied : StrCopyToClipboard;
 
         return (
-            <Stack horizontal>
+            <Stack horizontal tokens={stackTokens}>
                 <Stack.Item grow align="end">
                     <TextField label={this.props.label} readOnly value={value} />
                 </Stack.Item>
