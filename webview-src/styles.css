@@ -1,10 +1,44 @@
 /* Copyright (c) Microsoft Corporation.
    Licensed under the MIT License. */
 
+.container {
+    margin-bottom: 12px;
+}
+
 .indented {
     margin-left: 8px;
 }
 
-.container {
-    margin-bottom: 12px;
+.ms-Label {
+    color: var(--vscode-editor-foreground);
+}
+
+.ms-TextField-field {
+    color: var(--vscode-editor-foreground);
+    background-color: var(--vscode-editor-background);
+}
+
+.ms-TextField-fieldGroup {
+    border-color: var(--vscode-editor-foreground);
+}
+
+.ms-TextField-fieldGroup:hover {
+    border-color: var(--vscode-button-hoverBackground);
+}
+
+.ms-GroupHeader-title {
+    cursor: initial;
+}
+
+.ms-GroupHeader:hover {
+    color: var(--vscode-editor-foreground);
+    background-color: var(--vscode-breadcrumbPicker-background);
+}
+
+.ms-GroupHeader-expand {
+    color: var(--vscode-editor-foreground);
+}
+
+.ms-GroupHeader-expand:hover {
+    background-color: var(--vscode-breadcrumbPicker-background);
 }
