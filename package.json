@@ -1,0 +1,289 @@
+{
+    "name": "vscode-azurecache",
+    "displayName": "Azure Cache",
+    "description": "Manage and browse through data in your Azure Caches.",
+    "version": "0.1.0",
+    "aiKey": "AIF-00000000-0000-0000-0000-000000000000",
+    "publisher": "ms-azurecache",
+    "preview": true,
+    "engines": {
+        "vscode": "^1.47.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/microsoft/vscode-azurecache"
+    },
+    "bugs": {
+        "url": "https://github.com/microsoft/vscode-azurecache/issues"
+    },
+    "homepage": "https://github.com/microsoft/vscode-azurecache/blob/master/README.md",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "categories": [
+        "Azure"
+    ],
+    "keywords": [
+        "Azure",
+        "Azure Cache",
+        "Azure Cache for Redis",
+        "Redis"
+    ],
+    "icon": "resources/azure-cache.png",
+    "main": "./dist/extension.js",
+    "scripts": {
+        "vscode:prepublish": "webpack --mode production",
+        "clean": "rimraf out/ dist/",
+        "compile": "rimraf out/ && tsc -p ./",
+        "lint": "eslint src --ext .ts && eslint webview-src --ext .ts,.tsx",
+        "pretest": "npm run compile && npm run lint",
+        "test": "node ./out/test/runTest.js",
+        "watch": "webpack --mode development --watch --info-verbosity verbose",
+        "package": "vsce package",
+        "publish": "vsce publish"
+    },
+    "activationEvents": [
+        "onView:azureCache"
+    ],
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "azure",
+                    "title": "Azure",
+                    "icon": "resources/azure.svg"
+                }
+            ]
+        },
+        "views": {
+            "azure": [
+                {
+                    "id": "azureCache",
+                    "name": "Caches"
+                }
+            ]
+        },
+        "menus": {
+            "view/item/context": [
+                {
+                    "command": "azureCache.selectSubscriptions",
+                    "when": "view == azureCache && viewItem == azureextensionui.azureSubscription",
+                    "group": "inline"
+                },
+                {
+                    "command": "azureCache.refresh",
+                    "when": "view == azureCache && viewItem == azureextensionui.azureSubscription",
+                    "group": "9_refresh"
+                },
+                {
+                    "command": "azureCache.setKeyFilter",
+                    "when": "view == azureCache && viewItem == redisDb",
+                    "group": "inline"
+                },
+                {
+                    "command": "azureCache.openInPortal",
+                    "when": "view == azureCache && viewItem == redisCache",
+                    "group": "5_portal"
+                },
+                {
+                    "command": "azureCache.copyConnectionString",
+                    "when": "view == azureCache && viewItem =~ /redisCache/",
+                    "group": "5_portal"
+                },
+                {
+                    "command": "azureCache.refresh",
+                    "when": "view == azureCache && viewItem == redisCache",
+                    "group": "9_refresh"
+                },
+                {
+                    "command": "azureCache.refresh",
+                    "when": "view == azureCache && viewItem == redisDb",
+                    "group": "9_refresh"
+                },
+                {
+                    "command": "azureCache.refresh",
+                    "when": "view == azureCache && viewItem == redisClusterNode",
+                    "group": "9_refresh"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "azureCache.selectSubscriptions",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.refresh",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.setKeyFilter",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.setHashFieldFilter",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.showStringItem",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.showHashItem",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.showListItem",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.showSetItem",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.showZSetItem",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.showUnsupportedItem",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.copyConnectionString",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.viewCacheInfoReact",
+                    "when": "never"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "azureCache.selectSubscriptions",
+                "title": "Select Subscriptions...",
+                "icon": {
+                    "light": "resources/light/filter.svg",
+                    "dark": "resources/dark/filter.svg"
+                },
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.refresh",
+                "title": "Refresh",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.openInPortal",
+                "title": "Open in Portal",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.setKeyFilter",
+                "title": "Set key filter",
+                "category": "Azure Cache",
+                "icon": {
+                    "light": "resources/light/filter.svg",
+                    "dark": "resources/dark/filter.svg"
+                }
+            },
+            {
+                "command": "azureCache.setHashFieldFilter",
+                "title": "Set hash field filter",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.showStringItem",
+                "title": "Show string item",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.showHashItem",
+                "title": "Show hash item",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.showListItem",
+                "title": "Show list item",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.showSetItem",
+                "title": "Show set item",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.showZSetItem",
+                "title": "Show zset item",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.showUnsupportedItem",
+                "title": "Show unsupported item",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.copyConnectionString",
+                "title": "Copy connection string",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.viewCacheInfoReact",
+                "title": "View cache info",
+                "category": "Azure Cache"
+            }
+        ]
+    },
+    "devDependencies": {
+        "@babel/core": "^7.10.4",
+        "@babel/plugin-proposal-class-properties": "^7.10.4",
+        "@babel/plugin-transform-runtime": "^7.10.5",
+        "@babel/preset-env": "^7.10.4",
+        "@babel/preset-react": "^7.10.4",
+        "@babel/preset-typescript": "^7.10.4",
+        "@types/glob": "^7.1.3",
+        "@types/ioredis": "^4.17.2",
+        "@types/mocha": "^7.0.2",
+        "@types/node": "^13.13.14",
+        "@types/react": "^16.9.43",
+        "@types/react-dom": "^16.9.8",
+        "@types/sinon": "^9.0.4",
+        "@types/uuid": "^8.0.0",
+        "@types/vscode": "^1.47.0",
+        "@typescript-eslint/eslint-plugin": "^2.34.0",
+        "@typescript-eslint/parser": "^2.34.0",
+        "babel-loader": "^8.1.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^3.6.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "eslint-plugin-react": "^7.20.3",
+        "filemanager-webpack-plugin": "^2.0.5",
+        "glob": "^7.1.6",
+        "mocha": "^7.2.0",
+        "prettier": "2.0.5",
+        "rimraf": "^3.0.2",
+        "style-loader": "^1.2.1",
+        "terser-webpack-plugin": "^3.0.6",
+        "ts-loader": "^7.0.5",
+        "ts-sinon": "^1.2.0",
+        "typescript": "^3.9.6",
+        "vsce": "^1.77.0",
+        "vscode-test": "^1.4.0",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.12"
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.10.5",
+        "@fluentui/react": "^7.121.12",
+        "azure-arm-rediscache": "^3.0.0",
+        "ioredis": "^4.17.3",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "sinon": "^9.0.2",
+        "uuid": "^8.2.0",
+        "vscode-azureextensiondev": "^0.4.0",
+        "vscode-azureextensionui": "^0.33.9"
+    },
+    "extensionDependencies": [
+        "ms-vscode.azure-account"
+    ]
+}

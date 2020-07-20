@@ -1,0 +1,26 @@
+{
+  "fontName": "fabric-icons",
+  "fontFamilyName": "FabricMDL2Icons",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": false,
+  "chunkSubsets": false,
+  "hashFontFileName": false,
+  "glyphs": [
+    {
+      "name": "ChevronDownMed",
+      "unicode": "E972"
+    },
+    {
+      "name": "ChevronRightMed",
+      "unicode": "E974"
+    },
+    {
+      "name": "Tag",
+      "unicode": "E8EC"
+    },
+    {
+      "name": "Copy",
+      "unicode": "E8C8"
+    }
+  ]
+}
