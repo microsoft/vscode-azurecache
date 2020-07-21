@@ -11,6 +11,8 @@ import {
     registerCommand,
     registerUIExtensionVariables,
 } from 'vscode-azureextensionui';
+import { AzureAccount } from './AzureAccount.api';
+import { RedisClient } from './clients/RedisClient';
 import { ExtVars } from './ExtensionVariables';
 import { textInput } from './Input';
 import { KeyContentProvider } from './KeyContentProvider';
@@ -19,7 +21,6 @@ import * as Strings from './Strings';
 import { AzureAccountTreeItem } from './tree/azure/AzureAccountTreeItem';
 import { AzureCacheItem } from './tree/azure/AzureCacheItem';
 import { FilterParentItem } from './tree/FilterParentItem';
-import { RedisClient } from './clients/RedisClient';
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     ExtVars.context = context;
@@ -40,6 +41,21 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     ExtVars.treeDataProvider = new AzExtTreeDataProvider(azureAccountTreeItem, `${ExtVars.prefix}.loadMore`);
     ExtVars.treeView = vscode.window.createTreeView(ExtVars.prefix, { treeDataProvider: ExtVars.treeDataProvider });
     context.subscriptions.push(ExtVars.treeView);
+
+    const accountExtension: vscode.Extension<AzureAccount> | undefined = vscode.extensions.getExtension<AzureAccount>(
+        'ms-vscode.azure-account'
+    );
+
+    if (accountExtension) {
+        const azureAccount = accountExtension.exports;
+        context.subscriptions.push(
+            azureAccount.onStatusChanged((status) => {
+                if (status === 'LoggedOut') {
+                    RedisClient.disposeClients();
+                }
+            })
+        );
+    }
 
     context.subscriptions.push(
         vscode.commands.registerCommand('azureCache.setKeyFilter', async (treeItem: FilterParentItem) => {
