@@ -11,7 +11,7 @@ Azure Cache for Redis is a fully managed, open source–compatible in-memory dat
 * View data in your Azure Caches across all your Azure subscriptions
     * Supports clustered and non-clustered caches
     * Supports all Redis data types
-* Filter redis keys by match expression
+* Filter Redis keys by match expression
 * View cache properties
 * Access primary key and connection string
 
@@ -33,17 +33,17 @@ Azure Cache for Redis is a fully managed, open source–compatible in-memory dat
 
     ![Azure Cache tree item](./img/cache-tree.png)
 
-3. Expand a DB/shard to reveal all the redis keys under it.
+3. Expand a DB/shard to reveal all the Redis keys under it.
 
     ![DB tree item](./img/db-tree.png)
 
-4. Click on a redis key name to open its contents in a new editor tab.
+4. Click on a Redis key name to open its contents in a new editor tab.
 
     ![List tree item and key content](./img/view-key.png)
 
-    > For collection type redis keys, clicking on it will reveal the individual elements in it. Clicking the individual element will display its contents.
+    > For collection type Redis keys, clicking on it will reveal the individual elements in it. Clicking the individual element will display its contents.
 
-    > For string type redis keys, clicking on it directly reveals the contents in a new tab.
+    > For string type Redis keys, clicking on it directly reveals the contents in a new tab.
 
 ### View cache properties
 1. Expand the subscription tree item to reveal the caches belonging to it.
@@ -75,4 +75,4 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 ## License
 
-The source code in our [public repository](https://github.com/microsoft/vscode-azurecache) is licensed under the [MIT license](https://github.com/microsoft/vscode-azurecache/blob/master/LICENSE.txt) and may be locally built and used in accordance with this license.
+The source code in our [public repository](https://github.com/microsoft/vscode-azurecache) is licensed under the [MIT license](https://github.com/microsoft/vscode-azurecache/blob/main/LICENSE.txt) and may be locally built and used in accordance with this license.
