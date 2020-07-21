@@ -16,8 +16,8 @@
     "bugs": {
         "url": "https://github.com/microsoft/vscode-azurecache/issues"
     },
-    "homepage": "https://github.com/microsoft/vscode-azurecache/blob/master/README.md",
-    "license": "SEE LICENSE IN LICENSE.md",
+    "homepage": "https://github.com/microsoft/vscode-azurecache/blob/main/README.md",
+    "license": "SEE LICENSE IN LICENSE.txt",
     "categories": [
         "Azure"
     ],
@@ -57,7 +57,8 @@
             "azure": [
                 {
                     "id": "azureCache",
-                    "name": "Caches"
+                    "name": "Caches",
+                    "icon": "resources/azure-cache.svg"
                 }
             ]
         },
