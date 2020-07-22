@@ -125,7 +125,11 @@ if (!DEBUG_WEBPACK) {
             new TerserPlugin({
                 extractComments: false,
                 parallel: true,
-                cache: true
+                cache: true,
+                terserOptions: {
+                    keep_classnames: true,
+                    keep_fnames: true
+                }
             })
         ]
     };
@@ -138,7 +142,11 @@ if (!DEBUG_WEBPACK) {
             new TerserPlugin({
                 extractComments: false,
                 parallel: true,
-                cache: true
+                cache: true,
+                terserOptions: {
+                    keep_classnames: true,
+                    keep_fnames: true
+                }
             })
         ]
     };
