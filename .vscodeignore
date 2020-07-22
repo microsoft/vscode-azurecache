@@ -17,3 +17,4 @@ out/**
 src/**
 webview-src/**
 webpack.config.js
+build/**

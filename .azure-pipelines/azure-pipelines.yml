@@ -61,6 +61,11 @@ steps:
   env:
     DISPLAY: ':99.0'
 
+- bash: |
+    rm NOTICE.txt
+    cp build/NOTICE.txt NOTICE.txt
+  displayName: 'Copy build NOTICE to root directory'
+
 - task: Npm@1
   displayName: 'Bundle extension and generate VSIX package'
   inputs:
