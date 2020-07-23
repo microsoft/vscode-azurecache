@@ -7,7 +7,7 @@
     "publisher": "ms-azurecache",
     "preview": true,
     "engines": {
-        "vscode": "^1.47.0"
+        "vscode": "^1.43.0"
     },
     "repository": {
         "type": "git",
@@ -160,10 +160,7 @@
             {
                 "command": "azureCache.selectSubscriptions",
                 "title": "Select Subscriptions...",
-                "icon": {
-                    "light": "resources/light/filter.svg",
-                    "dark": "resources/dark/filter.svg"
-                },
+                "icon": "$(filter)",
                 "category": "Azure Cache"
             },
             {
@@ -180,10 +177,7 @@
                 "command": "azureCache.setKeyFilter",
                 "title": "Set key filter",
                 "category": "Azure Cache",
-                "icon": {
-                    "light": "resources/light/filter.svg",
-                    "dark": "resources/dark/filter.svg"
-                }
+                "icon": "$(filter)"
             },
             {
                 "command": "azureCache.setHashFieldFilter",
@@ -247,7 +241,7 @@
         "@types/react-dom": "^16.9.8",
         "@types/sinon": "^9.0.4",
         "@types/uuid": "^8.0.0",
-        "@types/vscode": "^1.47.0",
+        "@types/vscode": "^1.43.0",
         "@typescript-eslint/eslint-plugin": "^2.34.0",
         "@typescript-eslint/parser": "^2.34.0",
         "babel-loader": "^8.1.0",
