@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+import * as vscode from 'vscode';
 import {
     AzExtTreeItem,
     AzureParentTreeItem,
@@ -32,6 +33,8 @@ export class AzureCacheItem extends AzureParentTreeItem implements FilterParentI
     private filterExpr: string;
     private isClustered: boolean;
     private webview: CachePropsWebview;
+    // When the filter expression changes for a clustered cache, use emitter to notify the child tree items.
+    private onFilterChangeEmitter = new vscode.EventEmitter<void>();
 
     constructor(
         parent: AzureSubscriptionTreeItem,
@@ -82,7 +85,7 @@ export class AzureCacheItem extends AzureParentTreeItem implements FilterParentI
             for (const nodeId of clusterNodeIds) {
                 const port = (await client.getClusterNodeOptions(nodeId)).port;
                 if (port) {
-                    treeItems.push(new RedisClusterNodeItem(this, nodeId, port));
+                    treeItems.push(new RedisClusterNodeItem(this, this.onFilterChangeEmitter, nodeId, port));
                 }
             }
 
@@ -147,7 +150,7 @@ export class AzureCacheItem extends AzureParentTreeItem implements FilterParentI
     public updateFilter(filterExpr: string): void {
         if (this.filterExpr !== filterExpr) {
             this.filterExpr = filterExpr;
-            this.refresh();
+            this.onFilterChangeEmitter.fire();
         }
     }
 

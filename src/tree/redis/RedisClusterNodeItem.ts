@@ -1,12 +1,13 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { ThemeIcon } from 'vscode';
+import * as vscode from 'vscode';
 import { AzExtTreeItem, IActionContext, TreeItemIconPath } from 'vscode-azureextensionui';
 import { RedisClient } from '../../clients/RedisClient';
 import { StrShard, StrUnknownShard } from '../../Strings';
 import { AzureCacheItem } from '../azure/AzureCacheItem';
 import { KeyFilterItem } from '../filter/KeyFilterItem';
+import { FilterParentItem } from '../FilterParentItem';
 import { KeyContainerItem } from '../KeyContainerItem';
 import { RedisHashItem } from './RedisHashItem';
 import { RedisListItem } from './RedisListItem';
@@ -25,7 +26,12 @@ export class RedisClusterNodeItem extends KeyContainerItem {
     private scanCursor?: string;
     private shard?: number;
 
-    constructor(parent: AzureCacheItem, readonly nodeId: string, readonly port: number) {
+    constructor(
+        parent: AzureCacheItem & FilterParentItem,
+        filterChangeEmitter: vscode.EventEmitter<void>,
+        readonly nodeId: string,
+        readonly port: number
+    ) {
         super(parent);
         this.scanCursor = '0';
 
@@ -40,6 +46,10 @@ export class RedisClusterNodeItem extends KeyContainerItem {
             const shardNumber = Math.floor(lastTwoDigits / 2);
             this.shard = shardNumber;
         }
+
+        filterChangeEmitter.event(() => {
+            this.refresh();
+        });
     }
 
     get id(): string {
@@ -58,7 +68,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
     }
 
     get iconPath(): TreeItemIconPath {
-        return new ThemeIcon('server');
+        return new vscode.ThemeIcon('server');
     }
 
     get label(): string {
