@@ -1,5 +1,7 @@
 # Azure Cache for Visual Studio Code (Preview)
 
+[![Version](https://img.shields.io/visual-studio-marketplace/v/ms-azurecache.vscode-azurecache?color=blue&label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=ms-azurecache.vscode-azurecache) [![Build Status](https://dev.azure.com/ms/vscode-azurecache/_apis/build/status/vscode-azurecache?branchName=main)](https://dev.azure.com/ms/vscode-azurecache/_build/latest?definitionId=374&branchName=main)
+
 Azure Cache for Redis is a fully managed, open source–compatible in-memory data store to power fast, scalable applications. Use this extension to view the data in your Azure Caches and monitor them at a glance.
 
 > Sign up today for your free Azure account and receive 12 months of free popular services, $200 free credit and 25+ always free services 👉 [Start Free](https://azure.microsoft.com/free/open-source).
