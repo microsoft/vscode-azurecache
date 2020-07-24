@@ -152,7 +152,7 @@ export class AzureCacheItem extends AzureParentTreeItem implements FilterParentI
     }
 
     public showCacheProperties(): void {
-        this.webview.reveal(this.parsedRedisResource);
+        this.webview.reveal(this.parsedRedisResource.name, this.parsedRedisResource);
     }
 
     public async getConnectionString(): Promise<string | undefined> {

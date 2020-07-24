@@ -7,6 +7,7 @@ import { RedisClient } from '../../clients/RedisClient';
 import { CollectionKeyItem } from '../CollectionKeyItem';
 import { HashFieldFilterItem } from '../filter/HashFieldFilterItem';
 import { RedisSetElemItem } from './RedisSetElemItem';
+import { SetWebview } from '../../SetWebview';
 
 /**
  * Tree item for a set.
@@ -15,11 +16,20 @@ export class RedisSetItem extends CollectionKeyItem {
     public static readonly contextValue = 'redisSetItem';
     public static readonly description = '(set)';
 
+    private webview: SetWebview = new SetWebview(this);
     private elementsShown = 0;
     private scanCursor?: string = '0';
 
     get contextValue(): string {
         return RedisSetItem.contextValue;
+    }
+
+    get commandId(): string {
+        return 'azureCache.viewSet';
+    }
+
+    get commandArgs(): unknown[] {
+        return [this];
     }
 
     get description(): string {
@@ -79,5 +89,9 @@ export class RedisSetItem extends CollectionKeyItem {
         }
 
         return 0;
+    }
+
+    public async showWebview(): Promise<void> {
+        this.webview.reveal(this.key);
     }
 }

@@ -14,7 +14,7 @@ import {
 } from '@fluentui/react/lib/';
 import * as React from 'react';
 import { CopyableTextField } from './CopyableTextField';
-import { StrPrimaryAccessKey, StrPrimaryConnectionStr, StrAccessKeys, StrPrimary } from './Strings';
+import { StrPrimaryAccessKey, StrPrimaryConnectionStr, StrAccessKeys, StrPrimary } from '../Strings';
 
 interface Props {
     accessKey?: string;

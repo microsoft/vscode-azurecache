@@ -4,8 +4,8 @@
 import { ITooltipHostStyles, Stack, TextField, TooltipDelay, TooltipHost, IStackTokens } from '@fluentui/react/lib/';
 import * as React from 'react';
 import { CopyButton } from './CopyButton';
-import { StrCopied, StrCopyToClipboard } from './Strings';
-import { vscode } from './vscode';
+import { StrCopied, StrCopyToClipboard } from '../Strings';
+import { vscode } from '../vscode';
 
 interface State {
     showClicked: boolean;

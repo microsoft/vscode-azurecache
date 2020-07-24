@@ -223,6 +223,11 @@
                 "command": "azureCache.viewCacheInfoReact",
                 "title": "View cache info",
                 "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.viewSet",
+                "title": "View set",
+                "category": "Azure Cache"
             }
         ]
     },
