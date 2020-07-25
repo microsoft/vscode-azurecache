@@ -228,6 +228,11 @@
                 "command": "azureCache.viewSet",
                 "title": "View set",
                 "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.viewZSet",
+                "title": "View sorted set",
+                "category": "Azure Cache"
             }
         ]
     },

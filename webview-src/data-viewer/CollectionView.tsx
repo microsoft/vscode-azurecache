@@ -1,6 +1,7 @@
 import { getFocusStyle, getTheme, ITheme, List, mergeStyleSets } from '@fluentui/react';
 import * as React from 'react';
-import { CollectionElement } from './CollectionElement';
+import { CollectionElement, SelectableCollectionElement } from './CollectionElement';
+import { CollectionType } from './CollectionType';
 
 const theme: ITheme = getTheme();
 const { semanticColors, fonts } = theme;
@@ -17,7 +18,7 @@ const classNames = mergeStyleSets({
         getFocusStyle(theme, { inset: -1 }),
         {
             minHeight: 30,
-            padding: 10,
+            padding: 5,
             boxSizing: 'border-box',
             borderBottom: `1px solid ${semanticColors.bodyDivider}`,
             display: 'flex',
@@ -38,10 +39,12 @@ const classNames = mergeStyleSets({
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
+            fontSize: fonts.mediumPlus.fontSize,
         },
     ],
     itemIndex: {
         fontSize: fonts.small.fontSize,
+        color: 'var(--vscode-editorHint-foreground)',
     },
     itemIndexSelected: {
         color: 'var(--vscode-list-activeSelectionForeground)',
@@ -50,7 +53,8 @@ const classNames = mergeStyleSets({
 
 interface Props {
     currentIndex?: number;
-    data?: CollectionElement[];
+    data?: SelectableCollectionElement[];
+    type?: CollectionType;
     onItemClick?: (value: CollectionElement, index: number) => void;
     onScrollToBottom?: () => void;
 }
@@ -58,30 +62,35 @@ interface Props {
 export class CollectionView extends React.Component<Props, {}> {
     constructor(props: {}) {
         super(props);
-        this.state = {
-            currentIndex: undefined,
-            data: undefined,
-            onItemClick: undefined,
-            onScrollToBottom: undefined,
-        };
     }
 
-    onRenderCell = (item: CollectionElement | undefined, index: number | undefined): JSX.Element | null => {
+    onRenderCell = (item: SelectableCollectionElement | undefined, index: number | undefined): JSX.Element | null => {
         if (!item || typeof index === 'undefined') {
             return null;
         }
 
-        let itemCellClass = classNames.itemCell;
-        if (item.selected) {
-            itemCellClass = itemCellClass + ' ' + classNames.itemSelected;
-        }
+        const itemCellClass = classNames.itemCell + (item.selected ? ' ' + classNames.itemSelected : '');
+        const itemIndexClass = classNames.itemIndex + (item.selected ? ' ' + classNames.itemIndexSelected : '');
         const onClick = (): void => this.props?.onItemClick?.(item, index);
+
+        let indexElement = null;
+
+        if (this.props?.type === 'zset') {
+            indexElement = (
+                <div>
+                    <div className={itemIndexClass}>Score: {item.id}</div>
+                    <div className={itemIndexClass}>{index}</div>
+                </div>
+            );
+        } else if (this.props?.type === 'set' || this.props?.type === 'list') {
+            indexElement = <div className={itemIndexClass}>{index}</div>;
+        }
 
         return (
             <div className={itemCellClass} data-is-focusable={true} data-is-scrollable={true} onClick={onClick}>
                 <div className={classNames.itemContent}>
-                    <div className={classNames.itemName}>{item?.value}</div>
-                    <div className={classNames.itemIndex}>{index}</div>
+                    <div className={classNames.itemName}>{item.value}</div>
+                    {indexElement}
                 </div>
             </div>
         );
@@ -103,7 +112,10 @@ export class CollectionView extends React.Component<Props, {}> {
         const { data } = this.props;
 
         return (
-            <div style={{ height: 400, overflowY: 'auto', resize: 'vertical' }} onScroll={this.handleListScroll}>
+            <div
+                style={{ height: 400, overflowY: 'auto', resize: 'vertical', borderStyle: 'solid', borderWidth: 1 }}
+                onScroll={this.handleListScroll}
+            >
                 <List items={data} onRenderCell={this.onRenderCell} />
             </div>
         );

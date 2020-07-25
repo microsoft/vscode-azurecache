@@ -8,7 +8,7 @@ import {
     IActionContext,
     TreeItemIconPath,
 } from 'vscode-azureextensionui';
-import { CachePropsWebview } from '../../CachePropsWebview';
+import { CachePropsWebview } from '../../webview/CachePropsWebview';
 import { RedisClient } from '../../clients/RedisClient';
 import { RedisResourceClient } from '../../clients/RedisResourceClient';
 import { ExtVars } from '../../ExtensionVariables';

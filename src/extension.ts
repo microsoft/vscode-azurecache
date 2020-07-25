@@ -22,6 +22,7 @@ import { AzureAccountTreeItem } from './tree/azure/AzureAccountTreeItem';
 import { AzureCacheItem } from './tree/azure/AzureCacheItem';
 import { FilterParentItem } from './tree/FilterParentItem';
 import { RedisSetItem } from './tree/redis/RedisSetItem';
+import { RedisZSetItem } from './tree/redis/RedisZSetItem';
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     ExtVars.context = context;
@@ -92,6 +93,12 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
     context.subscriptions.push(
         vscode.commands.registerCommand('azureCache.viewSet', async (treeItem: RedisSetItem) => {
+            treeItem.showWebview();
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('azureCache.viewZSet', async (treeItem: RedisZSetItem) => {
             treeItem.showWebview();
         })
     );

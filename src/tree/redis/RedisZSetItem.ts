@@ -6,6 +6,7 @@ import { AzExtTreeItem, IActionContext, TreeItemIconPath } from 'vscode-azureext
 import { RedisClient } from '../../clients/RedisClient';
 import { CollectionKeyItem } from '../CollectionKeyItem';
 import { RedisZSetElemItem } from './RedisZSetElemItem';
+import { ZSetWebview } from '../../webview/ZSetWebview';
 
 /**
  * Tree item for a sorted set.
@@ -15,12 +16,21 @@ export class RedisZSetItem extends CollectionKeyItem {
     public static readonly description = '(zset)';
     private static readonly incrementCount = 10;
 
+    private webview = new ZSetWebview(this);
     private filterExpr = '*';
     private length = 0;
     private elementsShown = 0;
 
     get contextValue(): string {
         return RedisZSetItem.contextValue;
+    }
+
+    get commandId(): string {
+        return 'azureCache.viewZSet';
+    }
+
+    get commandArgs(): unknown[] {
+        return [this];
     }
 
     get description(): string {
@@ -87,5 +97,9 @@ export class RedisZSetItem extends CollectionKeyItem {
             this.filterExpr = filterExpr;
             this.refresh();
         }
+    }
+
+    public async showWebview(): Promise<void> {
+        this.webview.reveal(this.key);
     }
 }

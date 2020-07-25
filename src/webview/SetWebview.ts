@@ -1,9 +1,10 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { RedisSetItem } from './tree/redis/RedisSetItem';
+import { RedisSetItem } from '../tree/redis/RedisSetItem';
 import { AbstractWebview, IncomingMessage } from './AbstractWebview';
-import { RedisClient } from './clients/RedisClient';
+import { RedisClient } from '../clients/RedisClient';
+import { CollectionElement } from '../CollectionElement';
 
 /**
  * Webview for viewing set elements.
@@ -18,12 +19,12 @@ export class SetWebview extends AbstractWebview {
         super();
     }
 
-    public async getCardinality(): Promise<number> {
+    private async getCardinality(): Promise<number> {
         const client = await RedisClient.connectToRedisResource(this.treeItem.parsedRedisResource);
         return client.scard(this.treeItem.key, this.treeItem.db);
     }
 
-    public async loadMoreChildren(clearCache: boolean): Promise<string[]> {
+    private async loadMoreChildren(clearCache: boolean): Promise<string[]> {
         if (clearCache) {
             this.scanCursor = '0';
         }
@@ -59,18 +60,29 @@ export class SetWebview extends AbstractWebview {
      */
     protected async sendData(): Promise<void> {
         this.postMessage('contentType', 'key');
+        this.postMessage('type', 'set');
         this.postMessage('key', this.treeItem.key);
-        this.elements = await this.loadMoreChildren(true);
         this.postMessage('size', await this.getCardinality());
-        this.postMessage('setElements', this.elements);
+
+        this.elements = await this.loadMoreChildren(true);
+        const collectionElements = this.elements.map((elem) => {
+            return {
+                value: elem,
+            } as CollectionElement;
+        });
+        this.postMessage('data', collectionElements);
     }
 
     protected async onDidReceiveMessage(message: IncomingMessage): Promise<void> {
         if (message.command === 'loadMore') {
             const nextChildren = await this.loadMoreChildren(false);
             this.elements.push(...nextChildren);
-            this.postMessage('setElements', this.elements);
+            const collectionElements = this.elements.map((elem) => {
+                return {
+                    value: elem,
+                } as CollectionElement;
+            });
+            this.postMessage('data', collectionElements);
         }
-        return;
     }
 }

@@ -4,8 +4,9 @@
 import { TextField } from '@fluentui/react';
 import * as React from 'react';
 import { vscode } from '../vscode';
-import { CollectionElement } from './CollectionElement';
+import { SelectableCollectionElement, CollectionElement } from './CollectionElement';
 import { CollectionView } from './CollectionView';
+import { CollectionType } from './CollectionType';
 
 interface Message {
     key: string;
@@ -16,8 +17,8 @@ interface State {
     currentIndex?: number;
     currentValue?: string;
     key?: string;
-    setElements?: string[];
-    data?: CollectionElement[];
+    data?: SelectableCollectionElement[];
+    type?: CollectionType;
     size?: number;
 }
 
@@ -27,8 +28,8 @@ export class DataViewer extends React.Component<{}, State> {
         this.state = {
             currentValue: undefined,
             key: undefined,
-            setElements: undefined,
             size: 0,
+            type: undefined,
         };
     }
 
@@ -37,17 +38,19 @@ export class DataViewer extends React.Component<{}, State> {
             const message: Message = event.data;
             const { currentIndex } = this.state;
 
-            if (message.key === 'setElements') {
-                const setElements = message.value as string[];
-                const data = setElements.map((elem, index) => {
-                    const collectionElement: CollectionElement = {
-                        score: '',
-                        value: elem,
+            if (message.key === 'data') {
+                const elements = message.value as CollectionElement[];
+                const data = elements.map((elem, index) => {
+                    return {
+                        id: elem.id,
+                        value: elem.value,
                         selected: index === currentIndex,
-                    };
-                    return collectionElement;
+                    } as SelectableCollectionElement;
                 });
-                this.setState({ setElements, data });
+                this.setState({ data });
+            } else if (message.key === 'type') {
+                const type = message.value as CollectionType;
+                this.setState({ type });
             } else if (message.key === 'key') {
                 const key = message.value as string;
                 this.setState({ key });
@@ -89,18 +92,22 @@ export class DataViewer extends React.Component<{}, State> {
     }
 
     render(): JSX.Element | null {
-        if (!this.state.setElements) {
+        if (!this.state.data) {
             return null;
         }
 
-        const { currentValue, data, key, size } = this.state;
+        const { currentValue, data, type, key, size } = this.state;
 
         return (
             <div className="container">
                 <h2>{key}</h2>
                 <h4>Size: {size}</h4>
-                <CollectionView data={data} onScrollToBottom={this.onScrollToBottom} onItemClick={this.onItemClick} />
-                <hr style={{ marginTop: 5 }} />
+                <CollectionView
+                    data={data}
+                    type={type}
+                    onScrollToBottom={this.onScrollToBottom}
+                    onItemClick={this.onItemClick}
+                />
                 <TextField
                     label="Contents"
                     multiline

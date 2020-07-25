@@ -3,8 +3,8 @@
 
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { ExtVars } from './ExtensionVariables';
-import { ErrorWebviewUninit, StrProperties } from './Strings';
+import { ExtVars } from '../ExtensionVariables';
+import { ErrorWebviewUninit, StrProperties } from '../Strings';
 import crypto = require('crypto');
 
 /**
@@ -32,6 +32,10 @@ export abstract class AbstractWebview {
 
     protected abstract async sendData(data: unknown): Promise<void>;
     protected abstract onDidReceiveMessage(message: IncomingMessage): void;
+
+    public dispose(): void {
+        this.webviewPanel?.dispose();
+    }
 
     public async reveal(title: string, data?: unknown): Promise<void> {
         if (this.webviewPanel) {

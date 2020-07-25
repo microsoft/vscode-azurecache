@@ -7,7 +7,7 @@ import { RedisClient } from '../../clients/RedisClient';
 import { CollectionKeyItem } from '../CollectionKeyItem';
 import { HashFieldFilterItem } from '../filter/HashFieldFilterItem';
 import { RedisSetElemItem } from './RedisSetElemItem';
-import { SetWebview } from '../../SetWebview';
+import { SetWebview } from '../../webview/SetWebview';
 
 /**
  * Tree item for a set.
@@ -16,7 +16,7 @@ export class RedisSetItem extends CollectionKeyItem {
     public static readonly contextValue = 'redisSetItem';
     public static readonly description = '(set)';
 
-    private webview: SetWebview = new SetWebview(this);
+    private webview = new SetWebview(this);
     private elementsShown = 0;
     private scanCursor?: string = '0';
 
