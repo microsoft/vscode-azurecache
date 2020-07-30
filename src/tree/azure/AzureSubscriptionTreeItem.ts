@@ -32,4 +32,12 @@ export class AzureSubscriptionTreeItem extends SubscriptionTreeItemBase {
 
         return redisCollection.map((parsedRedisResource) => new AzureCacheItem(this, resClient, parsedRedisResource));
     }
+
+    public async refreshImpl(): Promise<void> {
+        const children = await this.getCachedChildren({} as IActionContext);
+        children.forEach((child) => {
+            (child as AzureCacheItem).disposeWebview();
+        });
+        console.log();
+    }
 }

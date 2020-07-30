@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import * as vscode from 'vscode';
-import { ParsedRedisResource } from '../parsed/ParsedRedisResource';
+import { ParsedRedisResource } from '../../shared/ParsedRedisResource';
 import { getConnectionString } from '../utils/ResourceUtils';
 import { AbstractWebview, IncomingMessage } from './AbstractWebview';
 

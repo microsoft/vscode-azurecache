@@ -1,12 +1,14 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { TextField } from '@fluentui/react';
+import { TextField, PrimaryButton } from '@fluentui/react';
 import * as React from 'react';
 import { vscode } from '../vscode';
 import { SelectableCollectionElement, CollectionElement } from './CollectionElement';
 import { CollectionView } from './CollectionView';
 import { CollectionType } from './CollectionType';
+import { CollectionWebviewPayload } from '../../shared/CollectionWebviewPayload';
+import './DataViewer.css';
 
 interface Message {
     key: string;
@@ -20,6 +22,7 @@ interface State {
     data?: SelectableCollectionElement[];
     type?: CollectionType;
     size?: number;
+    hasMore: boolean;
 }
 
 export class DataViewer extends React.Component<{}, State> {
@@ -30,24 +33,37 @@ export class DataViewer extends React.Component<{}, State> {
             key: undefined,
             size: 0,
             type: undefined,
+            hasMore: false,
         };
     }
 
     componentDidMount(): void {
         window.addEventListener('message', (event) => {
             const message: Message = event.data;
-            const { currentIndex } = this.state;
 
             if (message.key === 'data') {
-                const elements = message.value as CollectionElement[];
-                const data = elements.map((elem, index) => {
-                    return {
-                        id: elem.id,
-                        value: elem.value,
-                        selected: index === currentIndex,
-                    } as SelectableCollectionElement;
+                const { data, hasMore } = message.value as CollectionWebviewPayload;
+                const selectableData = data.map(
+                    (elem) =>
+                        ({
+                            id: elem.id,
+                            value: elem.value,
+                            selected: false,
+                        } as SelectableCollectionElement)
+                );
+                this.setState((prevState) => {
+                    if (prevState.data) {
+                        return {
+                            data: [...prevState.data, ...selectableData],
+                            hasMore,
+                        };
+                    } else {
+                        return {
+                            data: selectableData,
+                            hasMore,
+                        };
+                    }
                 });
-                this.setState({ data });
             } else if (message.key === 'type') {
                 const type = message.value as CollectionType;
                 this.setState({ type });
@@ -91,31 +107,72 @@ export class DataViewer extends React.Component<{}, State> {
         });
     }
 
+    loadMore = () => {
+        vscode.postMessage({
+            command: 'loadMore',
+        });
+    };
+
+    onFilterChanged = (
+        event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+        newValue?: string | undefined
+    ) => {
+        if (this.state.type !== 'hash') {
+            return;
+        }
+        console.log('changed: ' + newValue);
+    };
+
     render(): JSX.Element | null {
         if (!this.state.data) {
             return null;
         }
 
-        const { currentValue, data, type, key, size } = this.state;
+        const { currentValue, currentIndex, data, type, key, size } = this.state;
+        const buttonDisabled = this.state.data.length === this.state.size;
 
+        // <Split direction="vertical" gutterSize={5} sizes={[50, 50]} minSize={100}></Split>
         return (
             <div className="container">
-                <h2>{key}</h2>
-                <h4>Size: {size}</h4>
-                <CollectionView
-                    data={data}
-                    type={type}
-                    onScrollToBottom={this.onScrollToBottom}
-                    onItemClick={this.onItemClick}
-                />
-                <TextField
-                    label="Contents"
-                    multiline
-                    autoAdjustHeight
-                    readOnly
-                    style={{ fontFamily: 'Consolas' }}
-                    value={currentValue}
-                />
+                <div className="list-container">
+                    <h2>
+                        {key} ({type})
+                    </h2>
+                    <h4 style={{ marginTop: 0, marginBottom: 5 }}>Size: {size}</h4>
+                    {this.state.type === 'hash' && (
+                        <TextField
+                            className="filter-textfield"
+                            label={'Filter hash name'}
+                            onChange={this.onFilterChanged}
+                        />
+                    )}
+
+                    <CollectionView
+                        className="list-view"
+                        data={data}
+                        type={type}
+                        onScrollToBottom={this.onScrollToBottom}
+                        onItemClick={this.onItemClick}
+                    />
+                    <PrimaryButton
+                        disabled={buttonDisabled}
+                        text="Load More..."
+                        style={{ marginLeft: 'auto', marginRight: 0, marginTop: 5, textAlign: 'right' }}
+                        onClick={this.loadMore}
+                    />
+                </div>
+                <div className="content-container" style={{ flex: 1 }}>
+                    <TextField
+                        label="Contents"
+                        multiline
+                        autoAdjustHeight
+                        readOnly
+                        style={{ fontFamily: 'Consolas' }}
+                        value={currentValue}
+                        resizable={false}
+                        inputClassName="contents-input"
+                    />
+                </div>
             </div>
         );
     }

@@ -7,7 +7,7 @@ import { AccessKeyDropdown } from './AccessKeyDropdown';
 import { CollapsibleList } from './CollapsibleList';
 import { CopyableTextField } from './CopyableTextField';
 import { GeneralPropertyLabel } from './GeneralPropertyLabel';
-import { ParsedRedisResource } from './ParsedRedisResource';
+import { ParsedRedisResource } from '../../shared/ParsedRedisResource';
 import * as Strings from '../Strings';
 import './styles.css';
 

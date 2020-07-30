@@ -16,13 +16,15 @@ import { RedisClient } from './clients/RedisClient';
 import { ExtVars } from './ExtensionVariables';
 import { textInput } from './Input';
 import { KeyContentProvider } from './KeyContentProvider';
-import { ParsedRedisResource } from './parsed/ParsedRedisResource';
+import { ParsedRedisResource } from '../shared/ParsedRedisResource';
 import * as Strings from './Strings';
 import { AzureAccountTreeItem } from './tree/azure/AzureAccountTreeItem';
 import { AzureCacheItem } from './tree/azure/AzureCacheItem';
 import { FilterParentItem } from './tree/FilterParentItem';
 import { RedisSetItem } from './tree/redis/RedisSetItem';
 import { RedisZSetItem } from './tree/redis/RedisZSetItem';
+import { RedisHashItem } from './tree/redis/RedisHashItem';
+import { RedisListItem } from './tree/redis/RedisListItem';
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     ExtVars.context = context;
@@ -99,6 +101,18 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
     context.subscriptions.push(
         vscode.commands.registerCommand('azureCache.viewZSet', async (treeItem: RedisZSetItem) => {
+            treeItem.showWebview();
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('azureCache.viewHash', async (treeItem: RedisHashItem) => {
+            treeItem.showWebview();
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('azureCache.viewList', async (treeItem: RedisListItem) => {
             treeItem.showWebview();
         })
     );

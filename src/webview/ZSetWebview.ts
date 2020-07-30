@@ -3,7 +3,7 @@
 
 import { AbstractWebview, IncomingMessage } from './AbstractWebview';
 import { RedisClient } from '../clients/RedisClient';
-import { CollectionElement } from '../CollectionElement';
+import { CollectionElement } from '../../shared/CollectionElement';
 import { RedisZSetItem } from '../tree/redis/RedisZSetItem';
 
 interface ZSetElement {

@@ -1,0 +1,44 @@
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.list-container {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-container {
+    max-height: 400px;
+    margin-bottom: 10px;
+}
+
+.ms-Button-flexContainer {
+    height: inherit;
+}
+
+.gutter {
+    background-color: var(--vscode-breadcrumb-foreground);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    cursor: ns-resize;
+    transition: 0.3s;
+}
+
+.gutter:hover,.gutter:active {
+    background-color: var(--vscode-breadcrumb-focusForeground);
+}
+
+.contents-input {
+    overflow-y: auto;
+    resize: vertical;
+    max-height: 50vh;
+    height: 30vh;
+}
+
+.list-view {
+    margin-top: 10px;
+}

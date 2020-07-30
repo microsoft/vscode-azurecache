@@ -1,30 +1,35 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { RedisSetItem } from '../tree/redis/RedisSetItem';
 import { AbstractWebview, IncomingMessage } from './AbstractWebview';
 import { RedisClient } from '../clients/RedisClient';
 import { CollectionElement } from '../../shared/CollectionElement';
+import { RedisHashItem } from '../tree/redis/RedisHashItem';
+
+interface HashElement {
+    field: string;
+    value: string;
+}
 
 /**
  * Webview for viewing set elements.
  */
-export class SetWebview extends AbstractWebview {
-    viewType = 'set';
-    title = 'setWebview';
+export class HashWebview extends AbstractWebview {
+    viewType = 'hash';
+    title = 'hashWebview';
     private scanCursor: string | undefined = '0';
-    private elements: string[] = [];
+    private elements: HashElement[] = [];
 
-    constructor(private readonly treeItem: RedisSetItem) {
+    constructor(private readonly treeItem: RedisHashItem) {
         super();
     }
 
     private async getCardinality(): Promise<number> {
         const client = await RedisClient.connectToRedisResource(this.treeItem.parsedRedisResource);
-        return client.scard(this.treeItem.key, this.treeItem.db);
+        return client.hlen(this.treeItem.key, this.treeItem.db);
     }
 
-    private async loadMoreChildren(clearCache: boolean): Promise<string[]> {
+    private async loadMoreChildren(clearCache: boolean): Promise<HashElement[]> {
         if (clearCache) {
             this.scanCursor = '0';
         }
@@ -37,20 +42,39 @@ export class SetWebview extends AbstractWebview {
 
         // Sometimes SCAN returns no results, so continue SCANNING until we receive results or we reach the end
         let curCursor = this.scanCursor;
-        let scannedElems: string[] = [];
+        let scannedFields: string[] = [];
 
         do {
-            [curCursor, scannedElems] = await client.sscan(
+            [curCursor, scannedFields] = await client.hscan(
                 this.treeItem.key,
                 curCursor,
                 'MATCH',
-                '*',
+                this.treeItem.getFilter(),
                 this.treeItem.db
             );
-        } while (curCursor !== '0' && scannedElems.length === 0);
+        } while (curCursor !== '0' && scannedFields.length === 0);
 
         this.scanCursor = curCursor === '0' ? undefined : curCursor;
-        return scannedElems;
+
+        const treeItems: HashElement[] = [];
+        let field = '';
+
+        // hscan returns a single list alternating between the hash field name and the hash field value
+        for (let index = 0; index < scannedFields.length; index++) {
+            if (index % 2 === 0) {
+                // Even indices contain the hash field name
+                field = scannedFields[index];
+            } else {
+                // Odd indices contain the hash field value
+                const hashElement = {
+                    field,
+                    value: scannedFields[index],
+                } as HashElement;
+                treeItems.push(hashElement);
+            }
+        }
+
+        return treeItems;
     }
 
     /**
@@ -60,14 +84,15 @@ export class SetWebview extends AbstractWebview {
      */
     protected async sendData(): Promise<void> {
         this.postMessage('contentType', 'key');
-        this.postMessage('type', 'set');
+        this.postMessage('type', 'hash');
         this.postMessage('key', this.treeItem.key);
         this.postMessage('size', await this.getCardinality());
 
         this.elements = await this.loadMoreChildren(true);
         const collectionElements = this.elements.map((elem) => {
             return {
-                value: elem,
+                id: elem.field,
+                value: elem.value,
             } as CollectionElement;
         });
         this.postMessage('data', collectionElements);
@@ -79,7 +104,8 @@ export class SetWebview extends AbstractWebview {
             this.elements.push(...nextChildren);
             const collectionElements = this.elements.map((elem) => {
                 return {
-                    value: elem,
+                    id: elem.field,
+                    value: elem.value,
                 } as CollectionElement;
             });
             this.postMessage('data', collectionElements);

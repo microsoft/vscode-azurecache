@@ -12,7 +12,7 @@ import { CachePropsWebview } from '../../webview/CachePropsWebview';
 import { RedisClient } from '../../clients/RedisClient';
 import { RedisResourceClient } from '../../clients/RedisResourceClient';
 import { ExtVars } from '../../ExtensionVariables';
-import { ParsedRedisResource } from '../../parsed/ParsedRedisResource';
+import { ParsedRedisResource } from '../../../shared/ParsedRedisResource';
 import { ErrorEmptyCache } from '../../Strings';
 import * as ResourceUtils from '../../utils/ResourceUtils';
 import { KeyFilterItem } from '../filter/KeyFilterItem';
@@ -157,5 +157,9 @@ export class AzureCacheItem extends AzureParentTreeItem implements FilterParentI
 
     public async getConnectionString(): Promise<string | undefined> {
         return ResourceUtils.getConnectionString(this.parsedRedisResource);
+    }
+
+    public disposeWebview(): void {
+        this.webview.dispose();
     }
 }

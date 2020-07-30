@@ -5,10 +5,12 @@
         "outDir": "out",
         "sourceMap": true,
         "typeRoots": [ "./node_modules/@types" ],
+        "rootDir": "./",
         "strict": true
     },
     "exclude": [
         "node_modules",
-        ".vscode-test"
+        ".vscode-test",
+        "webview-src"
     ]
 }

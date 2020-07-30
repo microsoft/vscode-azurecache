@@ -52,7 +52,7 @@ const classNames = mergeStyleSets({
 });
 
 interface Props {
-    currentIndex?: number;
+    className?: string;
     data?: SelectableCollectionElement[];
     type?: CollectionType;
     onItemClick?: (value: CollectionElement, index: number) => void;
@@ -78,8 +78,13 @@ export class CollectionView extends React.Component<Props, {}> {
         if (this.props?.type === 'zset') {
             indexElement = (
                 <div>
-                    <div className={itemIndexClass}>Score: {item.id}</div>
-                    <div className={itemIndexClass}>{index}</div>
+                    <div className={itemIndexClass}>{item.id}</div>
+                </div>
+            );
+        } else if (this.props?.type === 'hash') {
+            indexElement = (
+                <div>
+                    <div className={itemIndexClass}>{item.id}</div>
                 </div>
             );
         } else if (this.props?.type === 'set' || this.props?.type === 'list') {
@@ -89,8 +94,8 @@ export class CollectionView extends React.Component<Props, {}> {
         return (
             <div className={itemCellClass} data-is-focusable={true} data-is-scrollable={true} onClick={onClick}>
                 <div className={classNames.itemContent}>
-                    <div className={classNames.itemName}>{item.value}</div>
                     {indexElement}
+                    <div className={classNames.itemName}>{item.value}</div>
                 </div>
             </div>
         );
@@ -113,7 +118,8 @@ export class CollectionView extends React.Component<Props, {}> {
 
         return (
             <div
-                style={{ height: 400, overflowY: 'auto', resize: 'vertical', borderStyle: 'solid', borderWidth: 1 }}
+                className={this.props.className}
+                style={{ minHeight: 200, maxHeight: '50vh', overflowY: 'auto', borderStyle: 'solid', borderWidth: 1 }}
                 onScroll={this.handleListScroll}
             >
                 <List items={data} onRenderCell={this.onRenderCell} />

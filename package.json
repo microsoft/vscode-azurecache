@@ -32,7 +32,7 @@
     "scripts": {
         "vscode:prepublish": "webpack --mode production",
         "clean": "rimraf out/ dist/",
-        "compile": "rimraf out/ && tsc -p ./",
+        "compile": "rimraf out/ && tsc -p ./tsconfig-test.json",
         "lint": "eslint src --ext .ts && eslint webview-src --ext .ts,.tsx",
         "pretest": "npm run compile && npm run lint",
         "test": "node ./out/test/runTest.js",
@@ -232,6 +232,16 @@
             {
                 "command": "azureCache.viewZSet",
                 "title": "View sorted set",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.viewHash",
+                "title": "View hash",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.viewList",
+                "title": "View list",
                 "category": "Azure Cache"
             }
         ]

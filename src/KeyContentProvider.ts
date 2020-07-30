@@ -3,7 +3,7 @@
 
 import * as vscode from 'vscode';
 import { RedisClient } from './clients/RedisClient';
-import { ParsedRedisResource } from './parsed/ParsedRedisResource';
+import { ParsedRedisResource } from '../shared/ParsedRedisResource';
 import * as Strings from './Strings';
 import { SupportedKeyType } from './SupportedKeyType';
 import { createKeyContentUri, decodeUri } from './utils/UriUtils';

@@ -2,10 +2,11 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from 'vscode';
-import { AzExtTreeItem, IActionContext, TreeItemIconPath } from 'vscode-azureextensionui';
+import { TreeItemIconPath } from 'vscode-azureextensionui';
 import { RedisClient } from '../../clients/RedisClient';
+import { CollectionElement } from '../../../shared/CollectionElement';
+import { CollectionWebview } from '../../webview/CollectionWebview';
 import { CollectionKeyItem } from '../CollectionKeyItem';
-import { RedisListElemItem } from './RedisListElemItem';
 
 /**
  * Tree item for a list.
@@ -15,11 +16,20 @@ export class RedisListItem extends CollectionKeyItem {
     public static readonly description = '(list)';
     private static readonly incrementCount = 10;
 
+    protected webview: CollectionWebview = new CollectionWebview(this, 'list');
     private elementsShown = 0;
-    private length = 0;
+    private size = 0;
 
     get contextValue(): string {
         return RedisListItem.contextValue;
+    }
+
+    get commandId(): string {
+        return 'azureCache.viewList';
+    }
+
+    get commandArgs(): unknown[] {
+        return [this];
     }
 
     get description(): string {
@@ -34,33 +44,42 @@ export class RedisListItem extends CollectionKeyItem {
         return this.key;
     }
 
+    public async getSize(): Promise<number> {
+        const client = await RedisClient.connectToRedisResource(this.parsedRedisResource);
+        return client.llen(this.key, this.db);
+    }
+
     /**
      * Loads additional list elements as children by keeping track of the list length and number of elements loaded so far.
      */
-    public async loadMoreChildrenImpl(clearCache: boolean, context: IActionContext): Promise<AzExtTreeItem[]> {
+    public async loadNextChildren(clearCache: boolean): Promise<CollectionElement[]> {
+        const client = await RedisClient.connectToRedisResource(this.parsedRedisResource);
+
         if (clearCache) {
-            const client = await RedisClient.connectToRedisResource(this.parsedRedisResource);
-            this.length = await client.llen(this.key, this.db);
+            this.size = await client.llen(this.key, this.db);
             this.elementsShown = 0;
         }
 
-        if (this.elementsShown === this.length) {
+        if (this.elementsShown === this.size) {
             return [];
         }
 
         // Construct tree items such that the numbering continues from the previously loaded items
         const min = this.elementsShown;
-        const max = Math.min(this.elementsShown + RedisListItem.incrementCount, this.length);
-        const treeItems = Array.from({ length: max - min }, (_, index) => new RedisListElemItem(this, index + min));
-        this.elementsShown = max;
-        return treeItems;
+        const max = Math.min(this.elementsShown + RedisListItem.incrementCount, this.size) - 1;
+        const values = await client.lrange(this.key, min, max, this.db);
+        this.elementsShown += values.length;
+
+        const collectionElements = values.map((value) => {
+            return {
+                value,
+            } as CollectionElement;
+        });
+
+        return collectionElements;
     }
 
-    public hasMoreChildrenImpl(): boolean {
-        return this.elementsShown !== this.length;
-    }
-
-    public compareChildrenImpl(item1: RedisListElemItem, item2: RedisListElemItem): number {
-        return 0;
+    public hasNextChildren(): boolean {
+        return this.elementsShown !== this.size;
     }
 }

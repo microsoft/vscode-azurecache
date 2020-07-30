@@ -2,12 +2,11 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from 'vscode';
-import { AzExtTreeItem, IActionContext, TreeItemIconPath } from 'vscode-azureextensionui';
+import { TreeItemIconPath } from 'vscode-azureextensionui';
 import { RedisClient } from '../../clients/RedisClient';
+import { CollectionElement } from '../../../shared/CollectionElement';
+import { CollectionWebview } from '../../webview/CollectionWebview';
 import { CollectionKeyItem } from '../CollectionKeyItem';
-import { HashFieldFilterItem } from '../filter/HashFieldFilterItem';
-import { RedisSetElemItem } from './RedisSetElemItem';
-import { SetWebview } from '../../webview/SetWebview';
 
 /**
  * Tree item for a set.
@@ -16,8 +15,7 @@ export class RedisSetItem extends CollectionKeyItem {
     public static readonly contextValue = 'redisSetItem';
     public static readonly description = '(set)';
 
-    private webview = new SetWebview(this);
-    private elementsShown = 0;
+    protected webview: CollectionWebview = new CollectionWebview(this, 'set');
     private scanCursor?: string = '0';
 
     get contextValue(): string {
@@ -44,13 +42,17 @@ export class RedisSetItem extends CollectionKeyItem {
         return this.key;
     }
 
+    public async getSize(): Promise<number> {
+        const client = await RedisClient.connectToRedisResource(this.parsedRedisResource);
+        return client.scard(this.key, this.db);
+    }
+
     /**
      * Loads additional set elements as children by running the SSCAN command and keeping track of the current cursor.
      */
-    public async loadMoreChildrenImpl(clearCache: boolean, context: IActionContext): Promise<AzExtTreeItem[]> {
+    public async loadNextChildren(clearCache: boolean): Promise<CollectionElement[]> {
         if (clearCache) {
             this.scanCursor = '0';
-            this.elementsShown = 0;
         }
 
         if (typeof this.scanCursor === 'undefined') {
@@ -69,29 +71,15 @@ export class RedisSetItem extends CollectionKeyItem {
 
         this.scanCursor = curCursor === '0' ? undefined : curCursor;
 
-        const treeItems = scannedElems.map(
-            (elem, index) => new RedisSetElemItem(this, this.elementsShown + index, elem)
-        );
-
-        this.elementsShown += scannedElems.length;
-        return treeItems;
+        const collectionElements = scannedElems.map((element) => {
+            return {
+                value: element,
+            } as CollectionElement;
+        });
+        return collectionElements;
     }
 
-    public hasMoreChildrenImpl(): boolean {
+    public hasNextChildren(): boolean {
         return typeof this.scanCursor === 'string';
-    }
-
-    public compareChildrenImpl(item1: AzExtTreeItem, item2: AzExtTreeItem): number {
-        if (item1 instanceof HashFieldFilterItem) {
-            return -1;
-        } else if (item2 instanceof HashFieldFilterItem) {
-            return 1;
-        }
-
-        return 0;
-    }
-
-    public async showWebview(): Promise<void> {
-        this.webview.reveal(this.key);
     }
 }
