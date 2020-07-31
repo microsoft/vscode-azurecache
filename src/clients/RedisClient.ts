@@ -355,15 +355,7 @@ export class RedisClient {
         pattern: string,
         db?: number
     ): Promise<[string, string[]]> {
-        return this.exec(
-            (await this.getClient(db)).hscan(
-                key,
-                // TODO: Revert this to just 'cursor' once @types/ioredis changes are in
-                typeof cursor === 'string' ? parseInt(cursor) : cursor,
-                matchOption,
-                pattern
-            )
-        );
+        return this.exec((await this.getClient(db)).hscan(key, cursor, matchOption, pattern));
     }
 
     public async sscan(
@@ -373,14 +365,7 @@ export class RedisClient {
         pattern: string,
         db?: number
     ): Promise<[string, string[]]> {
-        return this.exec(
-            (await this.getClient(db)).sscan(
-                key,
-                typeof cursor === 'string' ? parseInt(cursor) : cursor,
-                matchOption,
-                pattern
-            )
-        );
+        return this.exec((await this.getClient(db)).sscan(key, cursor, matchOption, pattern));
     }
 
     public async zscan(
@@ -390,14 +375,7 @@ export class RedisClient {
         pattern: string,
         db?: number
     ): Promise<[string, string[]]> {
-        return this.exec(
-            (await this.getClient(db)).zscan(
-                key,
-                typeof cursor === 'string' ? parseInt(cursor) : cursor,
-                matchOption,
-                pattern
-            )
-        );
+        return this.exec((await this.getClient(db)).zscan(key, cursor, matchOption, pattern));
     }
 
     public async zcard(key: string, db?: number): Promise<number> {
