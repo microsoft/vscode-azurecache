@@ -175,7 +175,7 @@ export class DataViewer extends React.Component<{}, State> {
                         multiline
                         autoAdjustHeight
                         readOnly
-                        style={{ fontFamily: 'Consolas' }}
+                        style={{ fontFamily: 'var(--vscode-editor-font-family)' }}
                         value={currentValue}
                         resizable={false}
                         inputClassName="contents-input"
