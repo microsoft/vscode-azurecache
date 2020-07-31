@@ -7,7 +7,7 @@ import * as ReactDOM from 'react-dom';
 import { WebviewCommand } from '../src-shared/WebviewCommand';
 import { WebviewMessage } from '../src-shared/WebviewMessage';
 import { WebviewView } from '../src-shared/WebviewView';
-import { DataViewer } from './data-viewer/DataViewer';
+import { DataViewer } from './data-viewer/CollectionView';
 import { initializeIcons } from './fabric-icons/src';
 import { CacheProperties } from './properties/CacheProperties';
 

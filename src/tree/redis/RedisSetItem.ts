@@ -15,6 +15,7 @@ export class RedisSetItem extends CollectionKeyItem {
     private static readonly commandId = 'azureCache.viewSet';
     private static readonly contextValue = 'redisSetItem';
     private static readonly description = '(set)';
+    private static readonly incrementCount = 10;
 
     protected webview: CollectionWebview = new CollectionWebview(this, 'set');
     private scanCursor?: string = '0';
@@ -64,11 +65,13 @@ export class RedisSetItem extends CollectionKeyItem {
 
         // Sometimes SCAN returns no results, so continue SCANNING until we receive results or we reach the end
         let curCursor = this.scanCursor;
-        let scannedElems: string[] = [];
+        const scannedElems: string[] = [];
 
         do {
-            [curCursor, scannedElems] = await client.sscan(this.key, curCursor, 'MATCH', '*', this.db);
-        } while (curCursor !== '0' && scannedElems.length === 0);
+            const result = await client.sscan(this.key, curCursor, 'MATCH', '*', this.db);
+            curCursor = result[0];
+            scannedElems.push(...result[1]);
+        } while (curCursor !== '0' && scannedElems.length < RedisSetItem.incrementCount);
 
         this.scanCursor = curCursor === '0' ? undefined : curCursor;
 

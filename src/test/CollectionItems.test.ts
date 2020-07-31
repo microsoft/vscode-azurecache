@@ -1,11 +1,9 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { stubInterface } from 'ts-sinon';
-import { IActionContext } from 'vscode-azureextensionui';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { RedisClient } from '../clients/RedisClient';
 import { RedisResourceClient } from '../clients/RedisResourceClient';
-import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { AzureCacheItem } from '../tree/azure/AzureCacheItem';
 import { AzureSubscriptionTreeItem } from '../tree/azure/AzureSubscriptionTreeItem';
 import { RedisDbItem } from '../tree/redis/RedisDbItem';
@@ -17,8 +15,7 @@ import { TestRedisClient } from './clients/TestRedisClient';
 import sinon = require('sinon');
 import assert = require('assert');
 
-/*
-describe('TreeItems', () => {
+describe('CollectionItems', () => {
     let sandbox: sinon.SinonSandbox;
 
     before(() => {
@@ -63,20 +60,25 @@ describe('TreeItems', () => {
             sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
             sandbox.stub(stubRedisClient, 'llen').resolves(15);
 
-            const listItem = new RedisListItem(testDb, 'mylist');
-            const context = stubInterface<IActionContext>();
+            // Stub LRANGE calls
+            const lrangeStub = sandbox.stub(stubRedisClient, 'lrange');
+            lrangeStub.withArgs('mylist', 0, 9, 0).resolves(Array.from(Array(10).keys()).map((num) => num.toString()));
+            lrangeStub
+                .withArgs('mylist', 10, 14, 0)
+                .resolves(Array.from(Array(5).keys()).map((num) => (num + 10).toString()));
 
-            let childItems = await listItem.loadMoreChildrenImpl(true, context);
+            const listItem = new RedisListItem(testDb, 'mylist');
+            let childItems = await listItem.loadNextChildren(true);
             assert.strictEqual(childItems.length, 10);
-            assert.strictEqual(childItems[0].label, '0');
-            assert(listItem.hasMoreChildrenImpl());
+            assert.strictEqual(childItems[0].value, '0');
+            assert(listItem.hasNextChildren());
 
             // Load last batch of child elements
-            childItems = await listItem.loadMoreChildrenImpl(false, context);
+            childItems = await listItem.loadNextChildren(false);
             assert.strictEqual(childItems.length, 5);
             // The label value should continue from previously loaded elements
-            assert.strictEqual(childItems[0].label, '10');
-            assert(!listItem.hasMoreChildrenImpl());
+            assert.strictEqual(childItems[0].value, '10');
+            assert(!listItem.hasNextChildren());
         });
 
         it('should return zero elements if empty', async () => {
@@ -86,11 +88,10 @@ describe('TreeItems', () => {
             sandbox.stub(stubRedisClient, 'llen').resolves(0);
 
             const listItem = new RedisListItem(testDb, 'mylist');
-            const context = stubInterface<IActionContext>();
 
-            const childItems = await listItem.loadMoreChildrenImpl(true, context);
+            const childItems = await listItem.loadNextChildren(true);
             assert.strictEqual(childItems.length, 0);
-            assert(!listItem.hasMoreChildrenImpl());
+            assert(!listItem.hasNextChildren());
         });
     });
 
@@ -99,31 +100,35 @@ describe('TreeItems', () => {
             // Setup stubs
             const stubRedisClient = new TestRedisClient();
             sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
-            // Stub first HSCAN response to return cursor of '1' and three elements
-            const firstScanRes: [string, string[]] = ['1', ['fieldA', 'A', 'fieldB', 'B', 'fieldC', 'C']];
-            // Stub second HSCAN response to return cursor of '0' and one element
-            const secondScanRes: [string, string[]] = ['0', ['fieldD', 'D']];
+            // Stub first and second HSCAN responses to return 5 elements each
+            const firstScanRes: [string, string[]] = [
+                '1',
+                // eslint-disable-next-line prettier/prettier
+                ['f1', '1', 'f2', '2', 'f3', '3', 'f4', '4', 'f5', '5'],
+            ];
+            const secondScanRes: [string, string[]] = ['2', ['f6', '6', 'f7', '7', 'f8', '8', 'f9', '9', 'f10', '10']];
+            // Stub third HSCAN response to return cursor of '0' and one element
+            const thirdScanRes: [string, string[]] = ['0', ['f11', '1']];
 
             const hashStub = sandbox.stub(stubRedisClient, 'hscan');
             hashStub.withArgs('myhash', '0', 'MATCH', '*', 0).resolves(firstScanRes);
             hashStub.withArgs('myhash', '1', 'MATCH', '*', 0).resolves(secondScanRes);
+            hashStub.withArgs('myhash', '2', 'MATCH', '*', 0).resolves(thirdScanRes);
 
             const hashItem = new RedisHashItem(testDb, 'myhash');
-            const context = stubInterface<IActionContext>();
 
-            let childItems = await hashItem.loadMoreChildrenImpl(true, context);
-            // One of the child items is the hash filter item
-            assert.strictEqual(childItems.length, 4);
-            assert.strictEqual(childItems.filter((item) => item instanceof HashFieldFilterItem).length, 1);
-            assert.strictEqual(childItems[0].label, 'fieldA');
-            assert(hashItem.hasMoreChildrenImpl());
+            // Should load first 10 hash values
+            let childItems = await hashItem.loadNextChildren(true);
+            assert.strictEqual(childItems.length, 10);
+            assert.strictEqual(childItems[0].id, 'f1');
+            assert.strictEqual(childItems[9].id, 'f10');
+            assert(hashItem.hasNextChildren());
 
-            // Load last batch of child elements
-            childItems = await hashItem.loadMoreChildrenImpl(false, context);
+            // Should load the last remaining element
+            childItems = await hashItem.loadNextChildren(false);
             assert.strictEqual(childItems.length, 1);
-            // The label value should continue from previously loaded elements
-            assert.strictEqual(childItems[0].label, 'fieldD');
-            assert(!hashItem.hasMoreChildrenImpl());
+            assert.strictEqual(childItems[0].id, 'f11');
+            assert(!hashItem.hasNextChildren());
         });
 
         it('should return zero elements if empty', async () => {
@@ -135,12 +140,34 @@ describe('TreeItems', () => {
             sandbox.stub(stubRedisClient, 'hscan').withArgs('myhash', '0', 'MATCH', '*', 0).resolves(scanRes);
 
             const hashItem = new RedisHashItem(testDb, 'myhash');
-            const context = stubInterface<IActionContext>();
+            const childItems = await hashItem.loadNextChildren(true);
+            assert.strictEqual(childItems.length, 0);
+            assert(!hashItem.hasNextChildren());
+        });
 
-            const childItems = await hashItem.loadMoreChildrenImpl(true, context);
-            assert.strictEqual(childItems.length, 1);
-            assert.strictEqual(childItems.filter((item) => item instanceof HashFieldFilterItem).length, 1);
-            assert(!hashItem.hasMoreChildrenImpl());
+        it('should properly restore scan cursor when reset', async () => {
+            // Setup stubs
+            const stubRedisClient = new TestRedisClient();
+            sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
+            const scanRes: [string, string[]] = ['0', []];
+
+            sandbox.stub(stubRedisClient, 'hscan').withArgs('myhash', '0', 'MATCH', '*', 0).resolves(scanRes);
+
+            const hashItem = new RedisHashItem(testDb, 'myhash');
+            await hashItem.loadNextChildren(true);
+
+            assert(!hashItem.hasNextChildren());
+            hashItem.reset();
+            assert(hashItem.hasNextChildren());
+        });
+
+        it('should properly handle filter change and reset', () => {
+            const hashItem = new RedisHashItem(testDb, 'myhash');
+            assert(hashItem.getFilter(), '*');
+            hashItem.updateFilter('test');
+            assert(hashItem.getFilter(), 'test');
+            hashItem.reset();
+            assert(hashItem.getFilter(), '*');
         });
     });
 
@@ -149,29 +176,31 @@ describe('TreeItems', () => {
             // Setup stubs
             const stubRedisClient = new TestRedisClient();
             sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
-            // Stub first SSCAN response to return cursor of '1' and three elements
-            const firstScanRes: [string, string[]] = ['1', ['A', 'B', 'C']];
-            // Stub second SSCAN response to return cursor of '0' and one element
-            const secondScanRes: [string, string[]] = ['0', ['D']];
+            // Stub first and second SSCAN responses to return 5 elements each
+            const firstScanRes: [string, string[]] = ['1', ['A', 'B', 'C', 'D', 'E']];
+            const secondScanRes: [string, string[]] = ['2', ['F', 'G', 'H', 'I', 'J']];
+            // Stub third SSCAN response to return cursor of '0' and one element
+            const thirdScanRes: [string, string[]] = ['0', ['K']];
 
             const scanStub = sandbox.stub(stubRedisClient, 'sscan');
             scanStub.withArgs('myset', '0', 'MATCH', '*', 0).resolves(firstScanRes);
             scanStub.withArgs('myset', '1', 'MATCH', '*', 0).resolves(secondScanRes);
+            scanStub.withArgs('myset', '2', 'MATCH', '*', 0).resolves(thirdScanRes);
 
             const setItem = new RedisSetItem(testDb, 'myset');
-            const context = stubInterface<IActionContext>();
 
-            let childItems = await setItem.loadMoreChildrenImpl(true, context);
-            assert.strictEqual(childItems.length, 3);
-            assert.strictEqual(childItems[0].label, '0');
-            assert(setItem.hasMoreChildrenImpl());
+            // First call should load minimum 10 elements
+            let childItems = await setItem.loadNextChildren(true);
+            assert.strictEqual(childItems.length, 10);
+            assert.strictEqual(childItems[0].value, 'A');
+            assert.strictEqual(childItems[9].value, 'J');
+            assert(setItem.hasNextChildren());
 
-            // Load last batch of child elements
-            childItems = await setItem.loadMoreChildrenImpl(false, context);
+            // Next call should load last remaining element
+            childItems = await setItem.loadNextChildren(false);
             assert.strictEqual(childItems.length, 1);
-            // The label value should continue from previously loaded elements
-            assert.strictEqual(childItems[0].label, '3');
-            assert(!setItem.hasMoreChildrenImpl());
+            assert.strictEqual(childItems[0].value, 'K');
+            assert(!setItem.hasNextChildren());
         });
 
         it('should return zero elements if empty', async () => {
@@ -183,11 +212,9 @@ describe('TreeItems', () => {
             sandbox.stub(stubRedisClient, 'sscan').withArgs('myset', '0', 'MATCH', '*', 0).resolves(scanRes);
 
             const setItem = new RedisSetItem(testDb, 'myset');
-            const context = stubInterface<IActionContext>();
-
-            const childItems = await setItem.loadMoreChildrenImpl(true, context);
+            const childItems = await setItem.loadNextChildren(true);
             assert.strictEqual(childItems.length, 0);
-            assert(!setItem.hasMoreChildrenImpl());
+            assert(!setItem.hasNextChildren());
         });
     });
 
@@ -198,26 +225,8 @@ describe('TreeItems', () => {
             sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
             // Stub first ZRANGE response to return first 10 elements
             const firstZrangeRes: string[] = [
-                'A',
-                '0',
-                'B',
-                '1',
-                'C',
-                '2',
-                'D',
-                '3',
-                'E',
-                '4',
-                'F',
-                '5',
-                'G',
-                '6',
-                'H',
-                '7',
-                'I',
-                '8',
-                'J',
-                '9',
+                // eslint-disable-next-line prettier/prettier
+                'A', '0', 'B', '1', 'C', '2', 'D', '3', 'E', '4', 'F', '5', 'G', '6', 'H', '7', 'I', '8', 'J', '9'
             ];
             // Stub second ZRANGE response to return 11th element
             const secondZrangeRes: string[] = ['K', '10'];
@@ -227,19 +236,22 @@ describe('TreeItems', () => {
             zrangeStub.withArgs('myzset', 10, 10, 0).resolves(secondZrangeRes);
 
             const zsetItem = new RedisZSetItem(testDb, 'myzset');
-            const context = stubInterface<IActionContext>();
 
-            let childItems = await zsetItem.loadMoreChildrenImpl(true, context);
+            let childItems = await zsetItem.loadNextChildren(true);
             assert.strictEqual(childItems.length, 10);
-            assert.strictEqual(childItems[0].label, '0');
-            assert(zsetItem.hasMoreChildrenImpl());
+            assert.strictEqual(childItems[0].id, '0');
+            assert.strictEqual(childItems[0].value, 'A');
+            assert.strictEqual(childItems[9].id, '9');
+            assert.strictEqual(childItems[9].value, 'J');
+            assert(zsetItem.hasNextChildren());
 
-            // Load last batch of child elements
-            childItems = await zsetItem.loadMoreChildrenImpl(false, context);
+            // Load last remaining element
+            childItems = await zsetItem.loadNextChildren(false);
             assert.strictEqual(childItems.length, 1);
             // The label value should continue from previously loaded elements
-            assert.strictEqual(childItems[0].label, '10');
-            assert(!zsetItem.hasMoreChildrenImpl());
+            assert.strictEqual(childItems[0].id, '10');
+            assert.strictEqual(childItems[0].value, 'K');
+            assert(!zsetItem.hasNextChildren());
             // ZCARD should only be called once, when 'clearCache' set to true
             assert(zcardStub.calledOnce);
         });
@@ -252,13 +264,11 @@ describe('TreeItems', () => {
             const zrangeStub = sandbox.stub(stubRedisClient, 'zrange');
 
             const zsetItem = new RedisZSetItem(testDb, 'myzset');
-            const context = stubInterface<IActionContext>();
 
-            const childItems = await zsetItem.loadMoreChildrenImpl(true, context);
+            const childItems = await zsetItem.loadNextChildren(true);
             assert(zrangeStub.notCalled);
             assert.strictEqual(childItems.length, 0);
-            assert(!zsetItem.hasMoreChildrenImpl());
+            assert(!zsetItem.hasNextChildren());
         });
     });
 });
-*/

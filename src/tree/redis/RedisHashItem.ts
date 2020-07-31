@@ -67,7 +67,6 @@ export class RedisHashItem extends CollectionKeyItem implements FilterParentItem
 
         let curCursor = this.scanCursor;
         const scannedFields: string[] = [];
-        let scanCount = 0;
 
         // Keep scanning until a total of at least 10 elements have been returned
         do {
@@ -75,8 +74,7 @@ export class RedisHashItem extends CollectionKeyItem implements FilterParentItem
             curCursor = result[0];
             scannedFields.push(...result[1]);
             // scannedFields contains field name and value, so divide by 2 to get number of values scanned
-            scanCount += scannedFields.length / 2;
-        } while (curCursor !== '0' && scanCount < RedisHashItem.incrementCount);
+        } while (curCursor !== '0' && scannedFields.length / 2 < RedisHashItem.incrementCount);
 
         this.scanCursor = curCursor === '0' ? undefined : curCursor;
 

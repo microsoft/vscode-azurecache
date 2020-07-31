@@ -1,128 +1,186 @@
-import { getFocusStyle, getTheme, ITheme, List, mergeStyleSets } from '@fluentui/react';
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import { PrimaryButton, TextField } from '@fluentui/react';
 import * as React from 'react';
-import { CollectionElement, SelectableCollectionElement } from './CollectionElement';
+import { CollectionWebviewPayload } from '../../src-shared/CollectionWebviewPayload';
+import { WebviewCommand } from '../../src-shared/WebviewCommand';
+import { WebviewMessage } from '../../src-shared/WebviewMessage';
+import { vscode } from '../vscode';
+import { CollectionList } from './CollectionList';
 import { CollectionType } from './CollectionType';
+import './CollectionView.css';
+import { HashFilterField } from './HashFilterField';
+import { SelectableCollectionElement } from './SelectableCollectionElement';
 
-const theme: ITheme = getTheme();
-const { semanticColors, fonts } = theme;
-
-const classNames = mergeStyleSets({
-    itemSelected: {
-        background: 'var(--vscode-list-activeSelectionBackground)',
-        color: 'var(--vscode-list-activeSelectionForeground)',
-        selectors: {
-            '&:hover': { background: 'var(--vscode-list-activeSelectionBackground) !important' },
-        },
-    },
-    itemCell: [
-        getFocusStyle(theme, { inset: -1 }),
-        {
-            minHeight: 30,
-            padding: 5,
-            boxSizing: 'border-box',
-            borderBottom: `1px solid ${semanticColors.bodyDivider}`,
-            display: 'flex',
-            selectors: {
-                '&:hover': { background: 'var(--vscode-list-hoverBackground)' },
-            },
-            cursor: 'pointer',
-        },
-    ],
-    itemContent: {
-        marginLeft: 5,
-        overflow: 'hidden',
-        flexGrow: 1,
-    },
-    itemName: [
-        fonts.medium,
-        {
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            fontSize: fonts.mediumPlus.fontSize,
-        },
-    ],
-    itemIndex: {
-        fontSize: fonts.small.fontSize,
-        color: 'var(--vscode-editorHint-foreground)',
-    },
-    itemIndexSelected: {
-        color: 'var(--vscode-list-activeSelectionForeground)',
-    },
-});
-
-interface Props {
-    className?: string;
-    data?: SelectableCollectionElement[];
+interface State {
+    currentIndex?: number;
+    currentValue?: string;
     type?: CollectionType;
-    onItemClick?: (value: CollectionElement, index: number) => void;
-    onScrollToBottom?: () => void;
+    key?: string;
+    data: SelectableCollectionElement[];
+    size: number;
+    hasMore: boolean;
+    isLoading: boolean;
 }
 
-export class CollectionView extends React.Component<Props, {}> {
+export class DataViewer extends React.Component<{}, State> {
     constructor(props: {}) {
         super(props);
+        this.state = {
+            data: [],
+            size: 0,
+            hasMore: false,
+            isLoading: false,
+        };
     }
 
-    onRenderCell = (item: SelectableCollectionElement | undefined, index: number | undefined): JSX.Element | null => {
-        if (!item || typeof index === 'undefined') {
-            return null;
-        }
+    componentDidMount(): void {
+        // Listen for messages from extension
+        window.addEventListener('message', (event) => {
+            const message: WebviewMessage = event.data;
+            if (message.command === WebviewCommand.CollectionData) {
+                const { data, hasMore, clearCache } = message.value as CollectionWebviewPayload;
+                const selectableData = data.map(
+                    (elem) =>
+                        ({
+                            id: elem.id,
+                            value: elem.value,
+                            selected: false,
+                        } as SelectableCollectionElement)
+                );
 
-        const itemCellClass = classNames.itemCell + (item.selected ? ' ' + classNames.itemSelected : '');
-        const itemIndexClass = classNames.itemIndex + (item.selected ? ' ' + classNames.itemIndexSelected : '');
-        const onClick = (): void => this.props?.onItemClick?.(item, index);
+                this.setState((prevState) => ({
+                    // Clear previous data if clearCache is true
+                    data: clearCache ? selectableData : [...prevState.data, ...selectableData],
+                    hasMore,
+                    isLoading: false,
+                }));
+            } else if (message.command === WebviewCommand.KeyType) {
+                const type = message.value as CollectionType;
+                this.setState({ type });
+            } else if (message.command === WebviewCommand.KeyName) {
+                const key = message.value as string;
+                this.setState({ key });
+            } else if (message.command === WebviewCommand.CollectionSize) {
+                const size = message.value as number;
+                this.setState({ size });
+            }
+        });
+    }
 
-        let indexElement = null;
+    /**
+     * Handles selection when collection item is clicked.
+     * @param element The element that was clicked
+     * @param index The index in the collection
+     */
+    onItemClick = (element: SelectableCollectionElement, index: number): void => {
+        // Need to update entire data because FluentUI's Basic List only re-renders based on changes in underlying 'data'
+        const newData = this.state.data.map((val, idx) => {
+            // De-select previously selected item
+            if (val.selected && idx !== index) {
+                val.selected = false;
+                return val;
+            }
+            // Select new item
+            if (index === idx) {
+                val.selected = true;
+                return val;
+            }
+            // Otherwise return same item
+            return val;
+        });
 
-        if (this.props?.type === 'zset') {
-            indexElement = (
-                <div>
-                    <div className={itemIndexClass}>{item.id}</div>
-                </div>
-            );
-        } else if (this.props?.type === 'hash') {
-            indexElement = (
-                <div>
-                    <div className={itemIndexClass}>{item.id}</div>
-                </div>
-            );
-        } else if (this.props?.type === 'set' || this.props?.type === 'list') {
-            indexElement = <div className={itemIndexClass}>{index}</div>;
-        }
-
-        return (
-            <div className={itemCellClass} data-is-focusable={true} data-is-scrollable={true} onClick={onClick}>
-                <div className={classNames.itemContent}>
-                    {indexElement}
-                    <div className={classNames.itemName}>{item.value}</div>
-                </div>
-            </div>
-        );
+        this.setState({
+            currentValue: element.value,
+            currentIndex: index,
+            data: newData,
+        });
     };
 
-    handleListScroll = (event: React.UIEvent<HTMLDivElement>): void => {
-        const target = event.target as HTMLDivElement;
+    /**
+     * Tells extension to send over more data.
+     */
+    loadMore = (): void => {
+        this.setState({
+            isLoading: true,
+        });
+        vscode.postMessage({
+            command: WebviewCommand.LoadMore,
+        });
+    };
 
-        if (target.scrollHeight - target.scrollTop === target.clientHeight) {
-            this.props.onScrollToBottom?.();
+    /**
+     * Handles filter textfield changes.
+     * This is called from HashFilterField with a debounce so it is not triggered after every keystroke.
+     *
+     * @param event The event
+     * @param newValue The new filter value
+     */
+    onFilterChanged = (
+        event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+        newValue?: string | undefined
+    ): void => {
+        if (this.state.type !== 'hash') {
+            return;
         }
+
+        this.setState({
+            currentIndex: undefined,
+            currentValue: undefined,
+            isLoading: true,
+        });
+
+        // Treat empty string as 'match all'
+        if (!newValue) {
+            newValue = '*';
+        }
+        vscode.postMessage({
+            command: WebviewCommand.FilterChange,
+            value: newValue,
+        });
     };
 
     render(): JSX.Element | null {
-        if (!this.props.data) {
-            return null;
-        }
-
-        const { data } = this.props;
+        const { currentValue, data, hasMore, isLoading, type, key, size } = this.state;
 
         return (
-            <div
-                className={this.props.className}
-                style={{ minHeight: 200, maxHeight: '50vh', overflowY: 'auto', borderStyle: 'solid', borderWidth: 1 }}
-                onScroll={this.handleListScroll}
-            >
-                <List items={data} onRenderCell={this.onRenderCell} />
+            <div className="container">
+                <div className="list-container">
+                    <h2>
+                        {key} ({type})
+                    </h2>
+                    <h4 style={{ marginTop: 0, marginBottom: 5 }}>Size: {size}</h4>
+                    {this.state.type === 'hash' && (
+                        <HashFilterField onChange={this.onFilterChanged} isLoading={isLoading} />
+                    )}
+
+                    <CollectionList
+                        className="list-view"
+                        data={data}
+                        type={type}
+                        onScrollToBottom={this.loadMore}
+                        onItemClick={this.onItemClick}
+                    />
+                    <PrimaryButton
+                        disabled={!hasMore}
+                        text="Load More"
+                        style={{ marginLeft: 'auto', marginRight: 0, marginTop: 5, textAlign: 'right' }}
+                        onClick={this.loadMore}
+                    />
+                </div>
+                <div className="content-container" style={{ flex: 1 }}>
+                    <TextField
+                        label="Contents"
+                        multiline
+                        autoAdjustHeight
+                        readOnly
+                        style={{ fontFamily: 'Consolas' }}
+                        value={currentValue}
+                        resizable={false}
+                        inputClassName="contents-input"
+                    />
+                </div>
             </div>
         );
     }

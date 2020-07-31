@@ -49,19 +49,23 @@ export class CollectionWebview extends BaseWebview {
         const hasMore = this.parent.hasNextChildren();
         const collectionPayload = {
             data: elements,
+            clearCache,
             hasMore,
         } as CollectionWebviewPayload;
         this.postMessage(WebviewCommand.CollectionData, collectionPayload);
     }
 
     public async refresh(): Promise<void> {
-        const elements = await this.parent.loadNextChildren(true);
-        const hasMore = this.parent.hasNextChildren();
-        const collectionPayload = {
-            data: elements,
-            hasMore,
-        } as CollectionWebviewPayload;
-        this.postMessage(WebviewCommand.CollectionData, collectionPayload);
+        if (this.webviewPanel) {
+            const elements = await this.parent.loadNextChildren(true);
+            const hasMore = this.parent.hasNextChildren();
+            const collectionPayload = {
+                data: elements,
+                clearCache: true,
+                hasMore,
+            } as CollectionWebviewPayload;
+            this.postMessage(WebviewCommand.CollectionData, collectionPayload);
+        }
     }
 
     protected onDidDispose(): void {

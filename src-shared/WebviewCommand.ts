@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 export enum WebviewCommand {
     FontUri = 'fontUri',
     View = 'view',
