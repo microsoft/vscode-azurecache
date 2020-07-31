@@ -47,6 +47,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
             this.shard = shardNumber;
         }
 
+        // Refresh tree item after filter expression changes
         filterChangeEmitter.event(() => {
             this.refresh();
         });
