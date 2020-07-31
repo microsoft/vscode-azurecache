@@ -3,7 +3,7 @@
 
 import { CollectionElement } from './CollectionElement';
 
-export interface CollectionWebviewPayload {
+export interface CollectionWebviewData {
     data: CollectionElement[];
     clearCache: boolean;
     hasMore: boolean;

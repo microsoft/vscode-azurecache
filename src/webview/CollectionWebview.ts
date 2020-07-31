@@ -4,7 +4,7 @@
 import { BaseWebview } from './BaseWebview';
 import { CollectionKeyItem } from '../tree/CollectionKeyItem';
 import { SupportedKeyType } from '../SupportedKeyType';
-import { CollectionWebviewPayload } from '../../src-shared/CollectionWebviewPayload';
+import { CollectionWebviewData } from '../../src-shared/CollectionWebviewData';
 import { RedisHashItem } from '../tree/redis/RedisHashItem';
 import { WebviewCommand } from '../../src-shared/WebviewCommand';
 import { WebviewMessage } from '../../src-shared/WebviewMessage';
@@ -60,7 +60,7 @@ export class CollectionWebview extends BaseWebview {
             data: elements,
             clearCache,
             hasMore,
-        } as CollectionWebviewPayload;
+        } as CollectionWebviewData;
         this.postMessage(WebviewCommand.CollectionData, collectionPayload);
     }
 
@@ -75,7 +75,7 @@ export class CollectionWebview extends BaseWebview {
                 data: elements,
                 clearCache: true,
                 hasMore,
-            } as CollectionWebviewPayload;
+            } as CollectionWebviewData;
             this.postMessage(WebviewCommand.CollectionData, collectionPayload);
         }
     }

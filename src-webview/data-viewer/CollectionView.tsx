@@ -3,7 +3,7 @@
 
 import { PrimaryButton, TextField } from '@fluentui/react';
 import * as React from 'react';
-import { CollectionWebviewPayload } from '../../src-shared/CollectionWebviewPayload';
+import { CollectionWebviewData } from '../../src-shared/CollectionWebviewData';
 import { WebviewCommand } from '../../src-shared/WebviewCommand';
 import { WebviewMessage } from '../../src-shared/WebviewMessage';
 import { vscode } from '../vscode';
@@ -40,7 +40,7 @@ export class DataViewer extends React.Component<{}, State> {
         window.addEventListener('message', (event) => {
             const message: WebviewMessage = event.data;
             if (message.command === WebviewCommand.CollectionData) {
-                const { data, hasMore, clearCache } = message.value as CollectionWebviewPayload;
+                const { data, hasMore, clearCache } = message.value as CollectionWebviewData;
                 const selectableData = data.map(
                     (elem) =>
                         ({
