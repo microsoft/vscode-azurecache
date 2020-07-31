@@ -118,7 +118,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('azureCache.viewCacheInfoReact', async (azureCacheItem: AzureCacheItem) => {
+        vscode.commands.registerCommand('azureCache.viewCacheProps', async (azureCacheItem: AzureCacheItem) => {
             azureCacheItem.showCacheProperties();
         })
     );
@@ -128,76 +128,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
             'azureCache.showStringItem',
             async (parsedRedisResource: ParsedRedisResource, db: number | undefined, key: string) => {
                 await ExtVars.keyContentProvider.showKey(parsedRedisResource, db, 'string', key);
-            }
-        )
-    );
-
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'azureCache.showHashItem',
-            async (
-                parsedRedisResource: ParsedRedisResource,
-                db: number | undefined,
-                key: string,
-                field: string,
-                value: string
-            ) => {
-                await ExtVars.keyContentProvider.showKey(parsedRedisResource, db, 'hash', key, value, field);
-            }
-        )
-    );
-
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'azureCache.showListItem',
-            async (parsedRedisResource: ParsedRedisResource, db: number | undefined, key: string, index: number) => {
-                await ExtVars.keyContentProvider.showKey(
-                    parsedRedisResource,
-                    db,
-                    'list',
-                    key,
-                    undefined,
-                    index.toString()
-                );
-            }
-        )
-    );
-
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'azureCache.showSetItem',
-            async (
-                parsedRedisResource: ParsedRedisResource,
-                db: number | undefined,
-                key: string,
-                index: number,
-                value: string
-            ) => {
-                await ExtVars.keyContentProvider.showKey(parsedRedisResource, db, 'set', key, value, index.toString());
-            }
-        )
-    );
-
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'azureCache.showZSetItem',
-            async (
-                parsedRedisResource: ParsedRedisResource,
-                db: number | undefined,
-                key: string,
-                position: number,
-                value: string,
-                score: string
-            ) => {
-                await ExtVars.keyContentProvider.showKey(
-                    parsedRedisResource,
-                    db,
-                    'zset',
-                    key,
-                    value,
-                    position.toString(),
-                    score
-                );
             }
         )
     );
