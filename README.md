@@ -6,7 +6,7 @@ Azure Cache for Redis is a fully managed, open source–compatible in-memory dat
 
 > Sign up today for your free Azure account and receive 12 months of free popular services, $200 free credit and 25+ always free services 👉 [Start Free](https://azure.microsoft.com/free/open-source).
 
-![Extension screenshot](./img/overview.png)
+![Extension screenshot](img/overview.png)
 
 ## Features
 
@@ -30,18 +30,18 @@ Azure Cache for Redis is a fully managed, open source–compatible in-memory dat
 ### View cache data
 1. Expand the subscription tree item to reveal the caches belonging to it.
 
-    ![Subscription tree item](./img/subscription-tree.png)
+    ![Subscription tree item](img/subscription-tree.png)
 2. Expand a cache item to connect to it and see all the DBs with data in them. For a clustered cache, you will see shards instead.
 
-    ![Azure Cache tree item](./img/cache-tree.png)
+    ![Azure Cache tree item](img/cache-tree.png)
 
 3. Expand a DB/shard to reveal all the Redis keys under it.
 
-    ![DB tree item](./img/db-tree.png)
+    ![DB tree item](img/db-tree.png)
 
 4. Click on a Redis key name to open its contents in a new editor tab.
 
-    ![List tree item and key content](./img/view-key.png)
+    ![List tree item and key content](img/view-key.png)
 
     > For collection type Redis keys, clicking on it will reveal the individual elements in it. Clicking the individual element will display its contents.
 
@@ -52,7 +52,7 @@ Azure Cache for Redis is a fully managed, open source–compatible in-memory dat
 
 2. Click on a cache item to see its properties.
 
-    ![](./img/view-properties.png)
+    ![](img/view-properties.png)
 
 ## Contributing
 
