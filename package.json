@@ -35,7 +35,7 @@
         "compile": "rimraf out/ && tsc -p ./tsconfig-test.json",
         "lint": "eslint src src-shared src-webview --ext .ts,.tsx",
         "pretest": "npm run compile && npm run lint",
-        "test": "node ./out/test/runTest.js",
+        "test": "node ./out/src/test/runTest.js",
         "watch": "webpack --mode development --watch --info-verbosity verbose",
         "package": "vsce package --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
         "publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/"
