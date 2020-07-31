@@ -12,7 +12,7 @@ import { CachePropsWebview } from '../../webview/CachePropsWebview';
 import { RedisClient } from '../../clients/RedisClient';
 import { RedisResourceClient } from '../../clients/RedisResourceClient';
 import { ExtVars } from '../../ExtensionVariables';
-import { ParsedRedisResource } from '../../../shared/ParsedRedisResource';
+import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
 import { ErrorEmptyCache } from '../../Strings';
 import * as ResourceUtils from '../../utils/ResourceUtils';
 import { KeyFilterItem } from '../filter/KeyFilterItem';
@@ -27,7 +27,7 @@ import path = require('path');
  */
 export class AzureCacheItem extends AzureParentTreeItem implements FilterParentItem {
     public static contextValue = 'redisCache';
-    public static commandId = 'azureCache.viewCacheInfoReact';
+    private static commandId = 'azureCache.viewCacheInfoReact';
 
     private filterExpr: string;
     private isClustered: boolean;

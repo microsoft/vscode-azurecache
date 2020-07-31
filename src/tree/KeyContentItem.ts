@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import { AzExtTreeItem } from 'vscode-azureextensionui';
-import { ParsedRedisResource } from '../../shared/ParsedRedisResource';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { RedisClusterNodeItem } from './redis/RedisClusterNodeItem';
 import { RedisDbItem } from './redis/RedisDbItem';
 

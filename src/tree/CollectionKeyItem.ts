@@ -2,11 +2,11 @@
 // Licensed under the MIT License.
 
 import { AzExtTreeItem } from 'vscode-azureextensionui';
-import { ParsedRedisResource } from '../../shared/ParsedRedisResource';
+import { CollectionElement } from '../../src-shared/CollectionElement';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
+import { BaseWebview } from '../webview/BaseWebview';
 import { RedisClusterNodeItem } from './redis/RedisClusterNodeItem';
 import { RedisDbItem } from './redis/RedisDbItem';
-import { AbstractWebview } from '../webview/AbstractWebview';
-import { CollectionElement } from '../../shared/CollectionElement';
 
 /**
  * Base class for tree items that represent a collection-type key, like lists, sets, and hashes.
@@ -21,7 +21,7 @@ export abstract class CollectionKeyItem extends AzExtTreeItem {
      */
     readonly db?: number;
 
-    protected abstract readonly webview: AbstractWebview;
+    protected abstract readonly webview: BaseWebview;
 
     constructor(readonly parent: RedisDbItem | RedisClusterNodeItem, readonly key: string) {
         super(parent);
@@ -31,6 +31,10 @@ export abstract class CollectionKeyItem extends AzExtTreeItem {
 
     public showWebview(): Promise<void> {
         return this.webview.reveal(this.key);
+    }
+
+    public async refreshImpl(): Promise<void> {
+        this.webview.refresh(this.parsedRedisResource);
     }
 
     public abstract getSize(): Promise<number>;

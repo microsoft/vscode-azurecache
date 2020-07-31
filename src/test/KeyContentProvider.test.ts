@@ -4,7 +4,7 @@
 import * as vscode from 'vscode';
 import { RedisClient } from '../clients/RedisClient';
 import { KeyContentProvider } from '../KeyContentProvider';
-import { ParsedRedisResource } from '../../shared/ParsedRedisResource';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { createKeyContentUri } from '../utils/UriUtils';
 import { TestRedisClient } from './clients/TestRedisClient';
 import sinon = require('sinon');

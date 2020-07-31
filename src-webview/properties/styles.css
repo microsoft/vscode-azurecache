@@ -18,6 +18,10 @@
     background-color: var(--vscode-editor-background);
 }
 
+.ms-TextField-field:disabled {
+    background-color: var(--vscode-list-inactiveSelectionBackground);
+}
+
 .ms-TextField-fieldGroup {
     border-color: var(--vscode-editor-foreground);
 }

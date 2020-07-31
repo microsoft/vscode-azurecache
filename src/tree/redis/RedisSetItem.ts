@@ -4,7 +4,7 @@
 import { ThemeIcon } from 'vscode';
 import { TreeItemIconPath } from 'vscode-azureextensionui';
 import { RedisClient } from '../../clients/RedisClient';
-import { CollectionElement } from '../../../shared/CollectionElement';
+import { CollectionElement } from '../../../src-shared/CollectionElement';
 import { CollectionWebview } from '../../webview/CollectionWebview';
 import { CollectionKeyItem } from '../CollectionKeyItem';
 
@@ -12,8 +12,9 @@ import { CollectionKeyItem } from '../CollectionKeyItem';
  * Tree item for a set.
  */
 export class RedisSetItem extends CollectionKeyItem {
-    public static readonly contextValue = 'redisSetItem';
-    public static readonly description = '(set)';
+    private static readonly commandId = 'azureCache.viewSet';
+    private static readonly contextValue = 'redisSetItem';
+    private static readonly description = '(set)';
 
     protected webview: CollectionWebview = new CollectionWebview(this, 'set');
     private scanCursor?: string = '0';
@@ -23,7 +24,7 @@ export class RedisSetItem extends CollectionKeyItem {
     }
 
     get commandId(): string {
-        return 'azureCache.viewSet';
+        return RedisSetItem.commandId;
     }
 
     get commandArgs(): unknown[] {

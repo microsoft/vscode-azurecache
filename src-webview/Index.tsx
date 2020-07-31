@@ -4,48 +4,44 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { WebviewCommand } from '../src-shared/WebviewCommand';
+import { WebviewMessage } from '../src-shared/WebviewMessage';
+import { WebviewView } from '../src-shared/WebviewView';
+import { DataViewer } from './data-viewer/DataViewer';
 import { initializeIcons } from './fabric-icons/src';
 import { CacheProperties } from './properties/CacheProperties';
-import { DataViewer } from './data-viewer/DataViewer';
-
-type ContentType = 'properties' | 'key' | undefined;
-
-interface Message {
-    key: string;
-    value: unknown;
-}
 
 interface State {
-    contentType: ContentType;
+    type: WebviewView;
 }
 
 class Index extends React.Component<{}, State> {
     constructor(props: {}) {
         super(props);
         this.state = {
-            contentType: undefined,
+            type: WebviewView.Unknown,
         };
     }
 
     componentDidMount(): void {
         window.addEventListener('message', (event) => {
-            const message: Message = event.data;
+            const message: WebviewMessage = event.data;
 
-            if (message.key === 'fontUri') {
+            if (message.command === WebviewCommand.FontUri) {
                 initializeIcons(message.value as string);
-            } else if (message.key === 'contentType') {
-                const contentType = message.value as ContentType;
-                this.setState({ contentType });
+            } else if (message.command === WebviewCommand.View) {
+                const type = message.value as WebviewView;
+                this.setState({ type });
             }
         });
     }
 
     render(): JSX.Element | null {
-        const { contentType } = this.state;
+        const { type } = this.state;
 
-        if (contentType === 'properties') {
+        if (type === WebviewView.CacheProperties) {
             return <CacheProperties />;
-        } else if (contentType === 'key') {
+        } else if (type === WebviewView.CollectionKey) {
             return <DataViewer />;
         } else {
             return null;

@@ -2,14 +2,17 @@
 // Licensed under the MIT License.
 
 import * as vscode from 'vscode';
-import { ParsedRedisResource } from '../../shared/ParsedRedisResource';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
+import { WebviewCommand } from '../../src-shared/WebviewCommand';
+import { WebviewMessage } from '../../src-shared/WebviewMessage';
+import { WebviewView } from '../../src-shared/WebviewView';
 import { getConnectionString } from '../utils/ResourceUtils';
-import { AbstractWebview, IncomingMessage } from './AbstractWebview';
+import { BaseWebview } from './BaseWebview';
 
 /**
  * Wrapper around a cache properties webview.
  */
-export class CachePropsWebview extends AbstractWebview {
+export class CachePropsWebview extends BaseWebview {
     get viewType(): string {
         return 'cacheProps';
     }
@@ -26,9 +29,9 @@ export class CachePropsWebview extends AbstractWebview {
         await this.sendData(parsedRedisResource);
     }
 
-    protected onDidReceiveMessage(message: IncomingMessage): void {
-        if (message.command === 'copy' && message.text) {
-            vscode.env.clipboard.writeText(message.text);
+    protected onDidReceiveMessage(message: WebviewMessage): void {
+        if (message.command === WebviewCommand.CopyText && message.value) {
+            vscode.env.clipboard.writeText(message.value as string);
         }
     }
 
@@ -38,9 +41,9 @@ export class CachePropsWebview extends AbstractWebview {
      * @param parsedRedisResource The Redis resource
      */
     protected async sendData(parsedRedisResource: ParsedRedisResource): Promise<void> {
-        this.postMessage('contentType', 'properties');
-        this.postMessage('parsedRedisResource', parsedRedisResource);
-        this.postMessage('accessKey', await parsedRedisResource.accessKey);
-        this.postMessage('connectionString', await getConnectionString(parsedRedisResource));
+        this.postMessage(WebviewCommand.View, WebviewView.CacheProperties);
+        this.postMessage(WebviewCommand.ParsedRedisResource, parsedRedisResource);
+        this.postMessage(WebviewCommand.AccessKey, await parsedRedisResource.accessKey);
+        this.postMessage(WebviewCommand.ConnectionString, await getConnectionString(parsedRedisResource));
     }
 }

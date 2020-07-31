@@ -16,7 +16,7 @@ import { RedisClient } from './clients/RedisClient';
 import { ExtVars } from './ExtensionVariables';
 import { textInput } from './Input';
 import { KeyContentProvider } from './KeyContentProvider';
-import { ParsedRedisResource } from '../shared/ParsedRedisResource';
+import { ParsedRedisResource } from '../src-shared/ParsedRedisResource';
 import * as Strings from './Strings';
 import { AzureAccountTreeItem } from './tree/azure/AzureAccountTreeItem';
 import { AzureCacheItem } from './tree/azure/AzureCacheItem';

@@ -11,8 +11,8 @@ import { RedisDbItem } from './RedisDbItem';
  * Tree item for any other datatypes.
  */
 export class RedisOtherItem extends KeyContentItem {
-    public static readonly contextValue = 'redisOtherItem';
-    public static readonly commandId = 'azureCache.showUnsupportedItem';
+    private static readonly contextValue = 'redisOtherItem';
+    private static readonly commandId = 'azureCache.showUnsupportedItem';
 
     constructor(parent: RedisDbItem | RedisClusterNodeItem, key: string, private readonly type: string) {
         super(parent, key);

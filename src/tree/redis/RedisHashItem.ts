@@ -3,17 +3,19 @@
 
 import { ThemeIcon } from 'vscode';
 import { TreeItemIconPath } from 'vscode-azureextensionui';
+import { CollectionElement } from '../../../src-shared/CollectionElement';
 import { RedisClient } from '../../clients/RedisClient';
-import { CollectionElement } from '../../../shared/CollectionElement';
 import { CollectionWebview } from '../../webview/CollectionWebview';
 import { CollectionKeyItem } from '../CollectionKeyItem';
+import { FilterParentItem } from '../FilterParentItem';
 
 /**
  * Tree item for a hash.
  */
-export class RedisHashItem extends CollectionKeyItem {
-    public static readonly contextValue = 'redisHashItem';
-    public static readonly description = '(hash)';
+export class RedisHashItem extends CollectionKeyItem implements FilterParentItem {
+    private static readonly commandId = 'azureCache.viewHash';
+    private static readonly contextValue = 'redisHashItem';
+    private static readonly description = '(hash)';
     private static readonly incrementCount = 10;
 
     protected webview: CollectionWebview = new CollectionWebview(this, 'hash');
@@ -25,7 +27,7 @@ export class RedisHashItem extends CollectionKeyItem {
     }
 
     get commandId(): string {
-        return 'azureCache.viewHash';
+        return RedisHashItem.commandId;
     }
 
     get commandArgs(): unknown[] {
@@ -64,12 +66,14 @@ export class RedisHashItem extends CollectionKeyItem {
         const client = await RedisClient.connectToRedisResource(this.parsedRedisResource);
 
         let curCursor = this.scanCursor;
-        let scannedFields: string[] = [];
+        const scannedFields: string[] = [];
         let scanCount = 0;
 
         // Keep scanning until a total of at least 10 elements have been returned
         do {
-            [curCursor, scannedFields] = await client.hscan(this.key, curCursor, 'MATCH', this.filterExpr, this.db);
+            const result = await client.hscan(this.key, curCursor, 'MATCH', this.filterExpr, this.db);
+            curCursor = result[0];
+            scannedFields.push(...result[1]);
             // scannedFields contains field name and value, so divide by 2 to get number of values scanned
             scanCount += scannedFields.length / 2;
         } while (curCursor !== '0' && scanCount < RedisHashItem.incrementCount);
@@ -108,7 +112,11 @@ export class RedisHashItem extends CollectionKeyItem {
     public updateFilter(filterExpr: string): void {
         if (this.filterExpr !== filterExpr) {
             this.filterExpr = filterExpr;
-            this.refresh();
         }
+    }
+
+    public reset(): void {
+        this.filterExpr = '*';
+        this.scanCursor = '0';
     }
 }

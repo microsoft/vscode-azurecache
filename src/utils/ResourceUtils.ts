@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { ParsedRedisResource } from '../../shared/ParsedRedisResource';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 
 /**
  * Returns StackExchange.Redis connection string.

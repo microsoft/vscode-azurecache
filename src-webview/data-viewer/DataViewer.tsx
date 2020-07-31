@@ -1,19 +1,17 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { TextField, PrimaryButton } from '@fluentui/react';
+import { PrimaryButton, TextField } from '@fluentui/react';
 import * as React from 'react';
+import { CollectionWebviewPayload } from '../../src-shared/CollectionWebviewPayload';
+import { WebviewCommand } from '../../src-shared/WebviewCommand';
+import { WebviewMessage } from '../../src-shared/WebviewMessage';
 import { vscode } from '../vscode';
-import { SelectableCollectionElement, CollectionElement } from './CollectionElement';
-import { CollectionView } from './CollectionView';
+import { CollectionElement, SelectableCollectionElement } from './CollectionElement';
 import { CollectionType } from './CollectionType';
-import { CollectionWebviewPayload } from '../../shared/CollectionWebviewPayload';
+import { CollectionView } from './CollectionView';
 import './DataViewer.css';
-
-interface Message {
-    key: string;
-    value: unknown;
-}
+import { HashFilterField } from './HashFilterField';
 
 interface State {
     currentIndex?: number;
@@ -23,6 +21,7 @@ interface State {
     type?: CollectionType;
     size?: number;
     hasMore: boolean;
+    isLoading: boolean;
 }
 
 export class DataViewer extends React.Component<{}, State> {
@@ -34,14 +33,15 @@ export class DataViewer extends React.Component<{}, State> {
             size: 0,
             type: undefined,
             hasMore: false,
+            isLoading: false,
         };
     }
 
     componentDidMount(): void {
         window.addEventListener('message', (event) => {
-            const message: Message = event.data;
+            const message: WebviewMessage = event.data;
 
-            if (message.key === 'data') {
+            if (message.command === WebviewCommand.CollectionData) {
                 const { data, hasMore } = message.value as CollectionWebviewPayload;
                 const selectableData = data.map(
                     (elem) =>
@@ -56,21 +56,23 @@ export class DataViewer extends React.Component<{}, State> {
                         return {
                             data: [...prevState.data, ...selectableData],
                             hasMore,
+                            isLoading: false,
                         };
                     } else {
                         return {
                             data: selectableData,
                             hasMore,
+                            isLoading: false,
                         };
                     }
                 });
-            } else if (message.key === 'type') {
+            } else if (message.command === WebviewCommand.KeyType) {
                 const type = message.value as CollectionType;
                 this.setState({ type });
-            } else if (message.key === 'key') {
+            } else if (message.command === WebviewCommand.KeyName) {
                 const key = message.value as string;
                 this.setState({ key });
-            } else if (message.key === 'size') {
+            } else if (message.command === WebviewCommand.CollectionSize) {
                 const size = message.value as number;
                 this.setState({ size });
             }
@@ -101,26 +103,44 @@ export class DataViewer extends React.Component<{}, State> {
         });
     };
 
-    onScrollToBottom(): void {
-        vscode.postMessage({
-            command: 'loadMore',
+    onScrollToBottom = (): void => {
+        this.setState({
+            isLoading: true,
         });
-    }
-
-    loadMore = () => {
         vscode.postMessage({
-            command: 'loadMore',
+            command: WebviewCommand.LoadMore,
+        });
+    };
+
+    loadMore = (): void => {
+        this.setState({
+            isLoading: true,
+        });
+        vscode.postMessage({
+            command: WebviewCommand.LoadMore,
         });
     };
 
     onFilterChanged = (
         event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
         newValue?: string | undefined
-    ) => {
+    ): void => {
         if (this.state.type !== 'hash') {
             return;
         }
-        console.log('changed: ' + newValue);
+        this.setState({
+            currentIndex: undefined,
+            currentValue: undefined,
+            data: [],
+            isLoading: true,
+        });
+        if (!newValue) {
+            newValue = '*';
+        }
+        vscode.postMessage({
+            command: WebviewCommand.FilterChange,
+            value: newValue,
+        });
     };
 
     render(): JSX.Element | null {
@@ -128,8 +148,7 @@ export class DataViewer extends React.Component<{}, State> {
             return null;
         }
 
-        const { currentValue, currentIndex, data, type, key, size } = this.state;
-        const buttonDisabled = this.state.data.length === this.state.size;
+        const { currentValue, data, hasMore, isLoading, type, key, size } = this.state;
 
         // <Split direction="vertical" gutterSize={5} sizes={[50, 50]} minSize={100}></Split>
         return (
@@ -140,11 +159,7 @@ export class DataViewer extends React.Component<{}, State> {
                     </h2>
                     <h4 style={{ marginTop: 0, marginBottom: 5 }}>Size: {size}</h4>
                     {this.state.type === 'hash' && (
-                        <TextField
-                            className="filter-textfield"
-                            label={'Filter hash name'}
-                            onChange={this.onFilterChanged}
-                        />
+                        <HashFilterField onChange={this.onFilterChanged} isLoading={isLoading} />
                     )}
 
                     <CollectionView
@@ -155,8 +170,8 @@ export class DataViewer extends React.Component<{}, State> {
                         onItemClick={this.onItemClick}
                     />
                     <PrimaryButton
-                        disabled={buttonDisabled}
-                        text="Load More..."
+                        disabled={!hasMore}
+                        text="Load More"
                         style={{ marginLeft: 'auto', marginRight: 0, marginTop: 5, textAlign: 'right' }}
                         onClick={this.loadMore}
                     />

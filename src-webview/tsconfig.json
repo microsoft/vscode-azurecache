@@ -1,5 +1,5 @@
 {
-    "extends": "../tsconfig.json",
+    "extends": "../tsconfig-base.json",
     "compilerOptions": {
         "jsx": "react",
         "lib": [
@@ -9,6 +9,6 @@
         "strict": true
     },
     "references": [
-        { "path": "../shared" }
+        { "path": "../src-shared" }
     ]
 }

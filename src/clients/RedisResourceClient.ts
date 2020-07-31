@@ -5,7 +5,7 @@ import RedisManagementClient from 'azure-arm-rediscache';
 import { RedisListResult, RedisResource } from 'azure-arm-rediscache/lib/models';
 import { ExtVars } from '../ExtensionVariables';
 import { ParsedRedisListResult } from '../parsed/ParsedRedisListResult';
-import { ParsedRedisResource } from '../../shared/ParsedRedisResource';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { ParsedResourceId } from '../parsed/ParsedResourceId';
 import * as Strings from '../Strings';
 

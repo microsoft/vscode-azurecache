@@ -33,7 +33,7 @@
         "vscode:prepublish": "webpack --mode production",
         "clean": "rimraf out/ dist/",
         "compile": "rimraf out/ && tsc -p ./tsconfig-test.json",
-        "lint": "eslint src --ext .ts && eslint webview-src --ext .ts,.tsx",
+        "lint": "eslint src src-shared src-webview --ext .ts,.tsx",
         "pretest": "npm run compile && npm run lint",
         "test": "node ./out/test/runTest.js",
         "watch": "webpack --mode development --watch --info-verbosity verbose",

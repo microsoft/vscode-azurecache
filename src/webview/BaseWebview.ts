@@ -3,40 +3,33 @@
 
 import * as path from 'path';
 import * as vscode from 'vscode';
+import { WebviewCommand } from '../../src-shared/WebviewCommand';
+import { WebviewMessage } from '../../src-shared/WebviewMessage';
 import { ExtVars } from '../ExtensionVariables';
 import { ErrorWebviewUninit, StrProperties } from '../Strings';
 import crypto = require('crypto');
 
 /**
- * Represents data passed from webview to extension.
- */
-export interface IncomingMessage {
-    command: string;
-    text: string;
-}
-
-/**
- * Represents data passed from extension to webview.
- */
-interface OutgoingMessage {
-    key: string;
-    value: unknown;
-}
-
-/**
  * Wrapper around a cache properties webview.
  */
-export abstract class AbstractWebview {
+export abstract class BaseWebview {
     protected webviewPanel?: vscode.WebviewPanel;
+
+    /**
+     * To be implemented by subclasses.
+     */
     protected abstract readonly viewType: string;
-
+    public abstract refresh(data: unknown): void;
     protected abstract async sendData(data: unknown): Promise<void>;
-    protected abstract onDidReceiveMessage(message: IncomingMessage): void;
+    protected abstract onDidReceiveMessage(message: WebviewMessage): void;
+    protected onDidDispose?(): void;
 
-    public dispose(): void {
-        this.webviewPanel?.dispose();
-    }
-
+    /**
+     * Reveals webview in new editor tab.
+     *
+     * @param title Title of webview
+     * @param data Initial data to be sent to the webview
+     */
     public async reveal(title: string, data?: unknown): Promise<void> {
         if (this.webviewPanel) {
             try {
@@ -55,10 +48,17 @@ export abstract class AbstractWebview {
     }
 
     /**
-     * Creates a new webview panel for the given cache
-     * @param resourceGroup Resource group name
-     * @param name Resource name
-     * @param resClient RedisResourceClient
+     * Disposes the webview.
+     */
+    public dispose(): void {
+        this.webviewPanel?.dispose();
+    }
+
+    /**
+     * Creates and opens a new webview panel.
+     *
+     * @param title Title of webview
+     * @param data Initial data to be sent to the webview
      */
     private async createWebviewPanel(title: string, data: unknown): Promise<void> {
         this.webviewPanel = vscode.window.createWebviewPanel(this.viewType, title, vscode.ViewColumn.One, {
@@ -72,9 +72,9 @@ export abstract class AbstractWebview {
         // Pass the vscode-resource URI of the 'fonts' directory
         const fontPathUri = vscode.Uri.file(path.join(ExtVars.context.extensionPath, 'dist', 'fonts'));
         const fontPathWebviewUri = this.webviewPanel.webview.asWebviewUri(fontPathUri).toString();
-        this.postMessage('fontUri', fontPathWebviewUri);
+        this.postMessage(WebviewCommand.FontUri, fontPathWebviewUri);
 
-        // Send resource, access key data to webview
+        // Send data to webview
         this.sendData(data);
 
         // Listen for messages from webview
@@ -82,6 +82,7 @@ export abstract class AbstractWebview {
 
         this.webviewPanel.onDidDispose(() => {
             this.webviewPanel = undefined;
+            this.onDidDispose?.();
         });
     }
 
@@ -91,9 +92,9 @@ export abstract class AbstractWebview {
      * @param key The message key
      * @param value The message value
      */
-    protected postMessage(key: string, value: unknown): void {
-        const outgoingMessage: OutgoingMessage = {
-            key,
+    protected postMessage(command: WebviewCommand, value: unknown): void {
+        const outgoingMessage: WebviewMessage = {
+            command,
             value,
         };
 

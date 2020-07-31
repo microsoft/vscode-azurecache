@@ -4,7 +4,7 @@
 import { URLSearchParams } from 'url';
 import * as vscode from 'vscode';
 import { ExtVars } from '../ExtensionVariables';
-import { ParsedRedisResource } from '../../shared/ParsedRedisResource';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { ErrorInvalidUri } from '../Strings';
 import { SupportedKeyType } from '../SupportedKeyType';
 

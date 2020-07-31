@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import { AzExtParentTreeItem } from 'vscode-azureextensionui';
-import { ParsedRedisResource } from '../../shared/ParsedRedisResource';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { AzureCacheItem } from './azure/AzureCacheItem';
 
 /**

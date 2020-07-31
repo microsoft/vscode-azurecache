@@ -1,5 +1,5 @@
 {
-    "extends": "../tsconfig.json",
+    "extends": "../tsconfig-base.json",
     "compilerOptions": {
         "lib": [
             "es6"
@@ -7,6 +7,6 @@
         "strict": true
     },
     "references": [
-        { "path": "../shared" }
+        { "path": "../src-shared" }
     ]
 }

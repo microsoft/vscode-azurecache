@@ -4,7 +4,7 @@
 import { ThemeIcon } from 'vscode';
 import { TreeItemIconPath } from 'vscode-azureextensionui';
 import { RedisClient } from '../../clients/RedisClient';
-import { CollectionElement } from '../../../shared/CollectionElement';
+import { CollectionElement } from '../../../src-shared/CollectionElement';
 import { CollectionWebview } from '../../webview/CollectionWebview';
 import { CollectionKeyItem } from '../CollectionKeyItem';
 
@@ -12,8 +12,9 @@ import { CollectionKeyItem } from '../CollectionKeyItem';
  * Tree item for a list.
  */
 export class RedisListItem extends CollectionKeyItem {
-    public static readonly contextValue = 'redisListItem';
-    public static readonly description = '(list)';
+    private static readonly commandId = 'azureCache.viewList';
+    private static readonly contextValue = 'redisListItem';
+    private static readonly description = '(list)';
     private static readonly incrementCount = 10;
 
     protected webview: CollectionWebview = new CollectionWebview(this, 'list');
@@ -25,7 +26,7 @@ export class RedisListItem extends CollectionKeyItem {
     }
 
     get commandId(): string {
-        return 'azureCache.viewList';
+        return RedisListItem.commandId;
     }
 
     get commandArgs(): unknown[] {

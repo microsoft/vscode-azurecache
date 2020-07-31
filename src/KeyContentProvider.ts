@@ -2,8 +2,8 @@
 // Licensed under the MIT License.
 
 import * as vscode from 'vscode';
+import { ParsedRedisResource } from '../src-shared/ParsedRedisResource';
 import { RedisClient } from './clients/RedisClient';
-import { ParsedRedisResource } from '../shared/ParsedRedisResource';
 import * as Strings from './Strings';
 import { SupportedKeyType } from './SupportedKeyType';
 import { createKeyContentUri, decodeUri } from './utils/UriUtils';

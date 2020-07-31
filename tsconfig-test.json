@@ -1,16 +1,6 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es6",
-        "outDir": "out",
-        "sourceMap": true,
-        "typeRoots": [ "./node_modules/@types" ],
-        "rootDir": "./",
-        "strict": true
-    },
+    "extends": "./tsconfig-base.json",
     "exclude": [
-        "node_modules",
-        ".vscode-test",
-        "webview-src"
+        "src-webview"
     ]
 }

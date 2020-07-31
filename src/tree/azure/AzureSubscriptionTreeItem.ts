@@ -38,6 +38,5 @@ export class AzureSubscriptionTreeItem extends SubscriptionTreeItemBase {
         children.forEach((child) => {
             (child as AzureCacheItem).disposeWebview();
         });
-        console.log();
     }
 }
