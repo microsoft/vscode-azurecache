@@ -8,6 +8,7 @@
 *.zip
 *.code-workspace
 .prettierrc.js
+.github/**
 .vscode-test/**
 .vscode/**
 .azure-pipelines/**
