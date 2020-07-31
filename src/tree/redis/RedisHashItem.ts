@@ -69,6 +69,7 @@ export class RedisHashItem extends CollectionKeyItem implements FilterParentItem
         const scannedFields: string[] = [];
 
         // Keep scanning until a total of at least 10 elements have been returned
+        // TODO: This can be optimized by sending data to webview after each SCAN instead of waiting until all SCANs have completed
         do {
             const result = await client.hscan(this.key, curCursor, 'MATCH', this.filterExpr, this.db);
             curCursor = result[0];

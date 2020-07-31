@@ -4,14 +4,16 @@
 export enum WebviewCommand {
     FontUri = 'fontUri',
     View = 'view',
-    KeyType = 'keyType',
-    KeyName = 'keyName',
-    CollectionSize = 'collectionSize',
-    LoadMore = 'loadMore',
-    FilterChange = 'filterChange',
-    CollectionData = 'collectionData',
-    CopyText = 'copyText',
+    // Cache Properties
     ParsedRedisResource = 'parsedRedisResource',
     AccessKey = 'accessKey',
     ConnectionString = 'connectionString',
+    CopyText = 'copyText',
+    // Data viewer
+    KeyType = 'keyType',
+    KeyName = 'keyName',
+    CollectionSize = 'collectionSize',
+    CollectionData = 'collectionData',
+    FilterChange = 'filterChange',
+    LoadMore = 'loadMore',
 }

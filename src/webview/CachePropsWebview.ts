@@ -10,12 +10,10 @@ import { getConnectionString } from '../utils/ResourceUtils';
 import { BaseWebview } from './BaseWebview';
 
 /**
- * Wrapper around a cache properties webview.
+ * Webview for the cache properties view.
  */
 export class CachePropsWebview extends BaseWebview {
-    get viewType(): string {
-        return 'cacheProps';
-    }
+    protected viewType = 'cacheProps';
 
     /**
      * Refreshes the current webview with the given Redis resource information, if the webview is active.
@@ -29,6 +27,9 @@ export class CachePropsWebview extends BaseWebview {
         await this.sendData(parsedRedisResource);
     }
 
+    /**
+     * Handle incoming messages.
+     */
     protected onDidReceiveMessage(message: WebviewMessage): void {
         if (message.command === WebviewCommand.CopyText && message.value) {
             vscode.env.clipboard.writeText(message.value as string);
@@ -37,7 +38,7 @@ export class CachePropsWebview extends BaseWebview {
 
     /**
      * Sends all the necessary data for the Cache Properties view.
-     *
+
      * @param parsedRedisResource The Redis resource
      */
     protected async sendData(parsedRedisResource: ParsedRedisResource): Promise<void> {
