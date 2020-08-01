@@ -58,7 +58,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
     }
 
     get iconPath(): TreeItemIconPath {
-        return new ThemeIcon('server-environment');
+        return new ThemeIcon('server');
     }
 
     get label(): string {
