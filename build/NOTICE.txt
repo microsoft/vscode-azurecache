@@ -50,7 +50,7 @@ AFL-2.1 OR BSD-3-Clause
 
 ---------------------------------------------------------
 
-@xtuc/long 4.2.2 - Apache-2.0
+@xtuc/long 4.2.1 - Apache-2.0
 https://github.com/dcodeIO/long.js#readme
 
 
@@ -262,7 +262,7 @@ https://github.com/dcodeIO/long.js#readme
 
 ---------------------------------------------------------
 
-@xtuc/long 4.2.1 - Apache-2.0
+@xtuc/long 4.2.2 - Apache-2.0
 https://github.com/dcodeIO/long.js#readme
 
 
@@ -1412,7 +1412,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---------------------------------------------------------
 
-domelementtype 2.0.1 - BSD-2-Clause
+domelementtype 1.3.1 - BSD-2-Clause
 https://github.com/fb55/domelementtype#readme
 
 Copyright (c) Felix Bohm
@@ -1434,7 +1434,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---------------------------------------------------------
 
-domelementtype 1.3.1 - BSD-2-Clause
+domelementtype 2.0.1 - BSD-2-Clause
 https://github.com/fb55/domelementtype#readme
 
 Copyright (c) Felix Bohm
@@ -2275,8 +2275,8 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-anymatch 1.3.2 - ISC
-https://github.com/es128/anymatch
+anymatch 2.0.0 - ISC
+https://github.com/micromatch/anymatch
 
 Copyright (c) 2014 Elan Shanker
 
@@ -2327,8 +2327,8 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ---------------------------------------------------------
 
-anymatch 2.0.0 - ISC
-https://github.com/micromatch/anymatch
+anymatch 1.3.2 - ISC
+https://github.com/es128/anymatch
 
 Copyright (c) 2014 Elan Shanker
 
@@ -2429,7 +2429,7 @@ USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ---------------------------------------------------------
 
-cacache 15.0.4 - ISC
+cacache 15.0.5 - ISC
 https://github.com/npm/cacache#readme
 
 Copyright (c) npm, Inc.
@@ -2667,6 +2667,32 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ---------------------------------------------------------
 
+glob 6.0.4 - ISC
+https://github.com/isaacs/node-glob#readme
+
+Copyright (c) Isaac Z. Schlueter and Contributors
+
+The ISC License
+
+Copyright (c) Isaac Z. Schlueter and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
 glob 7.1.6 - ISC
 https://github.com/isaacs/node-glob#readme
 
@@ -2693,32 +2719,6 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 Glob's logo created by Tanya Brassie <http://tanyabrassie.com/>, licensed
 under a Creative Commons Attribution-ShareAlike 4.0 International License
 https://creativecommons.org/licenses/by-sa/4.0/
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-glob 6.0.4 - ISC
-https://github.com/isaacs/node-glob#readme
-
-Copyright (c) Isaac Z. Schlueter and Contributors
-
-The ISC License
-
-Copyright (c) Isaac Z. Schlueter and Contributors
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
-IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
 ---------------------------------------------------------
@@ -2906,8 +2906,8 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ---------------------------------------------------------
 
-inherits 2.0.1 - ISC
-
+inherits 2.0.3 - ISC
+https://github.com/isaacs/inherits#readme
 
 Copyright (c) Isaac Z. Schlueter
 
@@ -2960,8 +2960,8 @@ PERFORMANCE OF THIS SOFTWARE.
 
 ---------------------------------------------------------
 
-inherits 2.0.3 - ISC
-https://github.com/isaacs/inherits#readme
+inherits 2.0.1 - ISC
+
 
 Copyright (c) Isaac Z. Schlueter
 
@@ -3014,6 +3014,32 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ---------------------------------------------------------
 
 lru-cache 5.1.1 - ISC
+https://github.com/isaacs/node-lru-cache#readme
+
+Copyright (c) Isaac Z. Schlueter and Contributors
+
+The ISC License
+
+Copyright (c) Isaac Z. Schlueter and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+lru-cache 6.0.0 - ISC
 https://github.com/isaacs/node-lru-cache#readme
 
 Copyright (c) Isaac Z. Schlueter and Contributors
@@ -3166,7 +3192,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ---------------------------------------------------------
 
-minipass-pipeline 1.2.3 - ISC
+minipass-pipeline 1.2.4 - ISC
 
 
 Copyright (c) Isaac Z. Schlueter and Contributors
@@ -3400,7 +3426,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES WITH REGARD TO
 
 ---------------------------------------------------------
 
-semver 5.7.1 - ISC
+semver 6.3.0 - ISC
 https://github.com/npm/node-semver#readme
 
 Copyright Isaac Z.
@@ -3428,7 +3454,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ---------------------------------------------------------
 
-semver 6.3.0 - ISC
+semver 5.7.1 - ISC
 https://github.com/npm/node-semver#readme
 
 Copyright Isaac Z.
@@ -3753,7 +3779,7 @@ You can choose any one of these licenses:
 
 ---------------------------------------------------------
 
-@babel/runtime 7.10.5 - MIT
+@babel/runtime 7.11.0 - MIT
 https://babeljs.io/
 
 Copyright (c) 2014-present Sebastian McKenzie and other contributors
@@ -3786,7 +3812,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-@fluentui/date-time-utilities 7.1.2 - MIT
+@fluentui/date-time-utilities 7.3.0 - MIT
 https://github.com/microsoft/fluentui#readme
 
 Copyright (c) Microsoft Corporation
@@ -3812,7 +3838,7 @@ Note: Usage of the fonts and icons referenced in Fluent UI React is subject to t
 
 ---------------------------------------------------------
 
-@fluentui/keyboard-key 0.2.4 - MIT
+@fluentui/keyboard-key 0.2.7 - MIT
 https://github.com/microsoft/fluentui#readme
 
 Copyright (c) Microsoft Corporation
@@ -3838,9 +3864,10 @@ Note: Usage of the fonts and icons referenced in Fluent UI React is subject to t
 
 ---------------------------------------------------------
 
-@fluentui/react 7.121.12 - MIT
+@fluentui/react 7.124.1 - MIT
 https://github.com/microsoft/fluentui#readme
 
+Copyright (c) Microsoft.
 Copyright (c) Microsoft Corporation.
 
 @fluentui/react
@@ -3864,9 +3891,10 @@ Note: Usage of the fonts and icons referenced in Fluent UI React is subject to t
 
 ---------------------------------------------------------
 
-@fluentui/react-focus 7.12.18 - MIT
+@fluentui/react-focus 7.12.26 - MIT
 https://github.com/microsoft/fluentui#readme
 
+Copyright (c) Microsoft Corporation.
 
 @fluentui/react-focus
 
@@ -3889,7 +3917,7 @@ Note: Usage of the fonts and icons referenced in Fluent UI React is subject to t
 
 ---------------------------------------------------------
 
-@fluentui/react-icons 0.1.35 - MIT
+@fluentui/react-icons 0.1.41 - MIT
 https://github.com/microsoft/fluentui#readme
 
 Copyright (c) Microsoft Corporation
@@ -4111,7 +4139,7 @@ Copyright (c) Microsoft Corporation.
 
 ---------------------------------------------------------
 
-@types/node 8.10.61 - MIT
+@types/node 13.13.15 - MIT
 
 
 Copyright (c) Microsoft Corporation.
@@ -4143,7 +4171,7 @@ Copyright (c) Microsoft Corporation.
 
 ---------------------------------------------------------
 
-@types/node 13.13.14 - MIT
+@types/node 8.10.61 - MIT
 
 
 Copyright (c) Microsoft Corporation.
@@ -4335,7 +4363,7 @@ Copyright (c) Microsoft Corporation.
 
 ---------------------------------------------------------
 
-@uifabric/foundation 7.7.34 - MIT
+@uifabric/foundation 7.7.40 - MIT
 https://github.com/microsoft/fluentui#readme
 
 Copyright (c) Microsoft Corporation.
@@ -4361,7 +4389,7 @@ Note: Usage of the fonts and icons referenced in Fluent UI React is subject to t
 
 ---------------------------------------------------------
 
-@uifabric/icons 7.3.60 - MIT
+@uifabric/icons 7.3.66 - MIT
 https://github.com/microsoft/fluentui#readme
 
 Copyright (c) Microsoft Corporation
@@ -4387,7 +4415,7 @@ Note: Usage of the fonts and icons referenced in Fluent UI React is subject to t
 
 ---------------------------------------------------------
 
-@uifabric/merge-styles 7.16.0 - MIT
+@uifabric/merge-styles 7.16.3 - MIT
 https://github.com/microsoft/fluentui#readme
 
 Copyright (c) Microsoft Corporation.
@@ -4413,7 +4441,7 @@ Note: Usage of the fonts and icons referenced in Fluent UI React is subject to t
 
 ---------------------------------------------------------
 
-@uifabric/react-hooks 7.4.13 - MIT
+@uifabric/react-hooks 7.6.3 - MIT
 https://github.com/microsoft/fluentui#readme
 
 
@@ -4438,7 +4466,7 @@ Note: Usage of the fonts and icons referenced in Fluent UI React is subject to t
 
 ---------------------------------------------------------
 
-@uifabric/set-version 7.0.15 - MIT
+@uifabric/set-version 7.0.18 - MIT
 https://github.com/microsoft/fluentui#readme
 
 Copyright (c) Microsoft Corporation
@@ -4464,9 +4492,10 @@ Note: Usage of the fonts and icons referenced in Fluent UI React is subject to t
 
 ---------------------------------------------------------
 
-@uifabric/styling 7.14.0 - MIT
+@uifabric/styling 7.14.6 - MIT
 https://github.com/microsoft/fluentui#readme
 
+Copyright (c) Microsoft Corporation
 
 Fluent UI React - styling
 
@@ -4489,7 +4518,7 @@ Note: Usage of the fonts and icons referenced in Fluent UI React is subject to t
 
 ---------------------------------------------------------
 
-@uifabric/utilities 7.24.0 - MIT
+@uifabric/utilities 7.24.6 - MIT
 https://github.com/microsoft/fluentui#readme
 
 Copyright (c) Microsoft Corporation
@@ -4897,8 +4926,8 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-@webassemblyjs/helper-wasm-bytecode 1.9.0 - MIT
-https://github.com/xtuc/webassemblyjs#readme
+@webassemblyjs/helper-wasm-bytecode 1.7.11 - MIT
+
 
 Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
 
@@ -4929,8 +4958,8 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-@webassemblyjs/helper-wasm-bytecode 1.7.11 - MIT
-
+@webassemblyjs/helper-wasm-bytecode 1.9.0 - MIT
+https://github.com/xtuc/webassemblyjs#readme
 
 Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
 
@@ -5089,7 +5118,7 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-@webassemblyjs/leb128 1.9.0 - MIT
+@webassemblyjs/leb128 1.7.11 - MIT
 
 
 Copyright 2012 The Obvious Corporation.
@@ -5295,7 +5324,7 @@ END OF TERMS AND CONDITIONS
 
 ---------------------------------------------------------
 
-@webassemblyjs/leb128 1.7.11 - MIT
+@webassemblyjs/leb128 1.9.0 - MIT
 
 
 Copyright 2012 The Obvious Corporation.
@@ -5565,38 +5594,6 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-@webassemblyjs/wasm-edit 1.9.0 - MIT
-https://github.com/xtuc/webassemblyjs#readme
-
-Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
-
-MIT License
-
-Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 @webassemblyjs/wasm-edit 1.7.11 - MIT
 
 
@@ -5629,7 +5626,7 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-@webassemblyjs/wasm-gen 1.9.0 - MIT
+@webassemblyjs/wasm-edit 1.9.0 - MIT
 https://github.com/xtuc/webassemblyjs#readme
 
 Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
@@ -5663,6 +5660,38 @@ SOFTWARE.
 
 @webassemblyjs/wasm-gen 1.7.11 - MIT
 
+
+Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
+
+MIT License
+
+Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+@webassemblyjs/wasm-gen 1.9.0 - MIT
+https://github.com/xtuc/webassemblyjs#readme
 
 Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
 
@@ -5821,38 +5850,6 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-@webassemblyjs/wast-parser 1.9.0 - MIT
-https://github.com/xtuc/webassemblyjs#readme
-
-Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
-
-MIT License
-
-Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 @webassemblyjs/wast-parser 1.7.11 - MIT
 
 
@@ -5885,7 +5882,7 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-@webassemblyjs/wast-printer 1.9.0 - MIT
+@webassemblyjs/wast-parser 1.9.0 - MIT
 https://github.com/xtuc/webassemblyjs#readme
 
 Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
@@ -5949,6 +5946,68 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
+@webassemblyjs/wast-printer 1.9.0 - MIT
+https://github.com/xtuc/webassemblyjs#readme
+
+Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
+
+MIT License
+
+Copyright (c) 2018 Sven Sauleau <sven@sauleau.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+acorn 6.4.1 - MIT
+https://github.com/acornjs/acorn
+
+Copyright (c) 2012-2018 by various contributors
+
+Copyright (C) 2012-2018 by various contributors (see AUTHORS)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
 acorn 7.3.1 - MIT
 https://github.com/acornjs/acorn
 
@@ -5980,36 +6039,6 @@ THE SOFTWARE.
 ---------------------------------------------------------
 
 acorn 5.7.4 - MIT
-https://github.com/acornjs/acorn
-
-Copyright (c) 2012-2018 by various contributors
-
-Copyright (C) 2012-2018 by various contributors (see AUTHORS)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-acorn 6.4.1 - MIT
 https://github.com/acornjs/acorn
 
 Copyright (c) 2012-2018 by various contributors
@@ -6210,25 +6239,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-applicationinsights 1.0.8 - MIT
-https://github.com/Microsoft/ApplicationInsights-node.js#readme
-
-Copyright (c) Microsoft Corporation.
-
-﻿The MIT License (MIT) 
-Copyright © Microsoft Corporation
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 applicationinsights 1.7.4 - MIT
 https://github.com/Microsoft/ApplicationInsights-node.js#readme
 
@@ -6380,15 +6390,16 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-array-unique 0.2.1 - MIT
+array-unique 0.3.2 - MIT
 https://github.com/jonschlinkert/array-unique
 
-Copyright (c) 2015 Jon Schlinkert
+Copyright (c) 2014-2016, Jon Schlinkert
 Copyright (c) 2014-2015, Jon Schlinkert.
+Copyright (c) 2016, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2015, Jon Schlinkert.
+Copyright (c) 2014-2016, Jon Schlinkert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6413,16 +6424,15 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-array-unique 0.3.2 - MIT
+array-unique 0.2.1 - MIT
 https://github.com/jonschlinkert/array-unique
 
-Copyright (c) 2014-2016, Jon Schlinkert
+Copyright (c) 2015 Jon Schlinkert
 Copyright (c) 2014-2015, Jon Schlinkert.
-Copyright (c) 2016, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2016, Jon Schlinkert
+Copyright (c) 2014-2015, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6712,6 +6722,36 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
+async 2.6.3 - MIT
+https://caolan.github.io/async/
+
+Copyright (c) 2010-2018 Caolan McMahon
+
+Copyright (c) 2010-2018 Caolan McMahon
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
 async 2.6.0 - MIT
 https://caolan.github.io/async/
 
@@ -6743,36 +6783,6 @@ THE SOFTWARE.
 ---------------------------------------------------------
 
 async 3.2.0 - MIT
-https://caolan.github.io/async/
-
-Copyright (c) 2010-2018 Caolan McMahon
-
-Copyright (c) 2010-2018 Caolan McMahon
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-async 2.6.3 - MIT
 https://caolan.github.io/async/
 
 Copyright (c) 2010-2018 Caolan McMahon
@@ -7295,7 +7305,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-bn.js 4.11.9 - MIT
+bn.js 5.1.2 - MIT
 https://github.com/indutny/bn.js
 
 Copyright Fedor Indutny, 2015.
@@ -7314,7 +7324,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-bn.js 5.1.2 - MIT
+bn.js 4.11.9 - MIT
 https://github.com/indutny/bn.js
 
 Copyright Fedor Indutny, 2015.
@@ -7365,11 +7375,11 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-braces 2.3.2 - MIT
+braces 3.0.2 - MIT
 https://github.com/micromatch/braces
 
 Copyright (c) 2014-2018, Jon Schlinkert.
-Copyright (c) 2018, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2019, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
@@ -7398,11 +7408,11 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-braces 3.0.2 - MIT
+braces 2.3.2 - MIT
 https://github.com/micromatch/braces
 
 Copyright (c) 2014-2018, Jon Schlinkert.
-Copyright (c) 2019, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2018, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
@@ -7694,7 +7704,7 @@ IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-buffer 5.6.0 - MIT
+buffer 4.9.2 - MIT
 https://github.com/feross/buffer
 
 Copyright (c) Feross Aboukhadijeh, and other contributors.
@@ -7727,7 +7737,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-buffer 4.9.2 - MIT
+buffer 5.6.0 - MIT
 https://github.com/feross/buffer
 
 Copyright (c) Feross Aboukhadijeh, and other contributors.
@@ -7939,39 +7949,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-chokidar 3.4.0 - MIT
-https://github.com/paulmillr/chokidar
-
-(c) Paul Miller <https://paulmillr.com>
-Copyright (c) 2012-2019 Paul Miller (https://paulmillr.com), Elan Shanker
-
-The MIT License (MIT)
-
-Copyright (c) 2012-2019 Paul Miller (https://paulmillr.com), Elan Shanker
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the “Software”), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 chokidar 3.3.0 - MIT
 https://github.com/paulmillr/chokidar
 
@@ -8005,10 +7982,43 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-chokidar 1.7.0 - MIT
+chokidar 3.4.1 - MIT
 https://github.com/paulmillr/chokidar
 
-Copyright (c) 2016 Paul Miller (http://paulmillr.com) & Elan Shanker
+(c) Paul Miller <https://paulmillr.com>
+Copyright (c) 2012-2019 Paul Miller (https://paulmillr.com), Elan Shanker
+
+The MIT License (MIT)
+
+Copyright (c) 2012-2019 Paul Miller (https://paulmillr.com), Elan Shanker
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+chokidar 2.1.8 - MIT
+https://github.com/paulmillr/chokidar
+
+Copyright (c) 2012-2019 Paul Miller (https://paulmillr.com) & Elan Shanker
 
 MIT License
 
@@ -8024,10 +8034,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-chokidar 2.1.8 - MIT
+chokidar 1.7.0 - MIT
 https://github.com/paulmillr/chokidar
 
-Copyright (c) 2012-2019 Paul Miller (https://paulmillr.com) & Elan Shanker
+Copyright (c) 2016 Paul Miller (http://paulmillr.com) & Elan Shanker
 
 MIT License
 
@@ -9282,15 +9292,15 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-define-property 2.0.2 - MIT
+define-property 0.2.5 - MIT
 https://github.com/jonschlinkert/define-property
 
-Copyright (c) 2015-2018, Jon Schlinkert.
-Copyright (c) 2018, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2015 Jon Schlinkert
+Copyright (c) 2015, Jon Schlinkert.
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2018, Jon Schlinkert.
+Copyright (c) 2015, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9348,15 +9358,15 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-define-property 0.2.5 - MIT
+define-property 2.0.2 - MIT
 https://github.com/jonschlinkert/define-property
 
-Copyright (c) 2015 Jon Schlinkert
-Copyright (c) 2015, Jon Schlinkert.
+Copyright (c) 2015-2018, Jon Schlinkert.
+Copyright (c) 2018, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2015, Jon Schlinkert.
+Copyright (c) 2015-2018, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9484,38 +9494,6 @@ Copyright (c) Microsoft Corporation.
 ---------------------------------------------------------
 
 diagnostic-channel-publishers 0.3.5 - MIT
-https://github.com/Microsoft/node-diagnostic-channel
-
-Copyright (c) Microsoft Corporation.
-
-    MIT License
-
-    Copyright (c) Microsoft Corporation. All rights reserved.
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-diagnostic-channel-publishers 0.2.1 - MIT
 https://github.com/Microsoft/node-diagnostic-channel
 
 Copyright (c) Microsoft Corporation.
@@ -9724,7 +9702,7 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-elliptic 6.5.2 - MIT
+elliptic 6.5.3 - MIT
 https://github.com/indutny/elliptic
 
 Copyright Fedor Indutny, 2014.
@@ -9796,6 +9774,38 @@ THE SOFTWARE.
 ---------------------------------------------------------
 
 enhanced-resolve 4.2.0 - MIT
+http://github.com/webpack/enhanced-resolve
+
+Copyright (c) 2012-2016 Tobias Koppers
+Copyright JS Foundation and other contributors
+
+Copyright JS Foundation and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+enhanced-resolve 4.3.0 - MIT
 http://github.com/webpack/enhanced-resolve
 
 Copyright (c) 2012-2016 Tobias Koppers
@@ -9900,7 +9910,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-events 3.1.0 - MIT
+events 3.2.0 - MIT
 https://github.com/Gozala/events#readme
 
 Copyright Joyent, Inc. and other Node contributors.
@@ -9965,16 +9975,15 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-expand-brackets 0.1.5 - MIT
+expand-brackets 2.1.4 - MIT
 https://github.com/jonschlinkert/expand-brackets
 
-Copyright (c) 2015 Jon Schlinkert.
-Copyright (c) 2015-2016, Jon Schlinkert.
-(c) 2016, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2015-2016, Jon Schlinkert
+Copyright (c) 2016, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2016, Jon Schlinkert.
+Copyright (c) 2015-2016, Jon Schlinkert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9999,15 +10008,16 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-expand-brackets 2.1.4 - MIT
+expand-brackets 0.1.5 - MIT
 https://github.com/jonschlinkert/expand-brackets
 
-Copyright (c) 2015-2016, Jon Schlinkert
-Copyright (c) 2016, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2015 Jon Schlinkert.
+Copyright (c) 2015-2016, Jon Schlinkert.
+(c) 2016, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2016, Jon Schlinkert
+Copyright (c) 2015-2016, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10103,39 +10113,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-extend-shallow 3.0.2 - MIT
-https://github.com/jonschlinkert/extend-shallow
-
-Copyright (c) 2014-2015, 2017, Jon Schlinkert.
-Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
-
-The MIT License (MIT)
-
-Copyright (c) 2014-2015, 2017, Jon Schlinkert.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 extend-shallow 2.0.1 - MIT
 https://github.com/jonschlinkert/extend-shallow
 
@@ -10169,15 +10146,15 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-extglob 2.0.4 - MIT
-https://github.com/micromatch/extglob
+extend-shallow 3.0.2 - MIT
+https://github.com/jonschlinkert/extend-shallow
 
-Copyright (c) 2015-2017, Jon Schlinkert.
+Copyright (c) 2014-2015, 2017, Jon Schlinkert.
 Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2017, Jon Schlinkert.
+Copyright (c) 2014-2015, 2017, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10211,6 +10188,39 @@ Copyright (c) 2015, Jon Schlinkert.
 The MIT License (MIT)
 
 Copyright (c) 2015, Jon Schlinkert.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+extglob 2.0.4 - MIT
+https://github.com/micromatch/extglob
+
+Copyright (c) 2015-2017, Jon Schlinkert.
+Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
+
+The MIT License (MIT)
+
+Copyright (c) 2015-2017, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10527,14 +10537,14 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-find-cache-dir 2.1.0 - MIT
+find-cache-dir 3.3.1 - MIT
 https://github.com/avajs/find-cache-dir#readme
 
-Copyright (c) James Talmage <james@talmage.io>
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
 
 MIT License
 
-Copyright (c) James Talmage <james@talmage.io> (github.com/jamestalmage)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -10547,14 +10557,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-find-cache-dir 3.3.1 - MIT
+find-cache-dir 2.1.0 - MIT
 https://github.com/avajs/find-cache-dir#readme
 
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+Copyright (c) James Talmage <james@talmage.io>
 
 MIT License
 
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+Copyright (c) James Talmage <james@talmage.io> (github.com/jamestalmage)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -10852,38 +10862,6 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-fsevents 2.1.3 - MIT
-https://github.com/fsevents/fsevents
-
-
-MIT License
------------
-
-Copyright (C) 2010-2020 by Philipp Dunkel, Ben Noordhuis, Elan Shankar, Paul Miller
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 fsevents 1.2.13 - MIT
 https://github.com/strongloop/fsevents
 
@@ -10918,7 +10896,39 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-fs-extra 8.1.0 - MIT
+fsevents 2.1.3 - MIT
+https://github.com/fsevents/fsevents
+
+
+MIT License
+-----------
+
+Copyright (C) 2010-2020 by Philipp Dunkel, Ben Noordhuis, Elan Shankar, Paul Miller
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+fs-extra 7.0.1 - MIT
 https://github.com/jprichardson/node-fs-extra
 
 Copyright (c) 2011-2017 JP Richardson
@@ -10946,7 +10956,7 @@ OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHE
 
 ---------------------------------------------------------
 
-fs-extra 7.0.1 - MIT
+fs-extra 8.1.0 - MIT
 https://github.com/jprichardson/node-fs-extra
 
 Copyright (c) 2011-2017 JP Richardson
@@ -11154,7 +11164,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-has-flag 3.0.0 - MIT
+has-flag 4.0.0 - MIT
 https://github.com/sindresorhus/has-flag#readme
 
 (c) Sindre Sorhus (https://sindresorhus.com)
@@ -11175,7 +11185,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-has-flag 4.0.0 - MIT
+has-flag 3.0.0 - MIT
 https://github.com/sindresorhus/has-flag#readme
 
 (c) Sindre Sorhus (https://sindresorhus.com)
@@ -11247,39 +11257,6 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-has-value 1.0.0 - MIT
-https://github.com/jonschlinkert/has-value
-
-Copyright (c) 2014-2017, Jon Schlinkert.
-Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
-
-The MIT License (MIT)
-
-Copyright (c) 2014-2017, Jon Schlinkert
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 has-value 0.3.1 - MIT
 https://github.com/jonschlinkert/has-value
 
@@ -11313,16 +11290,15 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-has-values 0.1.4 - MIT
-https://github.com/jonschlinkert/has-values
+has-value 1.0.0 - MIT
+https://github.com/jonschlinkert/has-value
 
-Copyright (c) 2014-2015, Jon Schlinkert.
-Copyright (c) 2014-2016, Jon Schlinkert.
-Copyright (c) 2016, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2014-2017, Jon Schlinkert.
+Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2016, Jon Schlinkert.
+Copyright (c) 2014-2017, Jon Schlinkert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11357,6 +11333,40 @@ Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
 The MIT License (MIT)
 
 Copyright (c) 2014-2017, Jon Schlinkert
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+has-values 0.1.4 - MIT
+https://github.com/jonschlinkert/has-values
+
+Copyright (c) 2014-2015, Jon Schlinkert.
+Copyright (c) 2014-2016, Jon Schlinkert.
+Copyright (c) 2016, Jon Schlinkert (https://github.com/jonschlinkert).
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2016, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -11866,39 +11876,6 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-is-data-descriptor 0.1.4 - MIT
-https://github.com/jonschlinkert/is-data-descriptor
-
-Copyright (c) 2015, Jon Schlinkert.
-Copyright (c) 2015 Jon Schlinkert (https://github.com/jonschlinkert)
-
-The MIT License (MIT)
-
-Copyright (c) 2015, Jon Schlinkert.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 is-data-descriptor 1.0.0 - MIT
 https://github.com/jonschlinkert/is-data-descriptor
 
@@ -11932,7 +11909,40 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-is-descriptor 1.0.2 - MIT
+is-data-descriptor 0.1.4 - MIT
+https://github.com/jonschlinkert/is-data-descriptor
+
+Copyright (c) 2015, Jon Schlinkert.
+Copyright (c) 2015 Jon Schlinkert (https://github.com/jonschlinkert)
+
+The MIT License (MIT)
+
+Copyright (c) 2015, Jon Schlinkert.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+is-descriptor 0.1.6 - MIT
 https://github.com/jonschlinkert/is-descriptor
 
 Copyright (c) 2015-2017, Jon Schlinkert.
@@ -11964,7 +11974,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-is-descriptor 0.1.6 - MIT
+is-descriptor 1.0.2 - MIT
 https://github.com/jonschlinkert/is-descriptor
 
 Copyright (c) 2015-2017, Jon Schlinkert.
@@ -12062,6 +12072,38 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
+is-extendable 1.0.1 - MIT
+https://github.com/jonschlinkert/is-extendable
+
+Copyright (c) 2015-2017, Jon Schlinkert.
+Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
+
+The MIT License (MIT)
+
+Copyright (c) 2015-2017, Jon Schlinkert.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
 is-extendable 0.1.1 - MIT
 https://github.com/jonschlinkert/is-extendable
 
@@ -12090,38 +12132,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-is-extendable 1.0.1 - MIT
-https://github.com/jonschlinkert/is-extendable
-
-Copyright (c) 2015-2017, Jon Schlinkert.
-Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
-
-The MIT License (MIT)
-
-Copyright (c) 2015-2017, Jon Schlinkert.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
 
 ---------------------------------------------------------
 
@@ -12169,39 +12179,6 @@ Copyright (c) 2014-2015, Jon Schlinkert.
 The MIT License (MIT)
 
 Copyright (c) 2014-2015, Jon Schlinkert.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-is-glob 4.0.1 - MIT
-https://github.com/micromatch/is-glob
-
-Copyright (c) 2014-2017, Jon Schlinkert.
-Copyright (c) 2019, Jon Schlinkert (https://github.com/jonschlinkert).
-
-The MIT License (MIT)
-
-Copyright (c) 2014-2017, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12292,11 +12269,11 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-is-number 4.0.0 - MIT
-https://github.com/jonschlinkert/is-number
+is-glob 4.0.1 - MIT
+https://github.com/micromatch/is-glob
 
 Copyright (c) 2014-2017, Jon Schlinkert.
-Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2019, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
@@ -12325,16 +12302,15 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-is-number 3.0.0 - MIT
+is-number 4.0.0 - MIT
 https://github.com/jonschlinkert/is-number
 
-Copyright (c) 2014-2016, Jon Schlinkert
-Copyright (c) 2014-2015, Jon Schlinkert.
-Copyright (c) 2016, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2014-2017, Jon Schlinkert.
+Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2016, Jon Schlinkert
+Copyright (c) 2014-2017, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12401,6 +12377,40 @@ Copyright (c) 2018, Jon Schlinkert (https://github.com/jonschlinkert).
 The MIT License (MIT)
 
 Copyright (c) 2014-present, Jon Schlinkert.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+is-number 3.0.0 - MIT
+https://github.com/jonschlinkert/is-number
+
+Copyright (c) 2014-2016, Jon Schlinkert
+Copyright (c) 2014-2015, Jon Schlinkert.
+Copyright (c) 2016, Jon Schlinkert (https://github.com/jonschlinkert).
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2016, Jon Schlinkert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12803,7 +12813,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-jest-worker 26.0.0 - MIT
+jest-worker 26.2.1 - MIT
 https://github.com/facebook/jest#readme
 
 Copyright (c) Facebook, Inc. and its affiliates.
@@ -13118,7 +13128,73 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 
 ---------------------------------------------------------
 
+kind-of 5.1.0 - MIT
+https://github.com/jonschlinkert/kind-of
+
+Copyright (c) 2014-2017, Jon Schlinkert.
+Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2017, Jon Schlinkert.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
 kind-of 3.2.2 - MIT
+https://github.com/jonschlinkert/kind-of
+
+Copyright (c) 2014-2017, Jon Schlinkert
+Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2017, Jon Schlinkert
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+kind-of 4.0.0 - MIT
 https://github.com/jonschlinkert/kind-of
 
 Copyright (c) 2014-2017, Jon Schlinkert
@@ -13159,72 +13235,6 @@ Copyright (c) 2014-2017, Jon Schlinkert.
 The MIT License (MIT)
 
 Copyright (c) 2014-2017, Jon Schlinkert.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-kind-of 5.1.0 - MIT
-https://github.com/jonschlinkert/kind-of
-
-Copyright (c) 2014-2017, Jon Schlinkert.
-Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
-
-The MIT License (MIT)
-
-Copyright (c) 2014-2017, Jon Schlinkert.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-kind-of 4.0.0 - MIT
-https://github.com/jonschlinkert/kind-of
-
-Copyright (c) 2014-2017, Jon Schlinkert
-Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
-
-The MIT License (MIT)
-
-Copyright (c) 2014-2017, Jon Schlinkert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13388,7 +13398,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-lodash 4.17.15 - MIT
+lodash 4.17.19 - MIT
 https://lodash.com/
 
 Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
@@ -13959,6 +13969,25 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
+memory-fs 0.4.1 - MIT
+https://github.com/webpack/memory-fs
+
+Copyright (c) 2012-2014 Tobias Koppers
+
+MIT License
+
+Copyright (c) <year> <copyright holders>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
 memory-fs 0.5.0 - MIT
 https://github.com/webpack/memory-fs
 
@@ -13986,25 +14015,6 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-memory-fs 0.4.1 - MIT
-https://github.com/webpack/memory-fs
-
-Copyright (c) 2012-2014 Tobias Koppers
-
-MIT License
-
-Copyright (c) <year> <copyright holders>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
@@ -14042,15 +14052,15 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-micromatch 4.0.2 - MIT
+micromatch 3.1.10 - MIT
 https://github.com/micromatch/micromatch
 
-Copyright (c) 2014-present, Jon Schlinkert.
-Copyright (c) 2019, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2014-2018, Jon Schlinkert.
+Copyright (c) 2018, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2014-present, Jon Schlinkert.
+Copyright (c) 2014-2018, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -14075,15 +14085,15 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-micromatch 3.1.10 - MIT
+micromatch 4.0.2 - MIT
 https://github.com/micromatch/micromatch
 
-Copyright (c) 2014-2018, Jon Schlinkert.
-Copyright (c) 2018, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2014-present, Jon Schlinkert.
+Copyright (c) 2019, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2018, Jon Schlinkert.
+Copyright (c) 2014-present, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -14348,14 +14358,14 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-mkdirp 0.5.5 - MIT
-https://github.com/substack/node-mkdirp#readme
+mkdirp 1.0.4 - MIT
+https://github.com/isaacs/node-mkdirp#readme
 
-Copyright 2010 James Halliday (mail@substack.net)
+Copyright James Halliday (mail@substack.net) and Isaac Z. Schlueter (i@izs.me)
 
-Copyright 2010 James Halliday (mail@substack.net)
+Copyright James Halliday (mail@substack.net) and Isaac Z. Schlueter (i@izs.me)
 
-This project is free software released under the MIT/X11 license:
+This project is free software released under the MIT license:
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -14380,14 +14390,14 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-mkdirp 1.0.4 - MIT
-https://github.com/isaacs/node-mkdirp#readme
+mkdirp 0.5.5 - MIT
+https://github.com/substack/node-mkdirp#readme
 
-Copyright James Halliday (mail@substack.net) and Isaac Z. Schlueter (i@izs.me)
+Copyright 2010 James Halliday (mail@substack.net)
 
-Copyright James Halliday (mail@substack.net) and Isaac Z. Schlueter (i@izs.me)
+Copyright 2010 James Halliday (mail@substack.net)
 
-This project is free software released under the MIT license:
+This project is free software released under the MIT/X11 license:
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -14702,7 +14712,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-neo-async 2.6.1 - MIT
+neo-async 2.6.2 - MIT
 https://github.com/suguru03/neo-async
 
 Copyright Caolan McMahon
@@ -14769,15 +14779,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-normalize-path 2.1.1 - MIT
+normalize-path 3.0.0 - MIT
 https://github.com/jonschlinkert/normalize-path
 
-Copyright (c) 2014-2017, Jon Schlinkert.
-Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2014-2018, Jon Schlinkert.
+Copyright (c) 2018, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2017, Jon Schlinkert
+Copyright (c) 2014-2018, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -14802,15 +14812,15 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-normalize-path 3.0.0 - MIT
+normalize-path 2.1.1 - MIT
 https://github.com/jonschlinkert/normalize-path
 
-Copyright (c) 2014-2018, Jon Schlinkert.
-Copyright (c) 2018, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2014-2017, Jon Schlinkert.
+Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2018, Jon Schlinkert.
+Copyright (c) 2014-2017, Jon Schlinkert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -15002,7 +15012,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-office-ui-fabric-react 7.121.12 - MIT
+office-ui-fabric-react 7.124.1 - MIT
 https://github.com/microsoft/fluentui#readme
 
 Copyright (c) Microsoft.
@@ -15448,48 +15458,6 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-pify 3.0.0 - MIT
-https://github.com/sindresorhus/pify#readme
-
-(c) Sindre Sorhus (https://sindresorhus.com)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-
-MIT License
-
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-pify 4.0.1 - MIT
-https://github.com/sindresorhus/pify#readme
-
-(c) Sindre Sorhus (https://sindresorhus.com)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-
-MIT License
-
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 pify 2.3.0 - MIT
 https://github.com/sindresorhus/pify
 
@@ -15517,6 +15485,48 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+pify 4.0.1 - MIT
+https://github.com/sindresorhus/pify#readme
+
+(c) Sindre Sorhus (https://sindresorhus.com)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+
+MIT License
+
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+pify 3.0.0 - MIT
+https://github.com/sindresorhus/pify#readme
+
+(c) Sindre Sorhus (https://sindresorhus.com)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+
+MIT License
+
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 ---------------------------------------------------------
@@ -15589,27 +15599,6 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-pkg-dir 3.0.0 - MIT
-https://github.com/sindresorhus/pkg-dir#readme
-
-(c) Sindre Sorhus (https://sindresorhus.com)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-
-MIT License
-
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 pkg-dir 4.2.0 - MIT
 https://github.com/sindresorhus/pkg-dir#readme
 
@@ -15631,14 +15620,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-p-limit 3.0.1 - MIT
-https://github.com/sindresorhus/p-limit#readme
+pkg-dir 3.0.0 - MIT
+https://github.com/sindresorhus/pkg-dir#readme
 
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+(c) Sindre Sorhus (https://sindresorhus.com)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
 
 MIT License
 
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -15671,7 +15661,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-p-locate 4.1.0 - MIT
+p-limit 3.0.2 - MIT
+https://github.com/sindresorhus/p-limit#readme
+
+
+MIT License
+
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+p-locate 3.0.0 - MIT
 https://github.com/sindresorhus/p-locate#readme
 
 (c) Sindre Sorhus (https://sindresorhus.com)
@@ -15692,7 +15701,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-p-locate 3.0.0 - MIT
+p-locate 4.1.0 - MIT
 https://github.com/sindresorhus/p-locate#readme
 
 (c) Sindre Sorhus (https://sindresorhus.com)
@@ -16109,7 +16118,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-punycode 1.3.2 - MIT
+punycode 1.4.1 - MIT
 https://mths.be/punycode
 
 Copyright Mathias Bynens <https://mathiasbynens.be/>
@@ -16140,7 +16149,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-punycode 1.4.1 - MIT
+punycode 1.3.2 - MIT
 https://mths.be/punycode
 
 Copyright Mathias Bynens <https://mathiasbynens.be/>
@@ -16461,7 +16470,7 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-readable-stream 3.6.0 - MIT
+readable-stream 2.3.7 - MIT
 https://github.com/nodejs/readable-stream#readme
 
 Copyright Joyent, Inc. and other Node contributors.
@@ -16519,7 +16528,7 @@ IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-readable-stream 2.3.7 - MIT
+readable-stream 3.6.0 - MIT
 https://github.com/nodejs/readable-stream#readme
 
 Copyright Joyent, Inc. and other Node contributors.
@@ -16791,7 +16800,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-regenerator-runtime 0.13.5 - MIT
+regenerator-runtime 0.13.7 - MIT
 
 
 Copyright (c) 2014-present, Facebook, Inc.
@@ -17240,37 +17249,6 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-schema-utils 2.7.0 - MIT
-https://github.com/webpack/schema-utils
-
-Copyright JS Foundation and other contributors
-
-Copyright JS Foundation and other contributors
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 schema-utils 0.4.7 - MIT
 https://github.com/webpack-contrib/schema-utils
 
@@ -17304,6 +17282,37 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 schema-utils 1.0.0 - MIT
 https://github.com/webpack-contrib/schema-utils
+
+Copyright JS Foundation and other contributors
+
+Copyright JS Foundation and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+schema-utils 2.7.0 - MIT
+https://github.com/webpack/schema-utils
 
 Copyright JS Foundation and other contributors
 
@@ -17945,7 +17954,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-string_decoder 1.3.0 - MIT
+string_decoder 1.1.1 - MIT
 https://github.com/nodejs/string_decoder
 
 Copyright Joyent, Inc. and other Node contributors.
@@ -18004,7 +18013,7 @@ IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-string_decoder 1.1.1 - MIT
+string_decoder 1.3.0 - MIT
 https://github.com/nodejs/string_decoder
 
 Copyright Joyent, Inc. and other Node contributors.
@@ -18194,7 +18203,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-terser-webpack-plugin 1.4.4 - MIT
+terser-webpack-plugin 3.0.8 - MIT
 https://github.com/webpack-contrib/terser-webpack-plugin
 
 Copyright JS Foundation and other contributors
@@ -18225,7 +18234,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-terser-webpack-plugin 3.0.6 - MIT
+terser-webpack-plugin 1.4.4 - MIT
 https://github.com/webpack-contrib/terser-webpack-plugin
 
 Copyright JS Foundation and other contributors
@@ -18471,15 +18480,16 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-to-regex-range 5.0.1 - MIT
+to-regex-range 2.1.1 - MIT
 https://github.com/micromatch/to-regex-range
 
-Copyright (c) 2015-present, Jon Schlinkert.
-Copyright (c) 2019, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2015-2017, Jon Schlinkert
+Copyright (c) 2015, 2017, Jon Schlinkert.
+Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2015-present, Jon Schlinkert.
+Copyright (c) 2015-2017, Jon Schlinkert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18504,16 +18514,15 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-to-regex-range 2.1.1 - MIT
+to-regex-range 5.0.1 - MIT
 https://github.com/micromatch/to-regex-range
 
-Copyright (c) 2015-2017, Jon Schlinkert
-Copyright (c) 2015, 2017, Jon Schlinkert.
-Copyright (c) 2017, Jon Schlinkert (https://github.com/jonschlinkert).
+Copyright (c) 2015-present, Jon Schlinkert.
+Copyright (c) 2019, Jon Schlinkert (https://github.com/jonschlinkert).
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2017, Jon Schlinkert
+Copyright (c) 2015-present, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18632,7 +18641,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-tunnel 0.0.5 - MIT
+tunnel 0.0.4 - MIT
 https://github.com/koichik/node-tunnel/
 
 Copyright (c) 2012 Koichi Kobayashi
@@ -18664,7 +18673,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-tunnel 0.0.4 - MIT
+tunnel 0.0.5 - MIT
 https://github.com/koichik/node-tunnel/
 
 Copyright (c) 2012 Koichi Kobayashi
@@ -19007,7 +19016,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------
 
-util 0.10.3 - MIT
+util 0.11.1 - MIT
 https://github.com/defunctzombie/node-util
 
 Copyright Joyent, Inc. and other Node contributors.
@@ -19036,7 +19045,7 @@ IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-util 0.11.1 - MIT
+util 0.10.3 - MIT
 https://github.com/defunctzombie/node-util
 
 Copyright Joyent, Inc. and other Node contributors.
@@ -19100,6 +19109,27 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
+uuid 8.3.0 - MIT
+https://github.com/uuidjs/uuid#readme
+
+Copyright 2011, Sebastian Tschan https://blueimp.net
+Copyright (c) Paul Johnston 1999 - 2009 Other contributors Greg Holt, Andrew Kepert, Ydnar, Lostinet
+
+The MIT License (MIT)
+
+Copyright (c) 2010-2020 Robert Kieffer and other contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
 uuid 3.4.0 - MIT
 https://github.com/uuidjs/uuid#readme
 
@@ -19128,27 +19158,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-uuid 8.2.0 - MIT
-https://github.com/uuidjs/uuid#readme
-
-Copyright 2011, Sebastian Tschan https://blueimp.net
-Copyright (c) Paul Johnston 1999 - 2009 Other contributors Greg Holt, Andrew Kepert, Ydnar, Lostinet
-
-The MIT License (MIT)
-
-Copyright (c) 2010-2020 Robert Kieffer and other contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 ---------------------------------------------------------
@@ -19213,7 +19222,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-vscode-azureextensiondev 0.4.0 - MIT
+vscode-azureextensiondev 0.4.1 - MIT
 https://github.com/Microsoft/vscode-azuretools/blob/master/dev/README.md
 
 Copyright (c) Microsoft Corporation.
@@ -19309,67 +19318,6 @@ SOFTWARE.
 
 ---------------------------------------------------------
 
-vscode-extension-telemetry 0.1.1 - MIT
-https://github.com/Microsoft/vscode-extension-telemetry#readme
-
-Copyright (c) Microsoft Corporation.
-
-vscode-extension-telemetry
-
-The MIT License (MIT)
-
-Copyright (c) Microsoft Corporation
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-vscode-nls 4.1.1 - MIT
-https://github.com/Microsoft/vscode-nls#readme
-
-Copyright (c) Microsoft Corporation.
-
-The MIT License (MIT)
-
-Copyright (c) Microsoft Corporation
-
-All rights reserved. 
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, 
-modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software 
-is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS 
-BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT 
-OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
----------------------------------------------------------
-
----------------------------------------------------------
-
 vscode-nls 4.1.2 - MIT
 https://github.com/Microsoft/vscode-nls#readme
 
@@ -19398,27 +19346,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 ---------------------------------------------------------
 
-vscode-uri 2.1.1 - MIT
-https://github.com/Microsoft/vscode-uri#readme
-
-Copyright (c) Microsoft
-Copyright (c) Microsoft Corporation.
-
-The MIT License (MIT)
-
-Copyright (c) Microsoft
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-watchpack 1.7.2 - MIT
+watchpack 1.7.4 - MIT
 https://github.com/webpack/watchpack
 
 Copyright JS Foundation and other contributors
@@ -19467,7 +19395,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---------------------------------------------------------
 
-webpack 4.28.1 - MIT
+webpack 4.44.1 - MIT
 https://github.com/webpack/webpack
 
 Copyright JS Foundation and other contributors
@@ -19498,7 +19426,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---------------------------------------------------------
 
-webpack 4.43.0 - MIT
+webpack 4.28.1 - MIT
 https://github.com/webpack/webpack
 
 Copyright JS Foundation and other contributors
@@ -19663,39 +19591,6 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
-
----------------------------------------------------------
-
----------------------------------------------------------
-
-zone.js 0.7.6 - MIT
-https://github.com/angular/zone.js#readme
-
-Copyright Google Inc.
-Copyright (c) 2016 Google, Inc.
-
-The MIT License
-
-Copyright (c) 2016 Google, Inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
 
 ---------------------------------------------------------
 
