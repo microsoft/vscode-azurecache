@@ -12,6 +12,7 @@ import { CollectionType } from './CollectionType';
 import './CollectionView.css';
 import { HashFilterField } from './HashFilterField';
 import { SelectableCollectionElement } from './SelectableCollectionElement';
+import { StrContents, StrLoadMore } from '../Strings';
 
 interface State {
     currentIndex?: number;
@@ -164,14 +165,14 @@ export class CollectionView extends React.Component<{}, State> {
                     />
                     <PrimaryButton
                         disabled={!hasMore}
-                        text="Load More"
+                        text={StrLoadMore}
                         style={{ marginLeft: 'auto', marginRight: 0, marginTop: 5, textAlign: 'right' }}
                         onClick={this.loadMore}
                     />
                 </div>
                 <div className="content-container" style={{ flex: 1 }}>
                     <TextField
-                        label="Contents"
+                        label={StrContents}
                         multiline
                         autoAdjustHeight
                         readOnly

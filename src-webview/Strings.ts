@@ -24,3 +24,6 @@ export const StrShardCount = 'Shard count';
 export const StrCopy = 'Copy';
 export const StrCopied = 'Copied';
 export const StrCopyToClipboard = 'Copy to clipboard';
+
+export const StrContents = 'Contents';
+export const StrLoadMore = 'Copy';
