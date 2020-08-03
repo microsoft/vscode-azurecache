@@ -1,18 +1,19 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { PrimaryButton, TextField } from '@fluentui/react';
+import { PrimaryButton } from '@fluentui/react';
 import * as React from 'react';
 import { CollectionWebviewData } from '../../src-shared/CollectionWebviewData';
 import { WebviewCommand } from '../../src-shared/WebviewCommand';
 import { WebviewMessage } from '../../src-shared/WebviewMessage';
+import { StrLoadMore } from '../Strings';
 import { vscode } from '../vscode';
 import { CollectionList } from './CollectionList';
 import { CollectionType } from './CollectionType';
 import './CollectionView.css';
 import { HashFilterField } from './HashFilterField';
+import { KeyContentsField } from './KeyContentsField';
 import { SelectableCollectionElement } from './SelectableCollectionElement';
-import { StrContents, StrLoadMore } from '../Strings';
 
 interface State {
     currentIndex?: number;
@@ -170,18 +171,7 @@ export class CollectionView extends React.Component<{}, State> {
                         onClick={this.loadMore}
                     />
                 </div>
-                <div className="content-container" style={{ flex: 1 }}>
-                    <TextField
-                        label={StrContents}
-                        multiline
-                        autoAdjustHeight
-                        readOnly
-                        style={{ fontFamily: 'var(--vscode-editor-font-family)' }}
-                        value={currentValue}
-                        resizable={false}
-                        inputClassName="contents-input"
-                    />
-                </div>
+                <KeyContentsField value={currentValue} />
             </div>
         );
     }

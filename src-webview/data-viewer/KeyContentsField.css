@@ -1,0 +1,16 @@
+/* Copyright (c) Microsoft Corporation.
+   Licensed under the MIT License. */
+
+.content-container {
+    max-height: 400px;
+    margin-bottom: 10px;
+    flex: 1;
+}
+
+.contents-input {
+    font-family: var(--vscode-editor-font-family);
+    overflow-y: auto;
+    resize: vertical;
+    max-height: 50vh;
+    height: 30vh;
+}
