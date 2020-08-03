@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { TextField } from '@fluentui/react';
 import * as React from 'react';
 import { WebviewCommand } from '../../src-shared/WebviewCommand';
 import { WebviewMessage } from '../../src-shared/WebviewMessage';
+import { KeyContentsField } from './KeyContentsField';
 import './styles.css';
 
 interface State {
@@ -19,7 +19,6 @@ export class StringView extends React.Component<{}, State> {
     }
 
     componentDidMount(): void {
-        // Listen for messages from extension
         window.addEventListener('message', (event) => {
             const message: WebviewMessage = event.data;
             if (message.command === WebviewCommand.KeyName) {
@@ -41,19 +40,8 @@ export class StringView extends React.Component<{}, State> {
 
         return (
             <div className="container">
-                <div className="content-container" style={{ flex: 1 }}>
-                    <h2>{key} (string)</h2>
-                    <TextField
-                        label="Contents"
-                        multiline
-                        autoAdjustHeight
-                        readOnly
-                        style={{ fontFamily: 'var(--vscode-editor-font-family)' }}
-                        value={value}
-                        resizable={false}
-                        inputClassName="contents-input"
-                    />
-                </div>
+                <h2>{key} (string)</h2>
+                <KeyContentsField value={value} />
             </div>
         );
     }
