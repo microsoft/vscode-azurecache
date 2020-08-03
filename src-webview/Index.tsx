@@ -7,7 +7,7 @@ import * as ReactDOM from 'react-dom';
 import { WebviewCommand } from '../src-shared/WebviewCommand';
 import { WebviewMessage } from '../src-shared/WebviewMessage';
 import { WebviewView } from '../src-shared/WebviewView';
-import { DataViewer } from './data-viewer/CollectionView';
+import { CollectionView } from './data-viewer/CollectionView';
 import { initializeIcons } from './fabric-icons/src';
 import { CacheProperties } from './properties/CacheProperties';
 
@@ -42,7 +42,7 @@ class Index extends React.Component<{}, State> {
         if (type === WebviewView.CacheProperties) {
             return <CacheProperties />;
         } else if (type === WebviewView.CollectionKey) {
-            return <DataViewer />;
+            return <CollectionView />;
         } else {
             return null;
         }

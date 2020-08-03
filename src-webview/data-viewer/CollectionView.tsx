@@ -24,7 +24,7 @@ interface State {
     isLoading: boolean;
 }
 
-export class DataViewer extends React.Component<{}, State> {
+export class CollectionView extends React.Component<{}, State> {
     constructor(props: {}) {
         super(props);
         this.state = {
