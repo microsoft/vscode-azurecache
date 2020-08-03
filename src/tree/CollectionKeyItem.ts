@@ -4,7 +4,7 @@
 import { AzExtTreeItem } from 'vscode-azureextensionui';
 import { CollectionElement } from '../../src-shared/CollectionElement';
 import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
-import { BaseWebview } from '../webview/BaseWebview';
+import { CollectionWebview } from '../webview/CollectionWebview';
 import { RedisClusterNodeItem } from './redis/RedisClusterNodeItem';
 import { RedisDbItem } from './redis/RedisDbItem';
 
@@ -20,8 +20,10 @@ export abstract class CollectionKeyItem extends AzExtTreeItem {
      * The DB number the key is in. For clustered caches this is undefined.
      */
     readonly db?: number;
-
-    protected abstract readonly webview: BaseWebview;
+    /**
+     * The associated webview.
+     */
+    protected abstract readonly webview: CollectionWebview;
 
     constructor(readonly parent: RedisDbItem | RedisClusterNodeItem, readonly key: string) {
         super(parent);
@@ -33,8 +35,8 @@ export abstract class CollectionKeyItem extends AzExtTreeItem {
         return this.webview.reveal(this.key);
     }
 
-    public async refreshImpl(): Promise<void> {
-        this.webview.refresh(this.parsedRedisResource);
+    public refreshImpl(): Promise<void> {
+        return this.webview.refresh();
     }
 
     public abstract getSize(): Promise<number>;

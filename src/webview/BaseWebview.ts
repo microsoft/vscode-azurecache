@@ -19,7 +19,7 @@ export abstract class BaseWebview {
      * To be implemented by subclasses.
      */
     protected abstract readonly viewType: string;
-    public abstract refresh(data: unknown): void;
+    public abstract async refresh(data: unknown): Promise<void>;
     protected abstract async sendData(data: unknown): Promise<void>;
     protected abstract onDidReceiveMessage(message: WebviewMessage): void;
     protected onDidDispose?(): void;
