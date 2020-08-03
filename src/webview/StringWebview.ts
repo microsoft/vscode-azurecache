@@ -1,8 +1,10 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+import * as vscode from 'vscode';
 import { WebviewCommand } from '../../src-shared/WebviewCommand';
 import { WebviewView } from '../../src-shared/WebviewView';
+import { ErrorReadKey } from '../Strings';
 import { RedisStringItem } from '../tree/redis/RedisStringItem';
 import { BaseWebview } from './BaseWebview';
 
@@ -30,7 +32,8 @@ export class StringWebview extends BaseWebview {
     private async loadAndSendKey(): Promise<void> {
         const value = await this.parent.getValue();
         if (value === null) {
-            throw new Error('Key does not exist.');
+            vscode.window.showErrorMessage(ErrorReadKey);
+            return;
         }
         this.postMessage(WebviewCommand.StringData, value);
     }
