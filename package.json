@@ -109,10 +109,6 @@
                     "when": "never"
                 },
                 {
-                    "command": "azureCache.setHashFieldFilter",
-                    "when": "never"
-                },
-                {
                     "command": "azureCache.showStringItem",
                     "when": "never"
                 },
@@ -168,11 +164,6 @@
                 "title": "Set key filter",
                 "category": "Azure Cache",
                 "icon": "$(filter)"
-            },
-            {
-                "command": "azureCache.setHashFieldFilter",
-                "title": "Set hash field filter",
-                "category": "Azure Cache"
             },
             {
                 "command": "azureCache.showStringItem",

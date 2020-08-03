@@ -80,20 +80,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('azureCache.setHashFieldFilter', async (redisHashItem: FilterParentItem) => {
-            const currentFilterExpr = redisHashItem.getFilter();
-            const input = await textInput(
-                '*',
-                Strings.StrPromptHashFieldFilter,
-                `${Strings.StrCurrent}: ${currentFilterExpr}`
-            );
-            if (input) {
-                redisHashItem.updateFilter(input);
-            }
-        })
-    );
-
-    context.subscriptions.push(
         vscode.commands.registerCommand('azureCache.viewSet', async (treeItem: RedisSetItem) => {
             treeItem.showWebview();
         })
