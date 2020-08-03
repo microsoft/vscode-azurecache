@@ -3,6 +3,8 @@
 
 import { ThemeIcon } from 'vscode';
 import { TreeItemIconPath } from 'vscode-azureextensionui';
+import { RedisClient } from '../../clients/RedisClient';
+import { StringWebview } from '../../webview/StringWebview';
 import { KeyContentItem } from '../KeyContentItem';
 
 /**
@@ -10,15 +12,17 @@ import { KeyContentItem } from '../KeyContentItem';
  */
 export class RedisStringItem extends KeyContentItem {
     private static readonly contextValue = 'redisStringItem';
-    private static readonly commandId = 'azureCache.showStringItem';
+    private static readonly commandId = 'azureCache.viewString';
     private static readonly description = '(string)';
+
+    private readonly webview = new StringWebview(this, this.key);
 
     get commandId(): string {
         return RedisStringItem.commandId;
     }
 
     get commandArgs(): unknown[] {
-        return [this.parsedRedisResource, this.db, this.key];
+        return [this];
     }
 
     get contextValue(): string {
@@ -35,5 +39,18 @@ export class RedisStringItem extends KeyContentItem {
 
     get label(): string {
         return this.key;
+    }
+
+    public showWebview(): Promise<void> {
+        return this.webview.reveal(this.key);
+    }
+
+    public refreshImpl(): Promise<void> {
+        return this.webview.refresh();
+    }
+
+    public async getValue(): Promise<string | null> {
+        const client = await RedisClient.connectToRedisResource(this.parsedRedisResource);
+        return client.get(this.key, this.db);
     }
 }

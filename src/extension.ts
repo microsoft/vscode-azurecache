@@ -25,6 +25,7 @@ import { RedisSetItem } from './tree/redis/RedisSetItem';
 import { RedisZSetItem } from './tree/redis/RedisZSetItem';
 import { RedisHashItem } from './tree/redis/RedisHashItem';
 import { RedisListItem } from './tree/redis/RedisListItem';
+import { RedisStringItem } from './tree/redis/RedisStringItem';
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     ExtVars.context = context;
@@ -76,6 +77,12 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
             if (input) {
                 treeItem.updateFilter(input);
             }
+        })
+    );
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('azureCache.viewString', async (treeItem: RedisStringItem) => {
+            treeItem.showWebview();
         })
     );
 

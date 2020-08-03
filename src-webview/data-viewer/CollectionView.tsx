@@ -10,7 +10,7 @@ import { StrLoadMore } from '../Strings';
 import { vscode } from '../vscode';
 import { CollectionList } from './CollectionList';
 import { CollectionType } from './CollectionType';
-import './CollectionView.css';
+import './styles.css';
 import { HashFilterField } from './HashFilterField';
 import { KeyContentsField } from './KeyContentsField';
 import { SelectableCollectionElement } from './SelectableCollectionElement';

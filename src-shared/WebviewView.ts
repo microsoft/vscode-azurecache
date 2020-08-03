@@ -7,5 +7,6 @@
 export enum WebviewView {
     CacheProperties = 'cacheProperties',
     CollectionKey = 'collectionKey',
+    StringKey = 'stringKey',
     Unknown = 'unknown',
 }
