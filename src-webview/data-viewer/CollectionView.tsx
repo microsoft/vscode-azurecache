@@ -16,7 +16,6 @@ import { KeyContentsField } from './KeyContentsField';
 import { SelectableCollectionElement } from './SelectableCollectionElement';
 
 interface State {
-    currentIndex?: number;
     currentValue?: string;
     type?: CollectionType;
     key?: string;
@@ -54,6 +53,7 @@ export class CollectionView extends React.Component<{}, State> {
 
                 this.setState((prevState) => ({
                     // Clear previous data if clearCache is true
+                    currentValue: clearCache ? undefined : prevState.currentValue,
                     data: clearCache ? selectableData : [...prevState.data, ...selectableData],
                     hasMore,
                     isLoading: false,
@@ -80,11 +80,11 @@ export class CollectionView extends React.Component<{}, State> {
         // Need to update entire data because FluentUI's Basic List only re-renders based on changes in underlying 'data'
         const newData = this.state.data.map((val, idx) => {
             // De-select previously selected item
-            if (val.selected && idx !== index) {
+            if (val.selected) {
                 val.selected = false;
                 return val;
             }
-            // Select new item
+            // Select new item (if the clicked item was already selected, then it would have been de-selected above)
             if (index === idx) {
                 val.selected = true;
                 return val;
@@ -94,8 +94,7 @@ export class CollectionView extends React.Component<{}, State> {
         });
 
         this.setState({
-            currentValue: element.value,
-            currentIndex: index,
+            currentValue: element.selected ? element.value : undefined,
             data: newData,
         });
     };
@@ -128,8 +127,6 @@ export class CollectionView extends React.Component<{}, State> {
         }
 
         this.setState({
-            currentIndex: undefined,
-            currentValue: undefined,
             isLoading: true,
         });
 
