@@ -10,7 +10,7 @@ import { ErrorWebviewUninit, StrProperties } from '../Strings';
 import crypto = require('crypto');
 
 /**
- * Wrapper around a cache properties webview.
+ * Base webview class that handles the creation of webview panels and injecting the React JavaScript bundle into the webview.
  */
 export abstract class BaseWebview {
     protected webviewPanel?: vscode.WebviewPanel;
