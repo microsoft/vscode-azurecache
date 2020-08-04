@@ -59,7 +59,7 @@ export class CacheProperties extends React.Component<{}, State> {
             ) : null;
 
         return (
-            <div className="container">
+            <div className="properties-container">
                 <h2>
                     {redisResource.name} {Strings.StrProperties}
                 </h2>

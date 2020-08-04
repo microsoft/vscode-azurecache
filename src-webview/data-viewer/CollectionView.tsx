@@ -144,7 +144,7 @@ export class CollectionView extends React.Component<{}, State> {
         const { currentValue, data, hasMore, isLoading, type, key, size } = this.state;
 
         return (
-            <div className="container">
+            <div className="dataviewer-container">
                 <div className="list-container">
                     <h2>
                         {key} ({type})
