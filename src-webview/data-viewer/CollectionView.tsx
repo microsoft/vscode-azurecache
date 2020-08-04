@@ -155,6 +155,7 @@ export class CollectionView extends React.Component<{}, State> {
                     )}
 
                     <CollectionList
+                        isLoading={isLoading}
                         className="list-view"
                         data={data}
                         type={type}

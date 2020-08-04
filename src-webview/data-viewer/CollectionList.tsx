@@ -55,6 +55,7 @@ const classNames = mergeStyleSets({
 });
 
 interface Props {
+    isLoading: boolean;
     className?: string;
     data: SelectableCollectionElement[];
     type?: CollectionType;
@@ -97,7 +98,7 @@ export class CollectionList extends React.Component<Props, {}> {
     handleListScroll = (event: React.UIEvent<HTMLDivElement>): void => {
         const target = event.target as HTMLDivElement;
 
-        if (target.scrollHeight - target.scrollTop - target.clientHeight < 1) {
+        if (!this.props.isLoading && target.scrollHeight - target.scrollTop - target.clientHeight < 1) {
             this.props.onScrollToBottom?.();
         }
     };
