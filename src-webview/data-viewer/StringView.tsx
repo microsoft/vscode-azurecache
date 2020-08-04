@@ -39,7 +39,7 @@ export class StringView extends React.Component<{}, State> {
         }
 
         return (
-            <div className="container">
+            <div className="dataviewer-container">
                 <h2>{key} (string)</h2>
                 <KeyContentsField value={value} />
             </div>
