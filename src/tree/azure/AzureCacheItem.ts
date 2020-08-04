@@ -8,11 +8,11 @@ import {
     IActionContext,
     TreeItemIconPath,
 } from 'vscode-azureextensionui';
-import { CachePropsWebview } from '../../CachePropsWebview';
+import { CachePropsWebview } from '../../webview/CachePropsWebview';
 import { RedisClient } from '../../clients/RedisClient';
 import { RedisResourceClient } from '../../clients/RedisResourceClient';
 import { ExtVars } from '../../ExtensionVariables';
-import { ParsedRedisResource } from '../../parsed/ParsedRedisResource';
+import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
 import { ErrorEmptyCache } from '../../Strings';
 import * as ResourceUtils from '../../utils/ResourceUtils';
 import { KeyFilterItem } from '../filter/KeyFilterItem';
@@ -27,7 +27,7 @@ import path = require('path');
  */
 export class AzureCacheItem extends AzureParentTreeItem implements FilterParentItem {
     public static contextValue = 'redisCache';
-    public static commandId = 'azureCache.viewCacheInfoReact';
+    private static commandId = 'azureCache.viewCacheProps';
 
     private filterExpr: string;
     private isClustered: boolean;
@@ -152,10 +152,14 @@ export class AzureCacheItem extends AzureParentTreeItem implements FilterParentI
     }
 
     public showCacheProperties(): void {
-        this.webview.reveal(this.parsedRedisResource);
+        this.webview.reveal(this.parsedRedisResource.name, this.parsedRedisResource);
     }
 
     public async getConnectionString(): Promise<string | undefined> {
         return ResourceUtils.getConnectionString(this.parsedRedisResource);
+    }
+
+    public disposeWebview(): void {
+        this.webview.dispose();
     }
 }

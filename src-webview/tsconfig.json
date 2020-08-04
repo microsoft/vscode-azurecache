@@ -1,0 +1,14 @@
+{
+    "extends": "../tsconfig-base.json",
+    "compilerOptions": {
+        "jsx": "react",
+        "lib": [
+            "dom",
+            "es6"
+        ],
+        "strict": true
+    },
+    "references": [
+        { "path": "../src-shared" }
+    ]
+}

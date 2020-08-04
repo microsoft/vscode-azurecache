@@ -19,7 +19,7 @@ import { RedisZSetItem } from './RedisZSetItem';
  * Tree item for a database in a non-clustered cache.
  */
 export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
-    public static readonly contextValue = 'redisDb';
+    private static readonly contextValue = 'redisDb';
 
     private filterExpr = '*';
     private scanCursor?: string = '0';

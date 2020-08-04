@@ -2,25 +2,36 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from 'vscode';
-import { AzExtTreeItem, IActionContext, TreeItemIconPath } from 'vscode-azureextensionui';
+import { TreeItemIconPath } from 'vscode-azureextensionui';
+import { CollectionElement } from '../../../src-shared/CollectionElement';
 import { RedisClient } from '../../clients/RedisClient';
+import { CollectionWebview } from '../../webview/CollectionWebview';
 import { CollectionKeyItem } from '../CollectionKeyItem';
-import { HashFieldFilterItem } from '../filter/HashFieldFilterItem';
 import { FilterParentItem } from '../FilterParentItem';
-import { RedisHashElemItem } from './RedisHashElemItem';
 
 /**
  * Tree item for a hash.
  */
 export class RedisHashItem extends CollectionKeyItem implements FilterParentItem {
-    public static readonly contextValue = 'redisHashItem';
-    public static readonly description = '(hash)';
+    private static readonly commandId = 'azureCache.viewHash';
+    private static readonly contextValue = 'redisHashItem';
+    private static readonly description = '(hash)';
+    private static readonly incrementCount = 10;
 
+    protected webview: CollectionWebview = new CollectionWebview(this, 'hash');
     private filterExpr = '*';
     private scanCursor?: string = '0';
 
     get contextValue(): string {
         return RedisHashItem.contextValue;
+    }
+
+    get commandId(): string {
+        return RedisHashItem.commandId;
+    }
+
+    get commandArgs(): unknown[] {
+        return [this];
     }
 
     get description(): string {
@@ -35,10 +46,15 @@ export class RedisHashItem extends CollectionKeyItem implements FilterParentItem
         return this.key;
     }
 
+    public async getSize(): Promise<number> {
+        const client = await RedisClient.connectToRedisResource(this.parsedRedisResource);
+        return client.hlen(this.key, this.db);
+    }
+
     /**
      * Loads additional hash elements as children by running the HSCAN command and keeping track of the current cursor.
      */
-    public async loadMoreChildrenImpl(clearCache: boolean, context: IActionContext): Promise<AzExtTreeItem[]> {
+    public async loadNextChildren(clearCache: boolean): Promise<CollectionElement[]> {
         if (clearCache) {
             this.scanCursor = '0';
         }
@@ -49,49 +65,43 @@ export class RedisHashItem extends CollectionKeyItem implements FilterParentItem
 
         const client = await RedisClient.connectToRedisResource(this.parsedRedisResource);
 
-        // Sometimes SCAN returns no results, so continue SCANNING until we receive results or we reach the end
         let curCursor = this.scanCursor;
-        let scannedFields: string[] = [];
+        const scannedFields: string[] = [];
 
+        // Keep scanning until a total of at least 10 elements have been returned
+        // TODO: This can be optimized by sending data to webview after each SCAN instead of waiting until all SCANs have completed
         do {
-            [curCursor, scannedFields] = await client.hscan(this.key, curCursor, 'MATCH', this.filterExpr, this.db);
-        } while (curCursor !== '0' && scannedFields.length === 0);
+            const result = await client.hscan(this.key, curCursor, 'MATCH', this.filterExpr, this.db);
+            curCursor = result[0];
+            scannedFields.push(...result[1]);
+            // scannedFields contains field name and value, so divide by 2 to get number of values scanned
+        } while (curCursor !== '0' && scannedFields.length / 2 < RedisHashItem.incrementCount);
 
         this.scanCursor = curCursor === '0' ? undefined : curCursor;
 
-        const treeItems = [];
+        const collectionElements: CollectionElement[] = [];
         let field = '';
 
-        // hscan returns a single list alternating between the hash field name and the hash field value
+        // HSCAN returns a single list alternating between the hash field name and the hash field value
         for (let index = 0; index < scannedFields.length; index++) {
             if (index % 2 === 0) {
                 // Even indices contain the hash field name
                 field = scannedFields[index];
             } else {
                 // Odd indices contain the hash field value
-                treeItems.push(new RedisHashElemItem(this, field, scannedFields[index]));
+                const collectionElement = {
+                    id: field,
+                    value: scannedFields[index],
+                } as CollectionElement;
+                collectionElements.push(collectionElement);
             }
         }
 
-        if (clearCache || this.scanCursor === '0') {
-            treeItems.push(new HashFieldFilterItem(this));
-        }
-
-        return treeItems;
+        return collectionElements;
     }
 
-    public hasMoreChildrenImpl(): boolean {
+    public hasNextChildren(): boolean {
         return typeof this.scanCursor === 'string';
-    }
-
-    public compareChildrenImpl(item1: AzExtTreeItem, item2: AzExtTreeItem): number {
-        if (item1 instanceof HashFieldFilterItem) {
-            return -1;
-        } else if (item2 instanceof HashFieldFilterItem) {
-            return 1;
-        }
-
-        return 0;
     }
 
     public getFilter(): string {
@@ -101,7 +111,11 @@ export class RedisHashItem extends CollectionKeyItem implements FilterParentItem
     public updateFilter(filterExpr: string): void {
         if (this.filterExpr !== filterExpr) {
             this.filterExpr = filterExpr;
-            this.refresh();
         }
+    }
+
+    public reset(): void {
+        this.filterExpr = '*';
+        this.scanCursor = '0';
     }
 }

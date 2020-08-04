@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { ParsedRedisResource } from './ParsedRedisResource';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 
 /**
  * The response of list Redis operation, which uses the ParsedRedisResource wrapper.

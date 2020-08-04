@@ -19,8 +19,8 @@ import { RedisZSetItem } from './RedisZSetItem';
  * Tree item for a shard in a clustered cache.
  */
 export class RedisClusterNodeItem extends KeyContainerItem {
-    public static readonly contextValue = 'redisClusterNode';
-    public static readonly description = '(node)';
+    private static readonly contextValue = 'redisClusterNode';
+    private static readonly description = '(node)';
 
     private scanCursor?: string;
     private shard?: number;

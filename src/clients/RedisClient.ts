@@ -4,7 +4,7 @@
 import * as IORedis from 'ioredis';
 import * as vscode from 'vscode';
 import { ExtVars } from '../ExtensionVariables';
-import { ParsedRedisResource } from '../parsed/ParsedRedisResource';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import * as Strings from '../Strings';
 
 /**
@@ -326,6 +326,10 @@ export class RedisClient {
         return this.exec((await this.getClient(db)).lindex(key, index));
     }
 
+    public async lrange(key: string, start: number, stop: number, db?: number): Promise<string[]> {
+        return this.exec((await this.getClient(db)).lrange(key, start, stop));
+    }
+
     public async info(section: string): Promise<string> {
         return this.exec((await this.getClient()).info(section));
     }
@@ -348,6 +352,10 @@ export class RedisClient {
         return this.exec((await this.getClient(db)).scan(cursor, matchOption, pattern));
     }
 
+    public async hlen(key: string, db?: number): Promise<number> {
+        return this.exec((await this.getClient(db)).hlen(key));
+    }
+
     public async hscan(
         key: string,
         cursor: number | string,
@@ -356,6 +364,10 @@ export class RedisClient {
         db?: number
     ): Promise<[string, string[]]> {
         return this.exec((await this.getClient(db)).hscan(key, cursor, matchOption, pattern));
+    }
+
+    public async scard(key: string, db?: number): Promise<number> {
+        return this.exec((await this.getClient(db)).scard(key));
     }
 
     public async sscan(

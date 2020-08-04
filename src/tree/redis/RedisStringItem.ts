@@ -9,9 +9,9 @@ import { KeyContentItem } from '../KeyContentItem';
  * Tree item for a string.
  */
 export class RedisStringItem extends KeyContentItem {
-    public static readonly contextValue = 'redisStringItem';
-    public static readonly commandId = 'azureCache.showStringItem';
-    public static readonly description = '(string)';
+    private static readonly contextValue = 'redisStringItem';
+    private static readonly commandId = 'azureCache.showStringItem';
+    private static readonly description = '(string)';
 
     get commandId(): string {
         return RedisStringItem.commandId;

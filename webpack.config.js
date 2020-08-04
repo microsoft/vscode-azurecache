@@ -13,7 +13,7 @@ const DEBUG_WEBPACK = !!process.env.DEBUG_WEBPACK;
 console.log('DEBUG_WEBPACK: ' + DEBUG_WEBPACK)
 
 const reactWebviewExports = {
-    entry: './webview-src/Index',
+    entry: './src-webview/Index',
     devtool: DEBUG_WEBPACK ? 'cheap-source-map' : 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -24,10 +24,9 @@ const reactWebviewExports = {
             {
                 test: /\.tsx?$/,
                 loader: 'babel-loader',
-                include: path.resolve(__dirname, 'webview-src'),
                 exclude: /node_modules/,
                 options: {
-                    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/typescript'],
+                    presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
                     plugins: ["@babel/transform-runtime", "@babel/plugin-proposal-class-properties"]
                 }
             },
@@ -49,7 +48,7 @@ const reactWebviewExports = {
             onEnd: {
                 copy: [
                     {
-                        source: path.join(__dirname, 'webview-src', 'fabric-icons', 'fonts', '*.woff'),
+                        source: path.join(__dirname, 'src-webview', 'fabric-icons', 'fonts', '*.woff'),
                         destination: path.join(__dirname, 'dist', 'fonts')
                     }
                 ]
@@ -112,7 +111,10 @@ const extExports = {
             {
                 test: /\.ts$/,
                 exclude: /node_modules/,
-                use: 'ts-loader'
+                loader: 'ts-loader',
+                options: {
+                    configFile: 'src/tsconfig.json'
+                }
             }
         ]
     }

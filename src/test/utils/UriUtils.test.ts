@@ -3,7 +3,7 @@
 
 import * as assert from 'assert';
 import * as vscode from 'vscode';
-import { ParsedRedisResource } from '../../parsed/ParsedRedisResource';
+import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
 import { createKeyContentUri, decodeUri } from '../../utils/UriUtils';
 
 describe('URI Utils', () => {

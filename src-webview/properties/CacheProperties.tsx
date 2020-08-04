@@ -3,20 +3,15 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
+import { WebviewCommand } from '../../src-shared/WebviewCommand';
+import { WebviewMessage } from '../../src-shared/WebviewMessage';
+import * as Strings from '../Strings';
 import { AccessKeyDropdown } from './AccessKeyDropdown';
 import { CollapsibleList } from './CollapsibleList';
 import { CopyableTextField } from './CopyableTextField';
-import { initializeIcons } from './fabric-icons/src';
 import { GeneralPropertyLabel } from './GeneralPropertyLabel';
-import { ParsedRedisResource } from './ParsedRedisResource';
-import * as Strings from './Strings';
 import './styles.css';
-
-interface Message {
-    key: string;
-    value: unknown;
-}
 
 interface State {
     redisResource?: ParsedRedisResource;
@@ -24,28 +19,27 @@ interface State {
     connectionString?: string;
 }
 
-class Index extends React.Component<{}, State> {
+export class CacheProperties extends React.Component<{}, State> {
     constructor(props: {}) {
         super(props);
         this.state = {
             redisResource: undefined,
             accessKey: undefined,
+            connectionString: undefined,
         };
     }
 
     componentDidMount(): void {
         window.addEventListener('message', (event) => {
-            const message: Message = event.data;
+            const message: WebviewMessage = event.data;
 
-            if (message.key === 'fontUri') {
-                initializeIcons(message.value as string);
-            } else if (message.key === 'parsedRedisResource') {
+            if (message.command === WebviewCommand.ParsedRedisResource) {
                 const parsedRedisResource = message.value as ParsedRedisResource;
                 this.setState({ redisResource: parsedRedisResource });
-            } else if (message.key === 'accessKey') {
+            } else if (message.command === WebviewCommand.AccessKey) {
                 const accessKey = message.value as string | undefined;
                 this.setState({ accessKey });
-            } else if (message.key === 'connectionString') {
+            } else if (message.command === WebviewCommand.ConnectionString) {
                 const connectionString = message.value as string | undefined;
                 this.setState({ connectionString });
             }
@@ -65,7 +59,7 @@ class Index extends React.Component<{}, State> {
             ) : null;
 
         return (
-            <div className="container">
+            <div className="properties-container">
                 <h2>
                     {redisResource.name} {Strings.StrProperties}
                 </h2>
@@ -91,5 +85,3 @@ class Index extends React.Component<{}, State> {
         );
     }
 }
-
-ReactDOM.render(<Index />, document.getElementById('app'));

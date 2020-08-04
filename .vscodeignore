@@ -16,6 +16,7 @@ node_modules/**
 img/**
 out/**
 src/**
-webview-src/**
+src-shared/**
+src-webview/**
 webpack.config.js
 build/**

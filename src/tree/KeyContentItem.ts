@@ -2,8 +2,7 @@
 // Licensed under the MIT License.
 
 import { AzExtTreeItem } from 'vscode-azureextensionui';
-import { ParsedRedisResource } from '../parsed/ParsedRedisResource';
-import { CollectionKeyItem } from './CollectionKeyItem';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { RedisClusterNodeItem } from './redis/RedisClusterNodeItem';
 import { RedisDbItem } from './redis/RedisDbItem';
 
@@ -26,7 +25,7 @@ export abstract class KeyContentItem extends AzExtTreeItem {
      */
     protected readonly key: string;
 
-    constructor(readonly parent: RedisDbItem | RedisClusterNodeItem | CollectionKeyItem, key: string) {
+    constructor(readonly parent: RedisDbItem | RedisClusterNodeItem, key: string) {
         super(parent);
         this.parsedRedisResource = parent.parsedRedisResource;
         this.db = parent.db;

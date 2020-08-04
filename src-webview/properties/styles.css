@@ -1,8 +1,11 @@
 /* Copyright (c) Microsoft Corporation.
    Licensed under the MIT License. */
 
-.container {
-    margin-bottom: 12px;
+.properties-container {
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
 }
 
 .indented {
@@ -16,6 +19,10 @@
 .ms-TextField-field {
     color: var(--vscode-editor-foreground);
     background-color: var(--vscode-editor-background);
+}
+
+.ms-TextField-field:disabled {
+    background-color: var(--vscode-list-inactiveSelectionBackground);
 }
 
 .ms-TextField-fieldGroup {

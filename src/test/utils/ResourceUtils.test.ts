@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import * as assert from 'assert';
-import { ParsedRedisResource } from '../../parsed/ParsedRedisResource';
+import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
 import { getConnectionString } from '../../utils/ResourceUtils';
 
 describe('ResourceUtils', () => {

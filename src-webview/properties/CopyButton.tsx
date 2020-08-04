@@ -3,7 +3,7 @@
 
 import { IconButton, IIconProps } from '@fluentui/react/lib/';
 import * as React from 'react';
-import { StrCopy } from './Strings';
+import { StrCopy } from '../Strings';
 
 const copyIcon: IIconProps = { iconName: 'Copy' };
 

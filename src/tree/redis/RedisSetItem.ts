@@ -2,24 +2,34 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from 'vscode';
-import { AzExtTreeItem, IActionContext, TreeItemIconPath } from 'vscode-azureextensionui';
+import { TreeItemIconPath } from 'vscode-azureextensionui';
 import { RedisClient } from '../../clients/RedisClient';
+import { CollectionElement } from '../../../src-shared/CollectionElement';
+import { CollectionWebview } from '../../webview/CollectionWebview';
 import { CollectionKeyItem } from '../CollectionKeyItem';
-import { HashFieldFilterItem } from '../filter/HashFieldFilterItem';
-import { RedisSetElemItem } from './RedisSetElemItem';
 
 /**
  * Tree item for a set.
  */
 export class RedisSetItem extends CollectionKeyItem {
-    public static readonly contextValue = 'redisSetItem';
-    public static readonly description = '(set)';
+    private static readonly commandId = 'azureCache.viewSet';
+    private static readonly contextValue = 'redisSetItem';
+    private static readonly description = '(set)';
+    private static readonly incrementCount = 10;
 
-    private elementsShown = 0;
+    protected webview: CollectionWebview = new CollectionWebview(this, 'set');
     private scanCursor?: string = '0';
 
     get contextValue(): string {
         return RedisSetItem.contextValue;
+    }
+
+    get commandId(): string {
+        return RedisSetItem.commandId;
+    }
+
+    get commandArgs(): unknown[] {
+        return [this];
     }
 
     get description(): string {
@@ -34,13 +44,17 @@ export class RedisSetItem extends CollectionKeyItem {
         return this.key;
     }
 
+    public async getSize(): Promise<number> {
+        const client = await RedisClient.connectToRedisResource(this.parsedRedisResource);
+        return client.scard(this.key, this.db);
+    }
+
     /**
      * Loads additional set elements as children by running the SSCAN command and keeping track of the current cursor.
      */
-    public async loadMoreChildrenImpl(clearCache: boolean, context: IActionContext): Promise<AzExtTreeItem[]> {
+    public async loadNextChildren(clearCache: boolean): Promise<CollectionElement[]> {
         if (clearCache) {
             this.scanCursor = '0';
-            this.elementsShown = 0;
         }
 
         if (typeof this.scanCursor === 'undefined') {
@@ -51,33 +65,25 @@ export class RedisSetItem extends CollectionKeyItem {
 
         // Sometimes SCAN returns no results, so continue SCANNING until we receive results or we reach the end
         let curCursor = this.scanCursor;
-        let scannedElems: string[] = [];
+        const scannedElems: string[] = [];
 
         do {
-            [curCursor, scannedElems] = await client.sscan(this.key, curCursor, 'MATCH', '*', this.db);
-        } while (curCursor !== '0' && scannedElems.length === 0);
+            const result = await client.sscan(this.key, curCursor, 'MATCH', '*', this.db);
+            curCursor = result[0];
+            scannedElems.push(...result[1]);
+        } while (curCursor !== '0' && scannedElems.length < RedisSetItem.incrementCount);
 
         this.scanCursor = curCursor === '0' ? undefined : curCursor;
 
-        const treeItems = scannedElems.map(
-            (elem, index) => new RedisSetElemItem(this, this.elementsShown + index, elem)
-        );
-
-        this.elementsShown += scannedElems.length;
-        return treeItems;
+        const collectionElements = scannedElems.map((element) => {
+            return {
+                value: element,
+            } as CollectionElement;
+        });
+        return collectionElements;
     }
 
-    public hasMoreChildrenImpl(): boolean {
+    public hasNextChildren(): boolean {
         return typeof this.scanCursor === 'string';
-    }
-
-    public compareChildrenImpl(item1: AzExtTreeItem, item2: AzExtTreeItem): number {
-        if (item1 instanceof HashFieldFilterItem) {
-            return -1;
-        } else if (item2 instanceof HashFieldFilterItem) {
-            return 1;
-        }
-
-        return 0;
     }
 }

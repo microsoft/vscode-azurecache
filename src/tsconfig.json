@@ -1,0 +1,12 @@
+{
+    "extends": "../tsconfig-base.json",
+    "compilerOptions": {
+        "lib": [
+            "es6"
+        ],
+        "strict": true
+    },
+    "references": [
+        { "path": "../src-shared" }
+    ]
+}

@@ -1,11 +1,12 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { ITooltipHostStyles, Stack, TextField, TooltipDelay, TooltipHost, IStackTokens } from '@fluentui/react/lib/';
+import { IStackTokens, ITooltipHostStyles, Stack, TextField, TooltipDelay, TooltipHost } from '@fluentui/react/lib/';
 import * as React from 'react';
+import { WebviewCommand } from '../../src-shared/WebviewCommand';
+import { StrCopied, StrCopyToClipboard } from '../Strings';
+import { vscode } from '../vscode';
 import { CopyButton } from './CopyButton';
-import { StrCopied, StrCopyToClipboard } from './Strings';
-import { vscode } from './vscode';
 
 interface State {
     showClicked: boolean;
@@ -31,8 +32,8 @@ export class CopyableTextField extends React.Component<Props, State> {
     onClick = (): void => {
         if (this.props.value) {
             vscode.postMessage({
-                command: 'copy',
-                text: this.props.value.toString(),
+                command: WebviewCommand.CopyText,
+                value: this.props.value.toString(),
             });
             this.setState({
                 showClicked: true,

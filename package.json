@@ -32,10 +32,10 @@
     "scripts": {
         "vscode:prepublish": "webpack --mode production",
         "clean": "rimraf out/ dist/",
-        "compile": "rimraf out/ && tsc -p ./",
-        "lint": "eslint src --ext .ts && eslint webview-src --ext .ts,.tsx",
+        "compile": "rimraf out/ && tsc -p ./tsconfig-test.json",
+        "lint": "eslint src src-shared src-webview --ext .ts,.tsx",
         "pretest": "npm run compile && npm run lint",
-        "test": "node ./out/test/runTest.js",
+        "test": "node ./out/src/test/runTest.js",
         "watch": "webpack --mode development --watch --info-verbosity verbose",
         "package": "vsce package --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
         "publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/"
@@ -75,6 +75,11 @@
                     "group": "9_refresh"
                 },
                 {
+                    "command": "azureCache.refresh",
+                    "when": "view == azureCache && viewItem == redisCache || viewItem == redisDb || viewItem == redisClusterNode || viewItem == redisListItem  || viewItem == redisHashItem || viewItem == redisSetItem || viewItem == redisZSetItem",
+                    "group": "9_refresh"
+                },
+                {
                     "command": "azureCache.setKeyFilter",
                     "when": "view == azureCache && viewItem == redisDb",
                     "group": "inline"
@@ -88,21 +93,6 @@
                     "command": "azureCache.copyConnectionString",
                     "when": "view == azureCache && viewItem =~ /redisCache/",
                     "group": "5_portal"
-                },
-                {
-                    "command": "azureCache.refresh",
-                    "when": "view == azureCache && viewItem == redisCache",
-                    "group": "9_refresh"
-                },
-                {
-                    "command": "azureCache.refresh",
-                    "when": "view == azureCache && viewItem == redisDb",
-                    "group": "9_refresh"
-                },
-                {
-                    "command": "azureCache.refresh",
-                    "when": "view == azureCache && viewItem == redisClusterNode",
-                    "group": "9_refresh"
                 }
             ],
             "commandPalette": [
@@ -119,27 +109,7 @@
                     "when": "never"
                 },
                 {
-                    "command": "azureCache.setHashFieldFilter",
-                    "when": "never"
-                },
-                {
                     "command": "azureCache.showStringItem",
-                    "when": "never"
-                },
-                {
-                    "command": "azureCache.showHashItem",
-                    "when": "never"
-                },
-                {
-                    "command": "azureCache.showListItem",
-                    "when": "never"
-                },
-                {
-                    "command": "azureCache.showSetItem",
-                    "when": "never"
-                },
-                {
-                    "command": "azureCache.showZSetItem",
                     "when": "never"
                 },
                 {
@@ -151,7 +121,23 @@
                     "when": "never"
                 },
                 {
-                    "command": "azureCache.viewCacheInfoReact",
+                    "command": "azureCache.viewCacheProps",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.viewList",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.viewHash",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.viewSet",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.viewZSet",
                     "when": "never"
                 }
             ]
@@ -180,33 +166,8 @@
                 "icon": "$(filter)"
             },
             {
-                "command": "azureCache.setHashFieldFilter",
-                "title": "Set hash field filter",
-                "category": "Azure Cache"
-            },
-            {
                 "command": "azureCache.showStringItem",
                 "title": "Show string item",
-                "category": "Azure Cache"
-            },
-            {
-                "command": "azureCache.showHashItem",
-                "title": "Show hash item",
-                "category": "Azure Cache"
-            },
-            {
-                "command": "azureCache.showListItem",
-                "title": "Show list item",
-                "category": "Azure Cache"
-            },
-            {
-                "command": "azureCache.showSetItem",
-                "title": "Show set item",
-                "category": "Azure Cache"
-            },
-            {
-                "command": "azureCache.showZSetItem",
-                "title": "Show zset item",
                 "category": "Azure Cache"
             },
             {
@@ -220,8 +181,28 @@
                 "category": "Azure Cache"
             },
             {
-                "command": "azureCache.viewCacheInfoReact",
-                "title": "View cache info",
+                "command": "azureCache.viewCacheProps",
+                "title": "View cache properties",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.viewList",
+                "title": "View list",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.viewHash",
+                "title": "View hash",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.viewSet",
+                "title": "View set",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.viewZSet",
+                "title": "View sorted set",
                 "category": "Azure Cache"
             }
         ]

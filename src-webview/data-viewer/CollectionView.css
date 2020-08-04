@@ -1,0 +1,26 @@
+/* Copyright (c) Microsoft Corporation.
+   Licensed under the MIT License. */
+
+.dataviewer-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+}
+
+.list-container {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ms-Button-flexContainer {
+    height: inherit;
+}
+
+.list-view {
+    margin-top: 10px;
+}

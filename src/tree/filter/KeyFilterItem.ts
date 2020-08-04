@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from 'vscode';
-import { AzExtTreeItem, TreeItemIconPath } from 'vscode-azureextensionui';
+import { AzExtTreeItem, TreeItemIconPath, AzExtParentTreeItem } from 'vscode-azureextensionui';
 import { StrKeyFilter } from '../../Strings';
 import { FilterParentItem } from '../FilterParentItem';
 
@@ -10,10 +10,10 @@ import { FilterParentItem } from '../FilterParentItem';
  * Tree item for a key filter.
  */
 export class KeyFilterItem extends AzExtTreeItem {
-    public static readonly contextValue = 'keyFilterItem';
-    public static readonly commandId = 'azureCache.setKeyFilter';
+    private static readonly contextValue = 'keyFilterItem';
+    private static readonly commandId = 'azureCache.setKeyFilter';
 
-    constructor(readonly parent: FilterParentItem) {
+    constructor(readonly parent: AzExtParentTreeItem & FilterParentItem) {
         super(parent);
     }
 

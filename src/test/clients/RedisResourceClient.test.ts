@@ -9,7 +9,7 @@ import { ServiceClientCredentials } from 'ms-rest';
 import * as sinon from 'sinon';
 import { stubInterface } from 'ts-sinon';
 import { RedisResourceClient } from '../../clients/RedisResourceClient';
-import { ParsedRedisResource } from '../../parsed/ParsedRedisResource';
+import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
 
 describe('RedisResourceClient', () => {
     let sandbox: sinon.SinonSandbox;

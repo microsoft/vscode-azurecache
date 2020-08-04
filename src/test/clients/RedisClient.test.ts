@@ -3,7 +3,7 @@
 
 import * as assert from 'assert';
 import * as sinon from 'sinon';
-import { ParsedRedisResource } from '../../parsed/ParsedRedisResource';
+import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
 import { TestRedisClient } from './TestRedisClient';
 
 describe('RedisClient', () => {
