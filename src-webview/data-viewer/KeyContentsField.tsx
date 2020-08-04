@@ -14,6 +14,7 @@ export function KeyContentsField(props: Props): React.ReactElement {
     return (
         <div className="content-container">
             <TextField
+                className="contents-field"
                 inputClassName="contents-input"
                 label={StrContents}
                 multiline

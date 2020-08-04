@@ -7,6 +7,10 @@
     flex: 1;
 }
 
+.contents-field {
+    margin-bottom: 10px;
+}
+
 .contents-input {
     font-family: var(--vscode-editor-font-family);
     overflow-y: auto;

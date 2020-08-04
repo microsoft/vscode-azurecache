@@ -26,6 +26,6 @@ export const StrCopied = 'Copied';
 export const StrCopyToClipboard = 'Copy to clipboard';
 
 export const StrContents = 'Contents';
-export const StrLoadMore = 'Copy';
+export const StrLoadMore = 'Load More';
 
 export const StrHashFieldFilter = 'Hash field filter';
