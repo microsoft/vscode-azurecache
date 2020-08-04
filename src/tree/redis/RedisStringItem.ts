@@ -2,20 +2,30 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from 'vscode';
-import { TreeItemIconPath } from 'vscode-azureextensionui';
+import { AzExtTreeItem, TreeItemIconPath } from 'vscode-azureextensionui';
+import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
 import { RedisClient } from '../../clients/RedisClient';
 import { StringWebview } from '../../webview/StringWebview';
-import { KeyContentItem } from '../KeyContentItem';
+import { RedisClusterNodeItem } from './RedisClusterNodeItem';
+import { RedisDbItem } from './RedisDbItem';
 
 /**
  * Tree item for a string.
  */
-export class RedisStringItem extends KeyContentItem {
+export class RedisStringItem extends AzExtTreeItem {
     private static readonly contextValue = 'redisStringItem';
     private static readonly commandId = 'azureCache.viewString';
     private static readonly description = '(string)';
 
     private readonly webview = new StringWebview(this, this.key);
+    private readonly parsedRedisResource: ParsedRedisResource;
+    private readonly db?: number;
+
+    constructor(readonly parent: RedisDbItem | RedisClusterNodeItem, private readonly key: string) {
+        super(parent);
+        this.parsedRedisResource = parent.parsedRedisResource;
+        this.db = parent.db;
+    }
 
     get commandId(): string {
         return RedisStringItem.commandId;

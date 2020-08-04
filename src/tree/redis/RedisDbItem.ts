@@ -5,7 +5,7 @@ import { ThemeIcon } from 'vscode';
 import { AzExtTreeItem, IActionContext, TreeItemIconPath } from 'vscode-azureextensionui';
 import { RedisClient } from '../../clients/RedisClient';
 import { StrDatabaseAbbrv } from '../../Strings';
-import { KeyFilterItem } from '../filter/KeyFilterItem';
+import { KeyFilterItem } from '../KeyFilterItem';
 import { FilterParentItem } from '../FilterParentItem';
 import { KeyContainerItem } from '../KeyContainerItem';
 import { RedisHashItem } from './RedisHashItem';
