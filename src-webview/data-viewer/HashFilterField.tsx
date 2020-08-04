@@ -1,24 +1,31 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import * as React from 'react';
 import {
-    TextField,
-    IRenderFunction,
-    ITextFieldProps,
-    Stack,
-    Spinner,
-    SpinnerSize,
     Async,
     ICancelable,
+    IRenderFunction,
+    ITextFieldProps,
+    Spinner,
+    SpinnerSize,
+    Stack,
+    TextField,
+    IStackTokens,
 } from '@fluentui/react';
+import * as React from 'react';
+import { StrHashFieldFilter } from '../Strings';
 
 interface Props {
     isLoading: boolean;
     onChange: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string | undefined) => void;
 }
 
+const stackTokens: IStackTokens = {
+    childrenGap: 5,
+};
+
 export class HashFilterField extends React.Component<Props> {
+    // Delays execution of props.onChange until X seconds has elapsed since last time debouncedOnChange was called
     debouncedOnChange: ICancelable<
         (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string | undefined) => void
     > &
@@ -26,7 +33,8 @@ export class HashFilterField extends React.Component<Props> {
     constructor(props: Props) {
         super(props);
         const _async = new Async(this);
-        this.debouncedOnChange = _async.debounce(this.props.onChange, 1000);
+        // Set timeout of 800 milliseconds
+        this.debouncedOnChange = _async.debounce(this.props.onChange, 800);
     }
 
     onWrapDefaultLabelRenderer = (
@@ -38,7 +46,7 @@ export class HashFilterField extends React.Component<Props> {
         }
         const { isLoading } = this.props;
         return (
-            <Stack horizontal verticalAlign="center" gap={5} tokens={{}}>
+            <Stack horizontal verticalAlign="center" tokens={stackTokens}>
                 <span>{defaultRender(props)}</span>
                 {isLoading && <Spinner size={SpinnerSize.small} />}
             </Stack>
@@ -50,7 +58,7 @@ export class HashFilterField extends React.Component<Props> {
         return (
             <TextField
                 className="filter-textfield"
-                label="Hash field filter"
+                label={StrHashFieldFilter}
                 disabled={isLoading}
                 onChange={this.debouncedOnChange}
                 onRenderLabel={this.onWrapDefaultLabelRenderer}
