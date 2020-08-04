@@ -24,3 +24,7 @@
 .list-view {
     margin-top: 10px;
 }
+
+.load-more-btn:disabled {
+    background-color: var(--vscode-editor-inactiveSelectionBackground);
+}
