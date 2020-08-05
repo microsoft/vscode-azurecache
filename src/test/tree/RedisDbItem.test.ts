@@ -65,9 +65,9 @@ describe('RedisDbItem', () => {
         // Stub SCAN calls
         const firstScanRes: [string, string[]] = ['1', ['key1', 'key2', 'key3']];
         const secondScanRes: [string, string[]] = ['0', ['key4']];
-        const hashStub = sandbox.stub(stubRedisClient, 'scan');
-        hashStub.withArgs('0', 'MATCH', '*', 0).resolves(firstScanRes);
-        hashStub.withArgs('1', 'MATCH', '*', 0).resolves(secondScanRes);
+        const scanStub = sandbox.stub(stubRedisClient, 'scan');
+        scanStub.withArgs('0', 'MATCH', '*', 0).resolves(firstScanRes);
+        scanStub.withArgs('1', 'MATCH', '*', 0).resolves(secondScanRes);
 
         // Stub TYPE calls
         sandbox.stub(stubRedisClient, 'type').resolves('string');
@@ -76,7 +76,7 @@ describe('RedisDbItem', () => {
         const redisDbItem = new RedisDbItem(cacheItem, 0);
         let childItems = await redisDbItem.loadMoreChildrenImpl(true, context);
 
-        // One of the child items is the hash filter item
+        // One of the child items is the filter item
         assert.strictEqual(childItems.length, 4);
         assert.strictEqual(childItems.filter((item) => item instanceof KeyFilterItem).length, 1);
         assert.strictEqual(childItems[0].label, 'key1');
@@ -98,8 +98,8 @@ describe('RedisDbItem', () => {
 
         // Stub SCAN call
         const scanRes: [string, string[]] = ['0', ['key1', 'key2', 'key3', 'key4', 'key5', 'key6']];
-        const hashStub = sandbox.stub(stubRedisClient, 'scan');
-        hashStub.withArgs('0', 'MATCH', '*', 0).resolves(scanRes);
+        const scanStub = sandbox.stub(stubRedisClient, 'scan');
+        scanStub.withArgs('0', 'MATCH', '*', 0).resolves(scanRes);
 
         // Stub TYPE calls, each returning a different type of tree item
         const typeStub = sandbox.stub(stubRedisClient, 'type');
