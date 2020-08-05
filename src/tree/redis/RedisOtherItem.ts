@@ -3,8 +3,7 @@
 
 import { ThemeIcon } from 'vscode';
 import { AzExtTreeItem, TreeItemIconPath } from 'vscode-azureextensionui';
-import { RedisClusterNodeItem } from './RedisClusterNodeItem';
-import { RedisDbItem } from './RedisDbItem';
+import { KeyContainerItem } from '../KeyContainerItem';
 
 /**
  * Tree item for any other datatypes.
@@ -13,11 +12,7 @@ export class RedisOtherItem extends AzExtTreeItem {
     private static readonly contextValue = 'redisOtherItem';
     private static readonly commandId = 'azureCache.showUnsupportedItem';
 
-    constructor(
-        parent: RedisDbItem | RedisClusterNodeItem,
-        private readonly key: string,
-        private readonly type: string
-    ) {
+    constructor(parent: KeyContainerItem, private readonly key: string, private readonly type: string) {
         super(parent);
     }
 
