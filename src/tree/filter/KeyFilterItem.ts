@@ -7,7 +7,10 @@ import { StrKeyFilter } from '../../Strings';
 import { FilterParentItem } from '../FilterParentItem';
 
 /**
- * Tree item for a key filter.
+ * Tree item for a key filter, which is used in two situations:
+ *
+ * 1. As a child element of AzureCacheItem if it's a clustered cache.
+ * 2. As a child element of RedisDbItem if it's a non-clustered cache.
  */
 export class KeyFilterItem extends AzExtTreeItem {
     private static readonly contextValue = 'keyFilterItem';
