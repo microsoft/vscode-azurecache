@@ -6,6 +6,7 @@ import { WebviewCommand } from '../../src-shared/WebviewCommand';
 import { WebviewMessage } from '../../src-shared/WebviewMessage';
 import { KeyContentsField } from './KeyContentsField';
 import './styles.css';
+import { localizeDataType } from './Util';
 
 interface State {
     key?: string;
@@ -40,7 +41,9 @@ export class StringView extends React.Component<{}, State> {
 
         return (
             <div className="dataviewer-container">
-                <h2>{key} (string)</h2>
+                <h2>
+                    {key} ({localizeDataType('string')})
+                </h2>
                 <KeyContentsField value={value} />
             </div>
         );

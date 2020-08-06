@@ -6,14 +6,15 @@ import * as React from 'react';
 import { CollectionWebviewData } from '../../src-shared/CollectionWebviewData';
 import { WebviewCommand } from '../../src-shared/WebviewCommand';
 import { WebviewMessage } from '../../src-shared/WebviewMessage';
-import { StrLoadMore } from '../Strings';
+import { StrLoadMore, StrSize } from '../Strings';
 import { vscode } from '../vscode';
 import { CollectionList } from './CollectionList';
 import { CollectionType } from './CollectionType';
-import './styles.css';
 import { HashFilterField } from './HashFilterField';
 import { KeyContentsField } from './KeyContentsField';
 import { SelectableCollectionElement } from './SelectableCollectionElement';
+import './styles.css';
+import { localizeDataType } from './Util';
 
 interface State {
     currentValue?: string;
@@ -147,9 +148,11 @@ export class CollectionView extends React.Component<{}, State> {
             <div className="dataviewer-container">
                 <div className="list-container">
                     <h2>
-                        {key} ({type})
+                        {key} ({localizeDataType(type)})
                     </h2>
-                    <h4 style={{ marginTop: 0, marginBottom: 5 }}>Size: {size}</h4>
+                    <h4 style={{ marginTop: 0, marginBottom: 5 }}>
+                        {StrSize}: {size}
+                    </h4>
                     {this.state.type === 'hash' && (
                         <HashFilterField onChange={this.onFilterChanged} isLoading={isLoading} />
                     )}
