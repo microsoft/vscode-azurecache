@@ -3,7 +3,7 @@
 **/.eslintignore
 **/.eslintrc.json
 **/.gitignore
-**/tsconfig.json
+**/tsconfig*.json
 *.vsix
 *.zip
 *.code-workspace
