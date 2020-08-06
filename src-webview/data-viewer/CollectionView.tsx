@@ -169,7 +169,6 @@ export class CollectionView extends React.Component<{}, State> {
                         className="load-more-btn"
                         disabled={!hasMore}
                         text={StrLoadMore}
-                        style={{ marginLeft: 'auto', marginRight: 0, marginTop: 5, textAlign: 'right' }}
                         onClick={this.loadMore}
                     />
                 </div>
