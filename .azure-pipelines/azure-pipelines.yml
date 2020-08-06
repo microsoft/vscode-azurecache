@@ -65,25 +65,28 @@ steps:
     rm NOTICE.txt
     cp build/NOTICE.txt NOTICE.txt
   displayName: 'Copy build NOTICE to root directory'
+  condition: eq(variables['Agent.OS'], 'Linux')
 
 - task: Npm@1
   displayName: 'Bundle extension and generate VSIX package'
   inputs:
     command: 'custom'
     customCommand: run package
+  condition: eq(variables['Agent.OS'], 'Linux')
 
 - task: CopyFiles@2
   displayName: 'Copy VSIX to staging'
   inputs:
     Contents: '**/*.vsix'
     TargetFolder: '$(build.artifactstagingdirectory)'
+  condition: eq(variables['Agent.OS'], 'Linux')
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish VSIX artifact'
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
     ArtifactName: vsix
-  condition: ne(variables['System.PullRequest.IsFork'], 'True')
+  condition: and(eq(variables['Agent.OS'], 'Linux'), ne(variables['System.PullRequest.IsFork'], 'True'))
 
 - task: Npm@1
   displayName: 'Publish extension to marketplace'
