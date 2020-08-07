@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 import { stubInterface } from 'ts-sinon';
+import { EventEmitter } from 'vscode';
 import { IActionContext } from 'vscode-azureextensionui';
 import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
 import { RedisClient } from '../../clients/RedisClient';
@@ -72,7 +73,8 @@ describe('RedisClusterNodeItem', () => {
         sandbox.stub(stubRedisClient, 'type').resolves('string');
 
         const context = stubInterface<IActionContext>();
-        const clusterNodeItem = new RedisClusterNodeItem(cacheItem, 'nodeId', 13000);
+        const eventEmitter = new EventEmitter<void>();
+        const clusterNodeItem = new RedisClusterNodeItem(cacheItem, eventEmitter, 'nodeId', 13000);
         let childItems = await clusterNodeItem.loadMoreChildrenImpl(true, context);
 
         assert.strictEqual(childItems.length, 3);
@@ -109,7 +111,8 @@ describe('RedisClusterNodeItem', () => {
         typeStub.withArgs('key6').resolves('other');
 
         const context = stubInterface<IActionContext>();
-        const clusterNodeItem = new RedisClusterNodeItem(cacheItem, 'nodeId', 13000);
+        const eventEmitter = new EventEmitter<void>();
+        const clusterNodeItem = new RedisClusterNodeItem(cacheItem, eventEmitter, 'nodeId', 13000);
         const childItems = await clusterNodeItem.loadMoreChildrenImpl(true, context);
 
         assert.strictEqual(childItems.length, 6);
