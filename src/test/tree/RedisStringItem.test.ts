@@ -51,29 +51,19 @@ describe('RedisStringItem', () => {
     const db = 3;
     const testDb = new RedisDbItem(cacheItem, db);
 
-    it('should return the value of the string key if it exists', async () => {
-        // Setup stubs
-        const stubRedisClient = new TestRedisClient();
-        sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
+    const theories = [null, 'value'];
+    theories.forEach((val) => {
+        it(`should return result of GET (${val})`, async () => {
+            const stubRedisClient = new TestRedisClient();
+            sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
 
-        // Stub GET call
-        sandbox.stub(stubRedisClient, 'get').withArgs('mystring', db).resolves('value');
+            // Stub GET call
+            const getStub = sandbox.stub(stubRedisClient, 'get');
+            getStub.withArgs('mystring', db).resolves(val);
 
-        const stringItem = new RedisStringItem(testDb, 'mystring');
-        const keyValue = await stringItem.getValue();
-        assert.strictEqual(keyValue, 'value');
-    });
-
-    it('should return null if the string key does not exist', async () => {
-        // Setup stubs
-        const stubRedisClient = new TestRedisClient();
-        sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
-
-        // Stub GET call
-        sandbox.stub(stubRedisClient, 'get').withArgs('mystring', db).resolves(null);
-
-        const stringItem = new RedisStringItem(testDb, 'mystring');
-        const keyValue = await stringItem.getValue();
-        assert.strictEqual(keyValue, null);
+            const stringItem = new RedisStringItem(testDb, 'mystring');
+            const keyValue = await stringItem.getValue();
+            assert.strictEqual(keyValue, val);
+        });
     });
 });
