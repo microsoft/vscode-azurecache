@@ -124,17 +124,26 @@ describe('RedisClient', () => {
         it('should return proper values when connected to cache', async () => {
             const client = await TestRedisClient.connectToRedisResource(sampleParsedRedisResource);
 
+            TestRedisClient.stubExecResponse('string');
+            assert.strictEqual(await client.type('someKey'), 'string');
+
             TestRedisClient.stubExecResponse('someValue');
             assert.strictEqual(await client.get('someKey', 0), 'someValue');
+
+            TestRedisClient.stubExecResponse(1);
+            assert.strictEqual(await client.llen('someKey'), 1);
 
             TestRedisClient.stubExecResponse('someValue');
             assert.strictEqual(await client.lindex('someKey', 0), 'someValue');
 
-            TestRedisClient.stubExecResponse(['0', ['someValue']]);
-            assert.deepStrictEqual(await client.scan('0', 'MATCH', '*', 0), ['0', ['someValue']]);
-            assert.deepStrictEqual(await client.hscan('someKey', '0', 'MATCH', '*', 0), ['0', ['someValue']]);
-            assert.deepStrictEqual(await client.sscan('someKey', '0', 'MATCH', '*', 0), ['0', ['someValue']]);
-            assert.deepStrictEqual(await client.zscan('someKey', '0', 'MATCH', '*', 0), ['0', ['someValue']]);
+            TestRedisClient.stubExecResponse(['a', 'b', 'c']);
+            assert.deepStrictEqual(await client.lrange('someKey', 0, 2, 0), ['a', 'b', 'c']);
+
+            TestRedisClient.stubExecResponse(5);
+            assert.strictEqual(await client.hlen('someKey', 0), 5);
+
+            TestRedisClient.stubExecResponse(2);
+            assert.strictEqual(await client.scard('someKey', 0), 2);
 
             TestRedisClient.stubExecResponse(1);
             assert.strictEqual(await client.zcard('someKey', 0), 1);
@@ -142,11 +151,11 @@ describe('RedisClient', () => {
             TestRedisClient.stubExecResponse(['someValue', '0']);
             assert.deepStrictEqual(await client.zrange('someKey', 0, 1), ['someValue', '0']);
 
-            TestRedisClient.stubExecResponse(1);
-            assert.strictEqual(await client.llen('someKey'), 1);
-
-            TestRedisClient.stubExecResponse('string');
-            assert.strictEqual(await client.type('someKey'), 'string');
+            TestRedisClient.stubExecResponse(['0', ['someValue']]);
+            assert.deepStrictEqual(await client.scan('0', 'MATCH', '*', 0), ['0', ['someValue']]);
+            assert.deepStrictEqual(await client.hscan('someKey', '0', 'MATCH', '*', 0), ['0', ['someValue']]);
+            assert.deepStrictEqual(await client.sscan('someKey', '0', 'MATCH', '*', 0), ['0', ['someValue']]);
+            assert.deepStrictEqual(await client.zscan('someKey', '0', 'MATCH', '*', 0), ['0', ['someValue']]);
         });
     });
 });

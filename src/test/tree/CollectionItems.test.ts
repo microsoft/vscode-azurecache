@@ -1,20 +1,23 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
-import { RedisClient } from '../clients/RedisClient';
-import { RedisResourceClient } from '../clients/RedisResourceClient';
-import { AzureCacheItem } from '../tree/azure/AzureCacheItem';
-import { AzureSubscriptionTreeItem } from '../tree/azure/AzureSubscriptionTreeItem';
-import { RedisDbItem } from '../tree/redis/RedisDbItem';
-import { RedisHashItem } from '../tree/redis/RedisHashItem';
-import { RedisListItem } from '../tree/redis/RedisListItem';
-import { RedisSetItem } from '../tree/redis/RedisSetItem';
-import { RedisZSetItem } from '../tree/redis/RedisZSetItem';
-import { TestRedisClient } from './clients/TestRedisClient';
+import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
+import { RedisClient } from '../../clients/RedisClient';
+import { RedisResourceClient } from '../../clients/RedisResourceClient';
+import { AzureCacheItem } from '../../tree/azure/AzureCacheItem';
+import { AzureSubscriptionTreeItem } from '../../tree/azure/AzureSubscriptionTreeItem';
+import { RedisDbItem } from '../../tree/redis/RedisDbItem';
+import { RedisHashItem } from '../../tree/redis/RedisHashItem';
+import { RedisListItem } from '../../tree/redis/RedisListItem';
+import { RedisSetItem } from '../../tree/redis/RedisSetItem';
+import { RedisZSetItem } from '../../tree/redis/RedisZSetItem';
+import { TestRedisClient } from '../clients/TestRedisClient';
 import sinon = require('sinon');
 import assert = require('assert');
 
+/**
+ * Tests for collection type tree items (list, hash, set, zset).
+ */
 describe('CollectionItems', () => {
     let sandbox: sinon.SinonSandbox;
 

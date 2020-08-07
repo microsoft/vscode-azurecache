@@ -8,12 +8,6 @@ import { StrDatabaseAbbrv } from '../../Strings';
 import { KeyFilterItem } from '../KeyFilterItem';
 import { FilterParentItem } from '../FilterParentItem';
 import { KeyContainerItem } from '../KeyContainerItem';
-import { RedisHashItem } from './RedisHashItem';
-import { RedisListItem } from './RedisListItem';
-import { RedisOtherItem } from './RedisOtherItem';
-import { RedisSetItem } from './RedisSetItem';
-import { RedisStringItem } from './RedisStringItem';
-import { RedisZSetItem } from './RedisZSetItem';
 
 /**
  * Tree item for a database in a non-clustered cache.
@@ -60,7 +54,7 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
         } while (curCursor !== '0' && scannedKeys.length === 0);
 
         this.scanCursor = curCursor === '0' ? undefined : curCursor;
-        const treeItems = await Promise.all(scannedKeys.map(async (key) => this.createLocalRedisKey(client, key)));
+        const treeItems = await Promise.all(scannedKeys.map(async (key) => this.createKeyItem(client, key)));
 
         if (clearCache || this.scanCursor === '0') {
             treeItems.push(new KeyFilterItem(this));
@@ -81,24 +75,6 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
         }
 
         return 0;
-    }
-
-    private async createLocalRedisKey(client: RedisClient, key: string): Promise<AzExtTreeItem> {
-        const type = await client.type(key, this.db);
-
-        if (type === 'string') {
-            return new RedisStringItem(this, key);
-        } else if (type === 'list') {
-            return new RedisListItem(this, key);
-        } else if (type === 'hash') {
-            return new RedisHashItem(this, key);
-        } else if (type === 'set') {
-            return new RedisSetItem(this, key);
-        } else if (type === 'zset') {
-            return new RedisZSetItem(this, key);
-        } else {
-            return new RedisOtherItem(this, key, type);
-        }
     }
 
     public getFilter(): string {

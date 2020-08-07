@@ -5,8 +5,7 @@ import { AzExtTreeItem } from 'vscode-azureextensionui';
 import { CollectionElement } from '../../src-shared/CollectionElement';
 import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { CollectionWebview } from '../webview/CollectionWebview';
-import { RedisClusterNodeItem } from './redis/RedisClusterNodeItem';
-import { RedisDbItem } from './redis/RedisDbItem';
+import { KeyContainerItem } from './KeyContainerItem';
 
 /**
  * Base class for tree items that represent a collection-type key, like lists, sets, and hashes.
@@ -25,7 +24,7 @@ export abstract class CollectionKeyItem extends AzExtTreeItem {
      */
     protected abstract readonly webview: CollectionWebview;
 
-    constructor(readonly parent: RedisDbItem | RedisClusterNodeItem, readonly key: string) {
+    constructor(readonly parent: KeyContainerItem, readonly key: string) {
         super(parent);
         this.parsedRedisResource = parent.parsedRedisResource;
         this.db = parent.db;

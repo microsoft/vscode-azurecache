@@ -313,27 +313,9 @@ export class RedisClient {
         return lastCmdResult[1] as T;
     }
 
-    public async getClusterNodeOptions(clusterNodeId: string): Promise<IORedis.RedisOptions> {
-        const client = (await this.getClient(clusterNodeId)) as IORedis.Pipeline;
-        return client.options;
-    }
-
-    public async get(key: string, db?: number): Promise<string | null> {
-        return this.exec((await this.getClient(db)).get(key));
-    }
-
-    public async lindex(key: string, index: number, db?: number): Promise<string> {
-        return this.exec((await this.getClient(db)).lindex(key, index));
-    }
-
-    public async lrange(key: string, start: number, stop: number, db?: number): Promise<string[]> {
-        return this.exec((await this.getClient(db)).lrange(key, start, stop));
-    }
-
-    public async info(section: string): Promise<string> {
-        return this.exec((await this.getClient()).info(section));
-    }
-
+    /**
+     * Client commands.
+     */
     public async clusterScan(
         clusterNodeId: string,
         cursor: number | string,
@@ -343,13 +325,25 @@ export class RedisClient {
         return this.exec((await this.getClient(clusterNodeId)).scan(cursor, matchOption, pattern));
     }
 
-    public async scan(
-        cursor: number | string,
-        matchOption: 'match' | 'MATCH',
-        pattern: string,
-        db?: number
-    ): Promise<[string, string[]]> {
-        return this.exec((await this.getClient(db)).scan(cursor, matchOption, pattern));
+    public async get(key: string, db?: number): Promise<string | null> {
+        return this.exec((await this.getClient(db)).get(key));
+    }
+
+    public async getClusterNodeOptions(clusterNodeId: string): Promise<IORedis.RedisOptions> {
+        const client = (await this.getClient(clusterNodeId)) as IORedis.Pipeline;
+        return client.options;
+    }
+
+    public async info(section: string): Promise<string> {
+        return this.exec((await this.getClient()).info(section));
+    }
+
+    public async lindex(key: string, index: number, db?: number): Promise<string> {
+        return this.exec((await this.getClient(db)).lindex(key, index));
+    }
+
+    public async lrange(key: string, start: number, stop: number, db?: number): Promise<string[]> {
+        return this.exec((await this.getClient(db)).lrange(key, start, stop));
     }
 
     public async hlen(key: string, db?: number): Promise<number> {
@@ -366,6 +360,19 @@ export class RedisClient {
         return this.exec((await this.getClient(db)).hscan(key, cursor, matchOption, pattern));
     }
 
+    public async llen(key: string, db?: number): Promise<number> {
+        return this.exec((await this.getClient(db)).llen(key));
+    }
+
+    public async scan(
+        cursor: number | string,
+        matchOption: 'match' | 'MATCH',
+        pattern: string,
+        db?: number
+    ): Promise<[string, string[]]> {
+        return this.exec((await this.getClient(db)).scan(cursor, matchOption, pattern));
+    }
+
     public async scard(key: string, db?: number): Promise<number> {
         return this.exec((await this.getClient(db)).scard(key));
     }
@@ -380,14 +387,8 @@ export class RedisClient {
         return this.exec((await this.getClient(db)).sscan(key, cursor, matchOption, pattern));
     }
 
-    public async zscan(
-        key: string,
-        cursor: number | string,
-        matchOption: 'match' | 'MATCH',
-        pattern: string,
-        db?: number
-    ): Promise<[string, string[]]> {
-        return this.exec((await this.getClient(db)).zscan(key, cursor, matchOption, pattern));
+    public async type(key: string, db?: number): Promise<string> {
+        return this.exec((await this.getClient(db)).type(key));
     }
 
     public async zcard(key: string, db?: number): Promise<number> {
@@ -398,11 +399,13 @@ export class RedisClient {
         return this.exec((await this.getClient(db)).zrange(key, start, stop, 'WITHSCORES'));
     }
 
-    public async llen(key: string, db?: number): Promise<number> {
-        return this.exec((await this.getClient(db)).llen(key));
-    }
-
-    public async type(key: string, db?: number): Promise<string> {
-        return this.exec((await this.getClient(db)).type(key));
+    public async zscan(
+        key: string,
+        cursor: number | string,
+        matchOption: 'match' | 'MATCH',
+        pattern: string,
+        db?: number
+    ): Promise<[string, string[]]> {
+        return this.exec((await this.getClient(db)).zscan(key, cursor, matchOption, pattern));
     }
 }

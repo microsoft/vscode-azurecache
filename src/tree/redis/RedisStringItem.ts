@@ -6,8 +6,7 @@ import { AzExtTreeItem, TreeItemIconPath } from 'vscode-azureextensionui';
 import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
 import { RedisClient } from '../../clients/RedisClient';
 import { StringWebview } from '../../webview/StringWebview';
-import { RedisClusterNodeItem } from './RedisClusterNodeItem';
-import { RedisDbItem } from './RedisDbItem';
+import { KeyContainerItem } from '../KeyContainerItem';
 
 /**
  * Tree item for a string.
@@ -21,7 +20,7 @@ export class RedisStringItem extends AzExtTreeItem {
     private readonly parsedRedisResource: ParsedRedisResource;
     private readonly db?: number;
 
-    constructor(readonly parent: RedisDbItem | RedisClusterNodeItem, private readonly key: string) {
+    constructor(readonly parent: KeyContainerItem, private readonly key: string) {
         super(parent);
         this.parsedRedisResource = parent.parsedRedisResource;
         this.db = parent.db;
