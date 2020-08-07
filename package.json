@@ -76,7 +76,7 @@
                 },
                 {
                     "command": "azureCache.refresh",
-                    "when": "view == azureCache && viewItem == redisCache || viewItem == redisDb || viewItem == redisClusterNode || viewItem == redisListItem  || viewItem == redisHashItem || viewItem == redisSetItem || viewItem == redisZSetItem",
+                    "when": "view == azureCache && viewItem == redisCache || viewItem == redisDb || viewItem == redisClusterNode || viewItem == redisStringItem || viewItem == redisListItem  || viewItem == redisHashItem || viewItem == redisSetItem || viewItem == redisZSetItem",
                     "group": "9_refresh"
                 },
                 {
@@ -109,10 +109,6 @@
                     "when": "never"
                 },
                 {
-                    "command": "azureCache.showStringItem",
-                    "when": "never"
-                },
-                {
                     "command": "azureCache.showUnsupportedItem",
                     "when": "never"
                 },
@@ -122,6 +118,10 @@
                 },
                 {
                     "command": "azureCache.viewCacheProps",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.viewString",
                     "when": "never"
                 },
                 {
@@ -166,11 +166,6 @@
                 "icon": "$(filter)"
             },
             {
-                "command": "azureCache.showStringItem",
-                "title": "Show string item",
-                "category": "Azure Cache"
-            },
-            {
                 "command": "azureCache.showUnsupportedItem",
                 "title": "Show unsupported item",
                 "category": "Azure Cache"
@@ -183,6 +178,11 @@
             {
                 "command": "azureCache.viewCacheProps",
                 "title": "View cache properties",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.viewString",
+                "title": "View string",
                 "category": "Azure Cache"
             },
             {

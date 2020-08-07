@@ -16,4 +16,5 @@ export enum WebviewCommand {
     CollectionData = 'collectionData',
     FilterChange = 'filterChange',
     LoadMore = 'loadMore',
+    StringData = 'stringData',
 }

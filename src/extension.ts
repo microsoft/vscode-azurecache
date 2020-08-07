@@ -15,8 +15,6 @@ import { AzureAccount } from './AzureAccount.api';
 import { RedisClient } from './clients/RedisClient';
 import { ExtVars } from './ExtensionVariables';
 import { textInput } from './Input';
-import { KeyContentProvider } from './KeyContentProvider';
-import { ParsedRedisResource } from '../src-shared/ParsedRedisResource';
 import * as Strings from './Strings';
 import { AzureAccountTreeItem } from './tree/azure/AzureAccountTreeItem';
 import { AzureCacheItem } from './tree/azure/AzureCacheItem';
@@ -25,6 +23,7 @@ import { RedisSetItem } from './tree/redis/RedisSetItem';
 import { RedisZSetItem } from './tree/redis/RedisZSetItem';
 import { RedisHashItem } from './tree/redis/RedisHashItem';
 import { RedisListItem } from './tree/redis/RedisListItem';
+import { RedisStringItem } from './tree/redis/RedisStringItem';
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     ExtVars.context = context;
@@ -33,11 +32,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     ExtVars.outputChannel = createAzExtOutputChannel('Azure Cache', ExtVars.prefix);
     context.subscriptions.push(ExtVars.outputChannel);
     registerUIExtensionVariables(ExtVars);
-
-    ExtVars.keyContentProvider = new KeyContentProvider();
-    context.subscriptions.push(
-        vscode.workspace.registerTextDocumentContentProvider(ExtVars.prefix, ExtVars.keyContentProvider)
-    );
 
     const azureAccountTreeItem = new AzureAccountTreeItem();
     context.subscriptions.push(azureAccountTreeItem);
@@ -80,6 +74,12 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     );
 
     context.subscriptions.push(
+        vscode.commands.registerCommand('azureCache.viewString', async (treeItem: RedisStringItem) => {
+            treeItem.showWebview();
+        })
+    );
+
+    context.subscriptions.push(
         vscode.commands.registerCommand('azureCache.viewSet', async (treeItem: RedisSetItem) => {
             treeItem.showWebview();
         })
@@ -107,15 +107,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
         vscode.commands.registerCommand('azureCache.viewCacheProps', async (azureCacheItem: AzureCacheItem) => {
             azureCacheItem.showCacheProperties();
         })
-    );
-
-    context.subscriptions.push(
-        vscode.commands.registerCommand(
-            'azureCache.showStringItem',
-            async (parsedRedisResource: ParsedRedisResource, db: number | undefined, key: string) => {
-                await ExtVars.keyContentProvider.showKey(parsedRedisResource, db, 'string', key);
-            }
-        )
     );
 
     context.subscriptions.push(

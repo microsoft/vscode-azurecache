@@ -12,10 +12,8 @@ export const StrShard = 'Shard';
 export const StrUnknownShard = 'Unknown Shard';
 
 export const StrPromptKeyFilter = 'Provide a key filter expression';
-export const StrPromptHashFieldFilter = 'Provide a hash field filter expression';
 export const StrPromptRefreshCache = 'Try refreshing the cache in the side bar.';
 
-export const ErrorMissingKeys = 'Missing access keys';
 export const ErrorConnectionString = 'Could not retrieve connection string';
 export const ErrorMissingNodeClient = 'Could not find node client';
 export const ErrorMissingResourceId = 'Missing resource ID';
@@ -24,15 +22,9 @@ export const ErrorMissingName = 'Missing name';
 export const ErrorMissingPortInfo = 'Missing port information';
 export const ErrorMissingSubkey = 'URI must contain a subkey field';
 
-export const ErrorClientNotConnected = 'Not connected to client';
-export const ErrorConnectionInProgress = 'Already connecting to another cache';
-export const ErrorCurrentResource = 'currentResource must be set prior to opening URI';
-export const ErrorCurrentValue = 'currentValue must be set prior to opening URI';
 export const ErrorEmptyCache = 'The cache is empty';
 export const ErrorEmptyInput = 'Cannot be empty.';
 export const ErrorInvalidResourceId = 'Invalid resource ID';
-export const ErrorInvalidUri = 'Invalid URI';
-export const ErrorNotConnected = 'You are not connected to an Azure cache';
 export const ErrorNotConnectToShard = 'Cannot connect to shard';
 export const ErrorReadKey = 'Unable to load key contents';
 export const ErrorReadAccessKey = 'Cannot read access keys';

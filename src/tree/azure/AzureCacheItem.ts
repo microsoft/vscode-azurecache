@@ -16,7 +16,7 @@ import { ExtVars } from '../../ExtensionVariables';
 import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
 import { ErrorEmptyCache } from '../../Strings';
 import * as ResourceUtils from '../../utils/ResourceUtils';
-import { KeyFilterItem } from '../filter/KeyFilterItem';
+import { KeyFilterItem } from '../KeyFilterItem';
 import { FilterParentItem } from '../FilterParentItem';
 import { RedisClusterNodeItem } from '../redis/RedisClusterNodeItem';
 import { RedisDbItem } from '../redis/RedisDbItem';

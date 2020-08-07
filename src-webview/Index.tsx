@@ -10,6 +10,7 @@ import { WebviewView } from '../src-shared/WebviewView';
 import { CollectionView } from './data-viewer/CollectionView';
 import { initializeIcons } from './fabric-icons/src';
 import { CacheProperties } from './properties/CacheProperties';
+import { StringView } from './data-viewer/StringView';
 
 interface State {
     type: WebviewView;
@@ -41,6 +42,8 @@ class Index extends React.Component<{}, State> {
 
         if (type === WebviewView.CacheProperties) {
             return <CacheProperties />;
+        } else if (type === WebviewView.StringKey) {
+            return <StringView />;
         } else if (type === WebviewView.CollectionKey) {
             return <CollectionView />;
         } else {

@@ -21,7 +21,7 @@ export abstract class BaseWebview {
     protected abstract readonly viewType: string;
     public abstract async refresh(data: unknown): Promise<void>;
     protected abstract async sendData(data: unknown): Promise<void>;
-    protected abstract onDidReceiveMessage(message: WebviewMessage): void;
+    protected onDidReceiveMessage?(message: WebviewMessage): void;
     protected onDidDispose?(): void;
 
     /**
@@ -78,7 +78,7 @@ export abstract class BaseWebview {
         this.sendData(data);
 
         // Listen for messages from webview
-        this.webviewPanel.webview.onDidReceiveMessage((message) => this.onDidReceiveMessage(message));
+        this.webviewPanel.webview.onDidReceiveMessage((message) => this.onDidReceiveMessage?.(message));
 
         this.webviewPanel.onDidDispose(() => {
             this.webviewPanel = undefined;
