@@ -9,7 +9,7 @@ import { ServiceClientCredentials } from 'ms-rest';
 import * as sinon from 'sinon';
 import { stubInterface } from 'ts-sinon';
 import { RedisResourceClient } from '../../clients/RedisResourceClient';
-import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
+import * as Shared from '../Shared';
 
 describe('RedisResourceClient', () => {
     let sandbox: sinon.SinonSandbox;
@@ -32,7 +32,7 @@ describe('RedisResourceClient', () => {
     const sampleRedisResource = {
         id:
             '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/res-group/providers/Microsoft.Cache/Redis/my-cache',
-        hostName: 'mycache.net',
+        hostName: 'my-cache.redis.cache.windows.net',
         name: 'mycache',
         enableNonSslPort: true,
         port: 6379,
@@ -42,34 +42,15 @@ describe('RedisResourceClient', () => {
             family: 'P',
             capacity: 1,
         },
-        location: 'West US',
+        location: 'East US',
+        provisioningState: 'Succeeded',
+        redisVersion: '4.0.0',
     } as RedisResource;
 
     // Shared access keys for above resource
     const sampleAccessKeys: RedisAccessKeys = {
-        primaryKey: 'key',
-        secondaryKey: undefined,
-    };
-
-    // Expected parsed result of above resource
-    const expectedParsedSampleResource: ParsedRedisResource = {
-        resourceId:
-            '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/res-group/providers/Microsoft.Cache/Redis/my-cache',
-        subscriptionId: '00000000-0000-0000-0000-000000000000',
-        resourceGroup: 'res-group',
-        name: 'my-cache',
-        hostName: 'mycache.net',
-        enableNonSslPort: true,
-        port: 6379,
-        sslPort: 6380,
-        sku: 'Premium P1',
-        location: 'West US',
-        redisVersion: 'Unknown',
-        provisioningState: 'Unknown',
-        cluster: false,
-        shardCount: 0,
-        linkedServers: [],
-        accessKey: Promise.resolve('key'),
+        primaryKey: 'key1',
+        secondaryKey: 'key2',
     };
 
     describe('listResources', () => {
@@ -85,7 +66,7 @@ describe('RedisResourceClient', () => {
             const resourceList = await redisResourceClient.listResources();
 
             assert.strictEqual(resourceList.length, 1);
-            assert.deepStrictEqual(resourceList[0], expectedParsedSampleResource);
+            assert.deepStrictEqual(resourceList[0], Shared.resourceWithKey);
             assert.strictEqual(resourceList.nextLink, 'someLink');
             assert(stubbedRedis.list.calledOnce);
             assert(stubbedRedis.listKeys.calledOnce);
@@ -146,7 +127,7 @@ describe('RedisResourceClient', () => {
             const resourceList = await redisResourceClient.listNextResources('link');
 
             assert.strictEqual(resourceList.length, 1);
-            assert.deepStrictEqual(resourceList[0], expectedParsedSampleResource);
+            assert.deepStrictEqual(resourceList[0], Shared.resourceWithKey);
             assert.strictEqual(resourceList.nextLink, undefined);
             assert(stubbedRedis.listNext.calledOnce);
             assert(stubbedRedis.listKeys.calledOnce);
@@ -195,7 +176,7 @@ describe('RedisResourceClient', () => {
     });
 
     describe('getAccessKey', () => {
-        it('should return the primary key if exists', async () => {
+        it('should return undefined if secondary key does not exist', async () => {
             // Stub the rmClient.redis.listKeys() method
             const allAccessKeys: RedisAccessKeys = {
                 primaryKey: 'myPrimaryKey',
@@ -206,13 +187,13 @@ describe('RedisResourceClient', () => {
             sandbox.stub(rmClient, 'redis').value(stubbedRedis);
 
             const redisResourceClient = new RedisResourceClient(rmClient);
-            const accessKey = await redisResourceClient.getAccessKey('res-group', 'name');
+            const accessKeys = await redisResourceClient.getAccessKeys('res-group', 'name');
 
-            assert.strictEqual(accessKey, 'myPrimaryKey');
+            assert.strictEqual(accessKeys, undefined);
             assert(stubbedRedis.listKeys.calledOnce);
         });
 
-        it('should return secondary key if exists and primary key is missing', async () => {
+        it('should return undefined if primary key does not exist', async () => {
             // Stub the rmClient.redis.listKeys() method
             const allAccessKeys: RedisAccessKeys = {
                 primaryKey: undefined,
@@ -223,9 +204,9 @@ describe('RedisResourceClient', () => {
             sandbox.stub(rmClient, 'redis').value(stubbedRedis);
 
             const redisResourceClient = new RedisResourceClient(rmClient);
-            const accessKey = await redisResourceClient.getAccessKey('res-group', 'name');
+            const accessKeys = await redisResourceClient.getAccessKeys('res-group', 'name');
 
-            assert.strictEqual(accessKey, 'mySecKey');
+            assert.strictEqual(accessKeys, undefined);
             assert(stubbedRedis.listKeys.calledOnce);
         });
 
@@ -240,9 +221,9 @@ describe('RedisResourceClient', () => {
             sandbox.stub(rmClient, 'redis').value(stubbedRedis);
 
             const redisResourceClient = new RedisResourceClient(rmClient);
-            const accessKey = await redisResourceClient.getAccessKey('res-group', 'name');
+            const accessKeys = await redisResourceClient.getAccessKeys('res-group', 'name');
 
-            assert.strictEqual(accessKey, undefined);
+            assert.strictEqual(accessKeys, undefined);
             assert(stubbedRedis.listKeys.calledOnce);
         });
 
@@ -253,9 +234,9 @@ describe('RedisResourceClient', () => {
             sandbox.stub(rmClient, 'redis').value(stubbedRedis);
 
             const redisResourceClient = new RedisResourceClient(rmClient);
-            const accessKey = await redisResourceClient.getAccessKey('res-group', 'name');
+            const accessKeys = await redisResourceClient.getAccessKeys('res-group', 'name');
 
-            assert.strictEqual(accessKey, undefined);
+            assert.strictEqual(accessKeys, undefined);
             assert(stubbedRedis.listKeys.calledOnce);
         });
     });
@@ -271,7 +252,7 @@ describe('RedisResourceClient', () => {
             const redisResourceClient = new RedisResourceClient(rmClient);
             const parsedResource = await redisResourceClient.getRedisResourceByName('res-group', 'name');
 
-            assert.deepStrictEqual(parsedResource, expectedParsedSampleResource);
+            assert.deepStrictEqual(parsedResource, Shared.resourceWithKey);
             assert(stubbedRedis.get.calledOnce);
         });
 
@@ -313,7 +294,7 @@ describe('RedisResourceClient', () => {
             const redisResourceClient = new RedisResourceClient(rmClient);
             const parsedResource = await redisResourceClient.getRedisResourceByName('res-group', 'name');
 
-            assert.deepStrictEqual(parsedResource, expectedParsedSampleResource);
+            assert.deepStrictEqual(parsedResource, Shared.resourceWithKey);
             assert(stubbedRedis.get.calledOnce);
         });
 

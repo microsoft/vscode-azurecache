@@ -3,7 +3,7 @@
 
 import * as assert from 'assert';
 import * as sinon from 'sinon';
-import { ParsedRedisResource } from '../../../src-shared/ParsedRedisResource';
+import * as Shared from '../Shared';
 import { TestRedisClient } from './TestRedisClient';
 
 describe('RedisClient', () => {
@@ -21,79 +21,16 @@ describe('RedisClient', () => {
         sandbox.restore();
     });
 
-    // A sample Redis resource for which the user does not have write access
-    const sampleParsedRedisResourceMissingKeys: ParsedRedisResource = {
-        resourceId:
-            '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/res-group/providers/Microsoft.Cache/Redis/my-cache',
-        subscriptionId: '00000000-0000-0000-0000-000000000000',
-        resourceGroup: 'res-group',
-        name: 'my-cache',
-        hostName: 'mycache.net',
-        enableNonSslPort: true,
-        port: 6379,
-        sslPort: 6380,
-        sku: 'Premium P1',
-        location: 'West US',
-        redisVersion: 'Unknown',
-        provisioningState: 'Unknown',
-        cluster: false,
-        shardCount: 0,
-        linkedServers: [],
-        accessKey: Promise.resolve(undefined),
-    };
-
-    // A sample Redis resource for which the user has read and write access
-    const sampleParsedRedisResource: ParsedRedisResource = {
-        resourceId:
-            '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/res-group/providers/Microsoft.Cache/Redis/my-cache',
-        subscriptionId: '00000000-0000-0000-0000-000000000000',
-        resourceGroup: 'res-group',
-        name: 'my-cache',
-        hostName: 'mycache.net',
-        enableNonSslPort: true,
-        port: 6379,
-        sslPort: 6380,
-        sku: 'Premium P1',
-        location: 'West US',
-        redisVersion: 'Unknown',
-        provisioningState: 'Unknown',
-        cluster: false,
-        shardCount: 0,
-        linkedServers: [],
-        accessKey: Promise.resolve('key'),
-    };
-
-    // Another sample Redis resource for which the user has read and write access
-    const sampleParsedRedisResource2: ParsedRedisResource = {
-        resourceId:
-            '/subscriptions/11111111-0000-0000-0000-000000000000/resourceGroups/res-group/providers/Microsoft.Cache/Redis/my-cache',
-        subscriptionId: '11111111-0000-0000-0000-000000000000',
-        resourceGroup: 'res-group',
-        name: 'my-cache2',
-        hostName: 'mycache2.net',
-        enableNonSslPort: true,
-        port: 6379,
-        sslPort: 6380,
-        sku: 'Premium P1',
-        location: 'West US',
-        redisVersion: 'Unknown',
-        provisioningState: 'Unknown',
-        cluster: false,
-        shardCount: 0,
-        linkedServers: [],
-        accessKey: Promise.resolve('key'),
-    };
-
     describe('connectToRedisResource', () => {
         it('should attempt to connect to the Redis cache if given valid parameters', async () => {
             // Setup TestRedisClient stubs
             TestRedisClient.setup();
 
-            await TestRedisClient.connectToRedisResource(sampleParsedRedisResource);
+            await TestRedisClient.connectToRedisResource(Shared.resourceWithKey);
             assert.strictEqual(TestRedisClient.connectCalled, 1);
 
             // Try connecting to different cache
-            await TestRedisClient.connectToRedisResource(sampleParsedRedisResource2);
+            await TestRedisClient.connectToRedisResource(Shared.resourceWithKey2);
             assert.strictEqual(TestRedisClient.connectCalled, 2);
         });
 
@@ -101,11 +38,11 @@ describe('RedisClient', () => {
             // Setup TestRedisClient stubs
             TestRedisClient.setup();
 
-            await TestRedisClient.connectToRedisResource(sampleParsedRedisResource);
+            await TestRedisClient.connectToRedisResource(Shared.resourceWithKey);
             assert.strictEqual(TestRedisClient.connectCalled, 1);
 
             // Try connecting again
-            await TestRedisClient.connectToRedisResource(sampleParsedRedisResource);
+            await TestRedisClient.connectToRedisResource(Shared.resourceWithKey);
             assert.strictEqual(TestRedisClient.connectCalled, 1);
         });
 
@@ -113,7 +50,7 @@ describe('RedisClient', () => {
             // Setup TestRedisClient stubs
             TestRedisClient.setup();
 
-            const promise = TestRedisClient.connectToRedisResource(sampleParsedRedisResourceMissingKeys);
+            const promise = TestRedisClient.connectToRedisResource(Shared.resourceWithoutKey);
 
             assert.rejects(promise, Error);
             assert.strictEqual(TestRedisClient.connectCalled, 0);
@@ -122,7 +59,7 @@ describe('RedisClient', () => {
 
     describe('Redis commands', () => {
         it('should return proper values when connected to cache', async () => {
-            const client = await TestRedisClient.connectToRedisResource(sampleParsedRedisResource);
+            const client = await TestRedisClient.connectToRedisResource(Shared.resourceWithKey);
 
             TestRedisClient.stubExecResponse('someValue');
             assert.strictEqual(await client.get('someKey', 0), 'someValue');

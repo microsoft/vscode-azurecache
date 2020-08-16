@@ -125,7 +125,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     );
 
     registerCommand(
-        'azureCache.copyConnectionString',
+        'azureCache.copyPrimaryAccessKey',
         async (actionContext: IActionContext, treeItem?: AzureCacheItem) => {
             if (!treeItem) {
                 treeItem = (await ExtVars.treeDataProvider.showTreeItemPicker(
@@ -134,7 +134,64 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
                 )) as AzureCacheItem;
             }
 
-            const connectionString = await treeItem.getConnectionString();
+            const accessKey = await treeItem.getPrimaryAccessKey();
+            if (accessKey) {
+                vscode.env.clipboard.writeText(accessKey);
+            } else {
+                vscode.window.showErrorMessage(Strings.ErrorAccessKeys);
+            }
+        }
+    );
+
+    registerCommand(
+        'azureCache.copySecondaryAccessKey',
+        async (actionContext: IActionContext, treeItem?: AzureCacheItem) => {
+            if (!treeItem) {
+                treeItem = (await ExtVars.treeDataProvider.showTreeItemPicker(
+                    AzureCacheItem.contextValue,
+                    actionContext
+                )) as AzureCacheItem;
+            }
+
+            const accessKey = await treeItem.getSecondaryAccessKey();
+            if (accessKey) {
+                vscode.env.clipboard.writeText(accessKey);
+            } else {
+                vscode.window.showErrorMessage(Strings.ErrorAccessKeys);
+            }
+        }
+    );
+
+    registerCommand(
+        'azureCache.copyPrimaryConnectionString',
+        async (actionContext: IActionContext, treeItem?: AzureCacheItem) => {
+            if (!treeItem) {
+                treeItem = (await ExtVars.treeDataProvider.showTreeItemPicker(
+                    AzureCacheItem.contextValue,
+                    actionContext
+                )) as AzureCacheItem;
+            }
+
+            const connectionString = await treeItem.getPrimaryConnectionString();
+            if (connectionString) {
+                vscode.env.clipboard.writeText(connectionString);
+            } else {
+                vscode.window.showErrorMessage(Strings.ErrorConnectionString);
+            }
+        }
+    );
+
+    registerCommand(
+        'azureCache.copySecondaryConnectionString',
+        async (actionContext: IActionContext, treeItem?: AzureCacheItem) => {
+            if (!treeItem) {
+                treeItem = (await ExtVars.treeDataProvider.showTreeItemPicker(
+                    AzureCacheItem.contextValue,
+                    actionContext
+                )) as AzureCacheItem;
+            }
+
+            const connectionString = await treeItem.getSecondaryConnectionString();
             if (connectionString) {
                 vscode.env.clipboard.writeText(connectionString);
             } else {

@@ -3,9 +3,10 @@
 
 import RedisManagementClient from 'azure-arm-rediscache';
 import { RedisListResult, RedisResource } from 'azure-arm-rediscache/lib/models';
+import { ParsedAccessKeys } from '../../src-shared/ParsedAccessKeys';
+import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { ExtVars } from '../ExtensionVariables';
 import { ParsedRedisListResult } from '../parsed/ParsedRedisListResult';
-import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { ParsedResourceId } from '../parsed/ParsedResourceId';
 import * as Strings from '../Strings';
 
@@ -51,12 +52,19 @@ export class RedisResourceClient {
      * @param resourceGroup Resource group name
      * @param name Resource name
      */
-    public async getAccessKey(resourceGroup: string, name: string): Promise<string | undefined> {
+    public async getAccessKeys(resourceGroup: string, name: string): Promise<ParsedAccessKeys | undefined> {
         try {
-            const allAccessKeys = await this.rmClient.redis.listKeys(resourceGroup, name);
-            // Use the primary key or secondary key, whichever exists
-            const accessKey = allAccessKeys.primaryKey ?? allAccessKeys.secondaryKey;
-            return accessKey;
+            const accessKeys = await this.rmClient.redis.listKeys(resourceGroup, name);
+            // Primary key should not exist without secondary key
+            if (typeof accessKeys.primaryKey === 'undefined' || typeof accessKeys.secondaryKey === 'undefined') {
+                return undefined;
+            }
+
+            const parsedAccessKeys: ParsedAccessKeys = {
+                primaryKey: accessKeys.primaryKey,
+                secondaryKey: accessKeys.secondaryKey,
+            };
+            return parsedAccessKeys;
         } catch {
             return undefined;
         }
@@ -128,7 +136,7 @@ export class RedisResourceClient {
         }
 
         const { name, resourceGroup, subscriptionId } = this.parseResourceId(redisResource.id);
-        const accessKey = this.getAccessKey(resourceGroup, name);
+        const accessKeys = this.getAccessKeys(resourceGroup, name);
         const linkedServers = redisResource.linkedServers;
         const linkedServerIds = linkedServers?.map((server) => server.id).filter(isDefined);
 
@@ -161,7 +169,7 @@ export class RedisResourceClient {
             cluster,
             shardCount,
             linkedServers: linkedServerIds ?? [],
-            accessKey,
+            accessKeys,
         };
     }
 
