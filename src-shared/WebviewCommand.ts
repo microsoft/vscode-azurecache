@@ -6,7 +6,7 @@ export enum WebviewCommand {
     View = 'view',
     // Cache Properties
     ParsedRedisResource = 'parsedRedisResource',
-    AccessKey = 'accessKey',
+    AccessKeys = 'accessKeys',
     ConnectionString = 'connectionString',
     CopyText = 'copyText',
     // Data viewer

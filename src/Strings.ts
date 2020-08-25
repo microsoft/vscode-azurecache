@@ -15,7 +15,7 @@ export const StrPromptKeyFilter = 'Provide a key filter expression';
 export const StrPromptHashFieldFilter = 'Provide a hash field filter expression';
 export const StrPromptRefreshCache = 'Try refreshing the cache in the side bar.';
 
-export const ErrorMissingKeys = 'Missing access keys';
+export const ErrorAccessKeys = 'Could not retrieve access keys';
 export const ErrorConnectionString = 'Could not retrieve connection string';
 export const ErrorMissingNodeClient = 'Could not find node client';
 export const ErrorMissingResourceId = 'Missing resource ID';

@@ -6,7 +6,6 @@ import { ParsedRedisResource } from '../../src-shared/ParsedRedisResource';
 import { WebviewCommand } from '../../src-shared/WebviewCommand';
 import { WebviewMessage } from '../../src-shared/WebviewMessage';
 import { WebviewView } from '../../src-shared/WebviewView';
-import { getConnectionString } from '../utils/ResourceUtils';
 import { BaseWebview } from './BaseWebview';
 
 /**
@@ -44,7 +43,6 @@ export class CachePropsWebview extends BaseWebview {
     protected async sendData(parsedRedisResource: ParsedRedisResource): Promise<void> {
         this.postMessage(WebviewCommand.View, WebviewView.CacheProperties);
         this.postMessage(WebviewCommand.ParsedRedisResource, parsedRedisResource);
-        this.postMessage(WebviewCommand.AccessKey, await parsedRedisResource.accessKey);
-        this.postMessage(WebviewCommand.ConnectionString, await getConnectionString(parsedRedisResource));
+        this.postMessage(WebviewCommand.AccessKeys, await parsedRedisResource.accessKeys);
     }
 }

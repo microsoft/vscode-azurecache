@@ -136,11 +136,12 @@ export class RedisClient {
                     }
                 }
 
-                const { accessKey, cluster, hostName, port, sslPort, provisioningState } = parsedRedisResource;
-                const password = await accessKey;
-                if (typeof password === 'undefined') {
+                const { accessKeys, cluster, hostName, port, sslPort, provisioningState } = parsedRedisResource;
+                const parsedAccessKeys = await accessKeys;
+                if (typeof parsedAccessKeys === 'undefined') {
                     throw new Error(Strings.ErrorReadAccessKey);
                 }
+                const password = parsedAccessKeys.primaryKey;
 
                 if (provisioningState !== 'Succeeded') {
                     vscode.window.showWarningMessage(`${Strings.StrCurrentProvStateIs}: ${provisioningState}`);

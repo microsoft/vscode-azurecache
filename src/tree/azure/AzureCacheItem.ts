@@ -158,8 +158,20 @@ export class AzureCacheItem extends AzureParentTreeItem implements FilterParentI
         this.webview.reveal(this.parsedRedisResource.name, this.parsedRedisResource);
     }
 
-    public async getConnectionString(): Promise<string | undefined> {
-        return ResourceUtils.getConnectionString(this.parsedRedisResource);
+    public async getPrimaryAccessKey(): Promise<string | undefined> {
+        return (await this.parsedRedisResource.accessKeys)?.primaryKey;
+    }
+
+    public async getSecondaryAccessKey(): Promise<string | undefined> {
+        return (await this.parsedRedisResource.accessKeys)?.secondaryKey;
+    }
+
+    public async getPrimaryConnectionString(): Promise<string | undefined> {
+        return (await ResourceUtils.getConnectionStrings(this.parsedRedisResource))?.primaryConnectionString;
+    }
+
+    public async getSecondaryConnectionString(): Promise<string | undefined> {
+        return (await ResourceUtils.getConnectionStrings(this.parsedRedisResource))?.secondaryConnectionString;
     }
 
     public disposeWebview(): void {

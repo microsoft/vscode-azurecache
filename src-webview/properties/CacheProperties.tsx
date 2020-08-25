@@ -12,11 +12,11 @@ import { CollapsibleList } from './CollapsibleList';
 import { CopyableTextField } from './CopyableTextField';
 import { GeneralPropertyLabel } from './GeneralPropertyLabel';
 import './styles.css';
+import { ParsedAccessKeys } from '../../src-shared/ParsedAccessKeys';
 
 interface State {
     redisResource?: ParsedRedisResource;
-    accessKey?: string;
-    connectionString?: string;
+    accessKeys?: ParsedAccessKeys;
 }
 
 export class CacheProperties extends React.Component<{}, State> {
@@ -24,8 +24,7 @@ export class CacheProperties extends React.Component<{}, State> {
         super(props);
         this.state = {
             redisResource: undefined,
-            accessKey: undefined,
-            connectionString: undefined,
+            accessKeys: undefined,
         };
     }
 
@@ -36,12 +35,9 @@ export class CacheProperties extends React.Component<{}, State> {
             if (message.command === WebviewCommand.ParsedRedisResource) {
                 const parsedRedisResource = message.value as ParsedRedisResource;
                 this.setState({ redisResource: parsedRedisResource });
-            } else if (message.command === WebviewCommand.AccessKey) {
-                const accessKey = message.value as string | undefined;
-                this.setState({ accessKey });
-            } else if (message.command === WebviewCommand.ConnectionString) {
-                const connectionString = message.value as string | undefined;
-                this.setState({ connectionString });
+            } else if (message.command === WebviewCommand.AccessKeys) {
+                const accessKeys = message.value as ParsedAccessKeys | undefined;
+                this.setState({ accessKeys });
             }
         });
     }
@@ -51,7 +47,7 @@ export class CacheProperties extends React.Component<{}, State> {
             return null;
         }
 
-        const { redisResource, accessKey, connectionString } = this.state;
+        const { redisResource, accessKeys } = this.state;
         const nonSslPort = redisResource.enableNonSslPort ? redisResource.port : Strings.StrDisabled;
         const shardCountLabel =
             redisResource.shardCount > 0 ? (
@@ -73,7 +69,7 @@ export class CacheProperties extends React.Component<{}, State> {
                         groupName={Strings.StrLinkedServers}
                         values={redisResource.linkedServers}
                     />
-                    <AccessKeyDropdown accessKey={accessKey} connectionString={connectionString} />
+                    <AccessKeyDropdown parsedRedisResource={redisResource} parsedAccessKeys={accessKeys} />
                 </div>
 
                 <GeneralPropertyLabel label={Strings.StrSku} value={redisResource.sku} />

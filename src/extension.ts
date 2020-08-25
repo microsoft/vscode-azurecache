@@ -125,22 +125,27 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     );
 
     registerCommand(
-        'azureCache.copyConnectionString',
-        async (actionContext: IActionContext, treeItem?: AzureCacheItem) => {
-            if (!treeItem) {
-                treeItem = (await ExtVars.treeDataProvider.showTreeItemPicker(
-                    AzureCacheItem.contextValue,
-                    actionContext
-                )) as AzureCacheItem;
-            }
+        'azureCache.copyPrimaryAccessKey',
+        copySecretCallback(Strings.ErrorAccessKeys, (treeItem: AzureCacheItem) => treeItem.getPrimaryAccessKey())
+    );
 
-            const connectionString = await treeItem.getConnectionString();
-            if (connectionString) {
-                vscode.env.clipboard.writeText(connectionString);
-            } else {
-                vscode.window.showErrorMessage(Strings.ErrorConnectionString);
-            }
-        }
+    registerCommand(
+        'azureCache.copySecondaryAccessKey',
+        copySecretCallback(Strings.ErrorAccessKeys, (treeItem: AzureCacheItem) => treeItem.getSecondaryAccessKey())
+    );
+
+    registerCommand(
+        'azureCache.copyPrimaryConnectionString',
+        copySecretCallback(Strings.ErrorConnectionString, (treeItem: AzureCacheItem) =>
+            treeItem.getPrimaryConnectionString()
+        )
+    );
+
+    registerCommand(
+        'azureCache.copySecondaryConnectionString',
+        copySecretCallback(Strings.ErrorConnectionString, (treeItem: AzureCacheItem) =>
+            treeItem.getSecondaryConnectionString()
+        )
     );
 
     registerCommand('azureCache.loadMore', (actionContext: IActionContext, treeItem: AzExtTreeItem) =>
@@ -171,4 +176,31 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 export function deactivate(): Promise<void> {
     // Disconnect active Redis connections
     return RedisClient.disposeClients();
+}
+
+/**
+ * Helper function that returns a Command callback that copies a secret to the clipboard.
+ *
+ * @param errorString Message to be shown in case of error
+ * @param getSecretString Function to retrieve secret string from the tree item
+ */
+function copySecretCallback(
+    errorString: string,
+    getSecretString: (treeItem: AzureCacheItem) => Promise<string | undefined>
+): (actionContext: IActionContext, treeItem?: AzureCacheItem) => void {
+    return async (actionContext: IActionContext, treeItem?: AzureCacheItem): Promise<void> => {
+        if (!treeItem) {
+            treeItem = (await ExtVars.treeDataProvider.showTreeItemPicker(
+                AzureCacheItem.contextValue,
+                actionContext
+            )) as AzureCacheItem;
+        }
+
+        const secretString = await getSecretString(treeItem);
+        if (secretString) {
+            vscode.env.clipboard.writeText(secretString);
+        } else {
+            vscode.window.showErrorMessage(errorString);
+        }
+    };
 }

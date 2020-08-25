@@ -14,27 +14,43 @@ import {
 } from '@fluentui/react/lib/';
 import * as React from 'react';
 import { CopyableTextField } from './CopyableTextField';
-import { StrPrimaryAccessKey, StrPrimaryConnectionStr, StrAccessKeys, StrPrimary } from '../Strings';
+import {
+    StrPrimaryAccessKey,
+    StrPrimaryConnectionStr,
+    StrAccessKeys,
+    StrPrimary,
+    StrSecondaryConnectionStr,
+    StrSecondaryAccessKey,
+    StrSecondary,
+} from '../Strings';
+import { ParsedRedisResource } from '../../out/ParsedRedisResource';
+import { ParsedAccessKeys } from '../../src-shared/ParsedAccessKeys';
+import { ParsedConnectionStrings } from '../../src-shared/ParsedConnectionStrings';
 
 interface Props {
-    accessKey?: string;
-    connectionString?: string;
+    parsedRedisResource: ParsedRedisResource;
+    parsedAccessKeys?: ParsedAccessKeys;
 }
 
 interface Item {
+    keyId: string;
+    keyLabel: string;
+    connectionStringId: string;
+    connectionStringLabel: string;
     accessKey: string;
     connectionString: string;
 }
 
-const onRenderCell = (nestingDepth?: number, item?: Item, itemIndex?: number): JSX.Element => {
+const onRenderCell = (nestingDepth?: number, item?: Item, itemIndex?: number): JSX.Element | null => {
+    if (typeof item === 'undefined') {
+        return null;
+    }
+
+    const { keyId, keyLabel, connectionStringId, connectionStringLabel, accessKey, connectionString } = item;
     return (
         <div style={{ marginLeft: '48px' }}>
-            <CopyableTextField id="primaryAccessKey" label={StrPrimaryAccessKey} value={item?.accessKey} />
-            <CopyableTextField
-                id="primaryConnectionStr"
-                label={StrPrimaryConnectionStr}
-                value={item?.connectionString}
-            />
+            <CopyableTextField id={keyId} label={keyLabel} value={accessKey} />
+            <CopyableTextField id={connectionStringId} label={connectionStringLabel} value={connectionString} />
         </div>
     );
 };
@@ -69,18 +85,49 @@ const onRenderHeader: IRenderFunction<IGroupHeaderProps> = (
 };
 
 export function AccessKeyDropdown(props: Props): React.ReactElement | null {
-    const { accessKey, connectionString } = props;
-    if (typeof accessKey === 'undefined' || typeof connectionString === 'undefined') {
+    if (typeof props.parsedAccessKeys === 'undefined') {
         return null;
     }
 
-    const items: Item[] = [{ accessKey, connectionString }];
+    const { parsedRedisResource, parsedAccessKeys } = props;
+    const { primaryKey, secondaryKey } = parsedAccessKeys;
+    const { primaryConnectionString, secondaryConnectionString } = getConnectionStrings(
+        parsedRedisResource,
+        parsedAccessKeys
+    );
+
+    const items: Item[] = [
+        {
+            keyId: 'primaryAccessKey',
+            connectionStringId: 'primaryConnectionStr',
+            keyLabel: StrPrimaryAccessKey,
+            connectionStringLabel: StrPrimaryConnectionStr,
+            accessKey: primaryKey,
+            connectionString: primaryConnectionString,
+        },
+        {
+            keyId: 'secondaryAccessKey',
+            connectionStringId: 'secondaryConnectionStr',
+            keyLabel: StrSecondaryAccessKey,
+            connectionStringLabel: StrSecondaryConnectionStr,
+            accessKey: secondaryKey,
+            connectionString: secondaryConnectionString,
+        },
+    ];
+
     const groups: IGroup[] = [
         {
             count: 1,
             key: 'group',
             name: StrPrimary,
             startIndex: 0,
+            isCollapsed: true,
+        },
+        {
+            count: 1,
+            key: 'group',
+            name: StrSecondary,
+            startIndex: 1,
             isCollapsed: true,
         },
     ];
@@ -101,4 +148,22 @@ export function AccessKeyDropdown(props: Props): React.ReactElement | null {
             />
         </div>
     );
+}
+
+/**
+ * Returns primary and secondary StackExchange.Redis connection strings.
+ *
+ * @param parsedRedisResource The Redis resource
+ * @param parsedAccessKeys The access keys
+ */
+function getConnectionStrings(
+    parsedRedisResource: ParsedRedisResource,
+    parsedAccessKeys: ParsedAccessKeys
+): ParsedConnectionStrings {
+    const { hostName, sslPort } = parsedRedisResource;
+    const { primaryKey, secondaryKey } = parsedAccessKeys;
+    return {
+        primaryConnectionString: `${hostName}:${sslPort},password=${primaryKey},ssl=True,abortConnect=False`,
+        secondaryConnectionString: `${hostName}:${sslPort},password=${secondaryKey},ssl=True,abortConnect=False`,
+    } as ParsedConnectionStrings;
 }
