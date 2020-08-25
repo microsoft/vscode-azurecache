@@ -35,13 +35,13 @@ describe('KeyContentProvider', () => {
         sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
 
         const keyContentProvider = new KeyContentProvider();
-        const uri = createKeyContentUri(Shared.resourceWithKey, 0, 'string', 'mykey');
+        const uri = createKeyContentUri(Shared.createResourceWithKey(), 0, 'string', 'mykey');
         /**
          * Normally, calling showKey() will call vscode.workspace.openTextDocument, which will prompt VS Code to call
          * provideTextDocumentContent(), but since the tests run without the extension being activated, we call
          * provideTextDocumentContent() manually.
          */
-        keyContentProvider.showKey(Shared.resourceWithKey, 0, 'string', 'mykey');
+        keyContentProvider.showKey(Shared.createResourceWithKey(), 0, 'string', 'mykey');
         const value = await keyContentProvider.provideTextDocumentContent(uri);
         assert.strictEqual(value, 'myValue');
         // Calling it again should fail as the Redis resource client property is cleared
@@ -57,9 +57,9 @@ describe('KeyContentProvider', () => {
         sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
 
         const keyContentProvider = new KeyContentProvider();
-        const uri = createKeyContentUri(Shared.resourceWithKey, 0, 'list', 'mykey', '0');
+        const uri = createKeyContentUri(Shared.createResourceWithKey(), 0, 'list', 'mykey', '0');
 
-        keyContentProvider.showKey(Shared.resourceWithKey, 0, 'list', 'mykey');
+        keyContentProvider.showKey(Shared.createResourceWithKey(), 0, 'list', 'mykey');
         const value = await keyContentProvider.provideTextDocumentContent(uri);
 
         assert.strictEqual(value, 'myListValue');
@@ -77,8 +77,8 @@ describe('KeyContentProvider', () => {
 
         const keyContentProvider = new KeyContentProvider();
         // Leave out subkey parameter
-        const uri = createKeyContentUri(Shared.resourceWithKey, 0, 'list', 'mykey');
-        keyContentProvider.showKey(Shared.resourceWithKey, 0, 'list', 'mykey');
+        const uri = createKeyContentUri(Shared.createResourceWithKey(), 0, 'list', 'mykey');
+        keyContentProvider.showKey(Shared.createResourceWithKey(), 0, 'list', 'mykey');
 
         assert.rejects(keyContentProvider.provideTextDocumentContent(uri), Error);
     });
@@ -91,8 +91,8 @@ describe('KeyContentProvider', () => {
         sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
 
         const keyContentProvider = new KeyContentProvider();
-        const uri = createKeyContentUri(Shared.resourceWithKey, 0, 'hash', 'mykey', 'hashfield');
-        keyContentProvider.showKey(Shared.resourceWithKey, 0, 'hash', 'mykey', 'hashValue', 'hashField');
+        const uri = createKeyContentUri(Shared.createResourceWithKey(), 0, 'hash', 'mykey', 'hashfield');
+        keyContentProvider.showKey(Shared.createResourceWithKey(), 0, 'hash', 'mykey', 'hashValue', 'hashField');
         const value = await keyContentProvider.provideTextDocumentContent(uri);
 
         assert.strictEqual(value, 'hashValue');
@@ -108,9 +108,9 @@ describe('KeyContentProvider', () => {
         sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
 
         const keyContentProvider = new KeyContentProvider();
-        const uri = createKeyContentUri(Shared.resourceWithKey, 0, 'hash', 'mykey', 'hashfield');
+        const uri = createKeyContentUri(Shared.createResourceWithKey(), 0, 'hash', 'mykey', 'hashfield');
         // Leave out hash item value
-        keyContentProvider.showKey(Shared.resourceWithKey, 0, 'hash', 'mykey');
+        keyContentProvider.showKey(Shared.createResourceWithKey(), 0, 'hash', 'mykey');
 
         assert.rejects(keyContentProvider.provideTextDocumentContent(uri), Error);
     });
@@ -123,8 +123,8 @@ describe('KeyContentProvider', () => {
         sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
 
         const keyContentProvider = new KeyContentProvider();
-        const uri = createKeyContentUri(Shared.resourceWithKey, 0, 'set', 'mykey', '0');
-        keyContentProvider.showKey(Shared.resourceWithKey, 0, 'set', 'mykey', 'setValue', '0');
+        const uri = createKeyContentUri(Shared.createResourceWithKey(), 0, 'set', 'mykey', '0');
+        keyContentProvider.showKey(Shared.createResourceWithKey(), 0, 'set', 'mykey', 'setValue', '0');
         const value = await keyContentProvider.provideTextDocumentContent(uri);
 
         assert.strictEqual(value, 'setValue');
@@ -140,9 +140,9 @@ describe('KeyContentProvider', () => {
         sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
 
         const keyContentProvider = new KeyContentProvider();
-        const uri = createKeyContentUri(Shared.resourceWithKey, 0, 'set', 'mykey', '0');
+        const uri = createKeyContentUri(Shared.createResourceWithKey(), 0, 'set', 'mykey', '0');
         // Leave out the set element value
-        keyContentProvider.showKey(Shared.resourceWithKey, 0, 'set', 'mykey');
+        keyContentProvider.showKey(Shared.createResourceWithKey(), 0, 'set', 'mykey');
 
         assert.rejects(keyContentProvider.provideTextDocumentContent(uri), Error);
     });
@@ -155,8 +155,8 @@ describe('KeyContentProvider', () => {
         sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
 
         const keyContentProvider = new KeyContentProvider();
-        const uri = createKeyContentUri(Shared.resourceWithKey, 0, 'zset', 'mykey', '-100', '0');
-        keyContentProvider.showKey(Shared.resourceWithKey, 0, 'zset', 'mykey', 'zsetValue', '-100', '0');
+        const uri = createKeyContentUri(Shared.createResourceWithKey(), 0, 'zset', 'mykey', '-100', '0');
+        keyContentProvider.showKey(Shared.createResourceWithKey(), 0, 'zset', 'mykey', 'zsetValue', '-100', '0');
         const value = await keyContentProvider.provideTextDocumentContent(uri);
 
         assert.strictEqual(value, 'zsetValue');
@@ -172,9 +172,9 @@ describe('KeyContentProvider', () => {
         sandbox.stub(RedisClient, 'connectToRedisResource').resolves(stubRedisClient);
 
         const keyContentProvider = new KeyContentProvider();
-        const uri = createKeyContentUri(Shared.resourceWithKey, 0, 'zset', 'mykey', '-100');
+        const uri = createKeyContentUri(Shared.createResourceWithKey(), 0, 'zset', 'mykey', '-100');
         // Leave out the set element value
-        keyContentProvider.showKey(Shared.resourceWithKey, 0, 'zset', 'mykey');
+        keyContentProvider.showKey(Shared.createResourceWithKey(), 0, 'zset', 'mykey');
 
         assert.rejects(keyContentProvider.provideTextDocumentContent(uri), Error);
     });

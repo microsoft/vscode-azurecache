@@ -66,7 +66,7 @@ describe('RedisResourceClient', () => {
             const resourceList = await redisResourceClient.listResources();
 
             assert.strictEqual(resourceList.length, 1);
-            assert.deepStrictEqual(resourceList[0], Shared.resourceWithKey);
+            assert.deepStrictEqual(resourceList[0], Shared.createResourceWithKey());
             assert.strictEqual(resourceList.nextLink, 'someLink');
             assert(stubbedRedis.list.calledOnce);
             assert(stubbedRedis.listKeys.calledOnce);
@@ -127,7 +127,7 @@ describe('RedisResourceClient', () => {
             const resourceList = await redisResourceClient.listNextResources('link');
 
             assert.strictEqual(resourceList.length, 1);
-            assert.deepStrictEqual(resourceList[0], Shared.resourceWithKey);
+            assert.deepStrictEqual(resourceList[0], Shared.createResourceWithKey());
             assert.strictEqual(resourceList.nextLink, undefined);
             assert(stubbedRedis.listNext.calledOnce);
             assert(stubbedRedis.listKeys.calledOnce);
@@ -252,7 +252,7 @@ describe('RedisResourceClient', () => {
             const redisResourceClient = new RedisResourceClient(rmClient);
             const parsedResource = await redisResourceClient.getRedisResourceByName('res-group', 'name');
 
-            assert.deepStrictEqual(parsedResource, Shared.resourceWithKey);
+            assert.deepStrictEqual(parsedResource, Shared.createResourceWithKey());
             assert(stubbedRedis.get.calledOnce);
         });
 
@@ -294,7 +294,7 @@ describe('RedisResourceClient', () => {
             const redisResourceClient = new RedisResourceClient(rmClient);
             const parsedResource = await redisResourceClient.getRedisResourceByName('res-group', 'name');
 
-            assert.deepStrictEqual(parsedResource, Shared.resourceWithKey);
+            assert.deepStrictEqual(parsedResource, Shared.createResourceWithKey());
             assert(stubbedRedis.get.calledOnce);
         });
 

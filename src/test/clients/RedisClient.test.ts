@@ -26,11 +26,11 @@ describe('RedisClient', () => {
             // Setup TestRedisClient stubs
             TestRedisClient.setup();
 
-            await TestRedisClient.connectToRedisResource(Shared.resourceWithKey);
+            await TestRedisClient.connectToRedisResource(Shared.createResourceWithKey());
             assert.strictEqual(TestRedisClient.connectCalled, 1);
 
             // Try connecting to different cache
-            await TestRedisClient.connectToRedisResource(Shared.resourceWithKey2);
+            await TestRedisClient.connectToRedisResource(Shared.createResourceWithKey2());
             assert.strictEqual(TestRedisClient.connectCalled, 2);
         });
 
@@ -38,11 +38,11 @@ describe('RedisClient', () => {
             // Setup TestRedisClient stubs
             TestRedisClient.setup();
 
-            await TestRedisClient.connectToRedisResource(Shared.resourceWithKey);
+            await TestRedisClient.connectToRedisResource(Shared.createResourceWithKey());
             assert.strictEqual(TestRedisClient.connectCalled, 1);
 
             // Try connecting again
-            await TestRedisClient.connectToRedisResource(Shared.resourceWithKey);
+            await TestRedisClient.connectToRedisResource(Shared.createResourceWithKey());
             assert.strictEqual(TestRedisClient.connectCalled, 1);
         });
 
@@ -50,7 +50,7 @@ describe('RedisClient', () => {
             // Setup TestRedisClient stubs
             TestRedisClient.setup();
 
-            const promise = TestRedisClient.connectToRedisResource(Shared.resourceWithoutKey);
+            const promise = TestRedisClient.connectToRedisResource(Shared.createResourceWithoutKey());
 
             assert.rejects(promise, Error);
             assert.strictEqual(TestRedisClient.connectCalled, 0);
@@ -59,7 +59,7 @@ describe('RedisClient', () => {
 
     describe('Redis commands', () => {
         it('should return proper values when connected to cache', async () => {
-            const client = await TestRedisClient.connectToRedisResource(Shared.resourceWithKey);
+            const client = await TestRedisClient.connectToRedisResource(Shared.createResourceWithKey());
 
             TestRedisClient.stubExecResponse('someValue');
             assert.strictEqual(await client.get('someKey', 0), 'someValue');

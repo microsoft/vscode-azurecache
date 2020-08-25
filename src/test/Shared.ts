@@ -6,7 +6,7 @@ const accessKeys: ParsedAccessKeys = {
     secondaryKey: 'key2',
 };
 
-export const resourceWithKey: ParsedRedisResource = {
+export const createResourceWithKey = (): ParsedRedisResource => ({
     resourceId:
         '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/res-group/providers/Microsoft.Cache/Redis/my-cache',
     subscriptionId: '00000000-0000-0000-0000-000000000000',
@@ -24,9 +24,9 @@ export const resourceWithKey: ParsedRedisResource = {
     shardCount: 0,
     linkedServers: [],
     accessKeys: Promise.resolve(accessKeys),
-};
+});
 
-export const resourceWithKey2: ParsedRedisResource = {
+export const createResourceWithKey2 = (): ParsedRedisResource => ({
     resourceId:
         '/subscriptions/11111111-0000-0000-0000-000000000000/resourceGroups/res-group/providers/Microsoft.Cache/Redis/my-cache',
     subscriptionId: '11111111-0000-0000-0000-000000000000',
@@ -44,9 +44,9 @@ export const resourceWithKey2: ParsedRedisResource = {
     shardCount: 0,
     linkedServers: [],
     accessKeys: Promise.resolve(accessKeys),
-};
+});
 
-export const resourceWithoutKey: ParsedRedisResource = {
+export const createResourceWithoutKey = (): ParsedRedisResource => ({
     resourceId:
         '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/res-group/providers/Microsoft.Cache/Redis/my-cache',
     subscriptionId: '00000000-0000-0000-0000-000000000000',
@@ -64,4 +64,4 @@ export const resourceWithoutKey: ParsedRedisResource = {
     shardCount: 0,
     linkedServers: [],
     accessKeys: Promise.resolve(undefined),
-};
+});

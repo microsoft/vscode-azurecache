@@ -15,11 +15,14 @@ describe('ResourceUtils', () => {
                 secondaryConnectionString:
                     'my-cache.redis.cache.windows.net:6380,password=key2,ssl=True,abortConnect=False',
             };
-            assert.deepStrictEqual(await getConnectionStrings(Shared.resourceWithKey), expectedConnectionStrings);
+            assert.deepStrictEqual(
+                await getConnectionStrings(Shared.createResourceWithKey()),
+                expectedConnectionStrings
+            );
         });
 
         it('should return undefined if resource does not have access key', async () => {
-            assert.strictEqual(await getConnectionStrings(Shared.resourceWithoutKey), undefined);
+            assert.strictEqual(await getConnectionStrings(Shared.createResourceWithoutKey()), undefined);
         });
     });
 });

@@ -29,7 +29,7 @@ describe('CollectionItems', () => {
     const cacheItem = new AzureCacheItem(
         {} as AzureSubscriptionTreeItem,
         {} as RedisResourceClient,
-        Shared.resourceWithKey
+        Shared.createResourceWithKey()
     );
     const testDb = new RedisDbItem(cacheItem, 0);
 
