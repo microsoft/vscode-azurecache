@@ -136,7 +136,7 @@ export class RedisClient {
                     }
                 }
 
-                const { accessKey, cluster, hostName, port, sslPort, provisioningState } = parsedRedisResource;
+                const { accessKey, cluster, hostName, sslPort, provisioningState } = parsedRedisResource;
                 const password = await accessKey;
                 if (typeof password === 'undefined') {
                     throw new Error(Strings.ErrorReadAccessKey);
@@ -146,9 +146,7 @@ export class RedisClient {
                     vscode.window.showWarningMessage(`${Strings.StrCurrentProvStateIs}: ${provisioningState}`);
                 }
 
-                // TODO: Support connecting over SSL (bug in IORedis)
-                const connectPort = cluster ? port : sslPort;
-                return this.connect(cluster, hostName, password, connectPort, !cluster);
+                return this.connect(cluster, hostName, password, sslPort);
             }
         );
 
@@ -170,8 +168,7 @@ export class RedisClient {
         isCluster: boolean,
         server: string,
         password: string,
-        port: number,
-        ssl: boolean
+        port: number
     ): Promise<RedisClient> {
         let client: IORedis.Redis | IORedis.Cluster;
 
@@ -194,14 +191,14 @@ export class RedisClient {
                     },
                     redisOptions: {
                         password: password,
-                        tls: ssl ? { host: server, port: port } : undefined,
+                        tls: { servername: server },
                     },
                 }
             );
         } else {
             client = new IORedis(port, server, {
                 password: password,
-                tls: ssl ? { host: server, port: port } : undefined,
+                tls: { host: server, port: port },
                 retryStrategy: function (times): null {
                     // Do not retry
                     return null;

@@ -41,8 +41,7 @@ export class TestRedisClient extends RedisClient {
         isCluster: boolean,
         server: string,
         password: string,
-        port: number,
-        ssl: boolean
+        port: number
     ): Promise<TestRedisClient> {
         // Track how many times connect is called
         this.connectCalled += 1;
