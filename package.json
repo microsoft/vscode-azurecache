@@ -242,7 +242,7 @@
         "ts-loader": "^7.0.5",
         "ts-sinon": "^1.2.0",
         "typescript": "^3.9.7",
-        "vsce": "^1.77.0",
+        "vsce": "^2.11.0",
         "vscode-test": "^1.4.0",
         "webpack": "^4.44.1",
         "webpack-cli": "^3.3.12"
