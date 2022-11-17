@@ -24,6 +24,11 @@ pool:
   vmImage: $(imageName)
 
 steps:
+- name: Initialize CodeQL
+  uses: github/codeql-action/init@v2
+  with:
+    languages: javascript
+
 - task: NodeTool@0
   inputs:
     versionSpec: '12.x'
@@ -60,6 +65,9 @@ steps:
     customCommand: run test
   env:
     DISPLAY: ':99.0'
+
+- name: Perform CodeQL Analysis
+  uses: github/codeql-action/analyze@v2
 
 - bash: |
     rm NOTICE.txt
