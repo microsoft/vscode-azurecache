@@ -234,7 +234,7 @@
         "eslint-plugin-react": "^7.20.5",
         "filemanager-webpack-plugin": "^2.0.5",
         "glob": "^7.1.6",
-        "mocha": "^7.2.0",
+        "mocha": "^10.1.0",
         "prettier": "2.0.5",
         "rimraf": "^3.0.2",
         "style-loader": "^1.2.1",
