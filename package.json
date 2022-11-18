@@ -232,7 +232,7 @@
         "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-prettier": "^3.1.4",
         "eslint-plugin-react": "^7.20.5",
-        "filemanager-webpack-plugin": "^2.0.5",
+        "filemanager-webpack-plugin": "^8.0.0",
         "glob": "^7.1.6",
         "mocha": "^7.2.0",
         "prettier": "2.0.5",
@@ -256,7 +256,7 @@
         "react-dom": "^16.13.1",
         "sinon": "^9.0.2",
         "uuid": "^8.3.0",
-        "vscode-azureextensiondev": "^0.4.1",
+        "vscode-azureextensiondev": "^0.10.4",
         "vscode-azureextensionui": "^0.33.9"
     },
     "extensionDependencies": [
