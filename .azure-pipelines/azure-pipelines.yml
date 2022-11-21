@@ -15,6 +15,7 @@ strategy:
   matrix:
     linux:
       imageName: 'ubuntu-18.04'
+      Codeql.Enabled: true
     mac:
       imageName: 'macos-10.15'
     windows:
