@@ -25,7 +25,15 @@ export const StrCopy = 'Copy';
 export const StrCopied = 'Copied';
 export const StrCopyToClipboard = 'Copy to clipboard';
 
+export const StrSize = 'Size';
 export const StrContents = 'Contents';
 export const StrLoadMore = 'Load More';
 
 export const StrHashFieldFilter = 'Hash field filter';
+
+export const StrTypeString = 'string';
+export const StrTypeList = 'list';
+export const StrTypeHash = 'hash';
+export const StrTypeSet = 'set';
+export const StrTypeZSet = 'zset';
+export const StrTypeOther = 'other';

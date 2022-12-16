@@ -2,20 +2,23 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from 'vscode';
-import { TreeItemIconPath } from 'vscode-azureextensionui';
-import { KeyContentItem } from '../KeyContentItem';
+import { AzExtTreeItem, TreeItemIconPath } from 'vscode-azureextensionui';
 import { RedisClusterNodeItem } from './RedisClusterNodeItem';
 import { RedisDbItem } from './RedisDbItem';
 
 /**
  * Tree item for any other datatypes.
  */
-export class RedisOtherItem extends KeyContentItem {
+export class RedisOtherItem extends AzExtTreeItem {
     private static readonly contextValue = 'redisOtherItem';
     private static readonly commandId = 'azureCache.showUnsupportedItem';
 
-    constructor(parent: RedisDbItem | RedisClusterNodeItem, key: string, private readonly type: string) {
-        super(parent, key);
+    constructor(
+        parent: RedisDbItem | RedisClusterNodeItem,
+        private readonly key: string,
+        private readonly type: string
+    ) {
+        super(parent);
     }
 
     get commandId(): string {

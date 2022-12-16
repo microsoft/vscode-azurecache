@@ -6,9 +6,9 @@ import { AzExtTreeItem, IActionContext, TreeItemIconPath } from 'vscode-azureext
 import { RedisClient } from '../../clients/RedisClient';
 import { StrShard, StrUnknownShard } from '../../Strings';
 import { AzureCacheItem } from '../azure/AzureCacheItem';
-import { KeyFilterItem } from '../filter/KeyFilterItem';
 import { FilterParentItem } from '../FilterParentItem';
 import { KeyContainerItem } from '../KeyContainerItem';
+import { KeyFilterItem } from '../KeyFilterItem';
 import { RedisHashItem } from './RedisHashItem';
 import { RedisListItem } from './RedisListItem';
 import { RedisOtherItem } from './RedisOtherItem';
