@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+import { ParsedAccessKeys } from './ParsedAccessKeys';
+
 /**
  * Interface that guarentees non-null properties of a RedisResource.
  *
@@ -69,7 +71,7 @@ export interface ParsedRedisResource {
      */
     linkedServers: string[];
     /**
-     * Access key for the resource. Promise may resolve with undefined if user does not have write access to resource.
+     * Access keys for the resource. Promise may resolve with undefined if user does not have write access to resource.
      */
-    accessKey: Promise<string | undefined>;
+    accessKeys: Promise<ParsedAccessKeys | undefined>;
 }

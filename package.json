@@ -90,9 +90,24 @@
                     "group": "5_portal"
                 },
                 {
-                    "command": "azureCache.copyConnectionString",
+                    "command": "azureCache.copyPrimaryAccessKey",
                     "when": "view == azureCache && viewItem =~ /redisCache/",
-                    "group": "5_portal"
+                    "group": "3_accesskey"
+                },
+                {
+                    "command": "azureCache.copySecondaryAccessKey",
+                    "when": "view == azureCache && viewItem =~ /redisCache/",
+                    "group": "3_accesskey"
+                },
+                {
+                    "command": "azureCache.copyPrimaryConnectionString",
+                    "when": "view == azureCache && viewItem =~ /redisCache/",
+                    "group": "4_connectkey"
+                },
+                {
+                    "command": "azureCache.copySecondaryConnectionString",
+                    "when": "view == azureCache && viewItem =~ /redisCache/",
+                    "group": "4_connectkey"
                 }
             ],
             "commandPalette": [
@@ -117,7 +132,19 @@
                     "when": "never"
                 },
                 {
-                    "command": "azureCache.copyConnectionString",
+                    "command": "azureCache.copyPrimaryAccessKey",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.copySecondaryAccessKey",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.copyPrimaryConnectionString",
+                    "when": "never"
+                },
+                {
+                    "command": "azureCache.copySecondaryConnectionString",
                     "when": "never"
                 },
                 {
@@ -176,8 +203,23 @@
                 "category": "Azure Cache"
             },
             {
-                "command": "azureCache.copyConnectionString",
-                "title": "Copy connection string",
+                "command": "azureCache.copyPrimaryAccessKey",
+                "title": "Copy primary access key",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.copySecondaryAccessKey",
+                "title": "Copy secondary access key",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.copyPrimaryConnectionString",
+                "title": "Copy primary connection string",
+                "category": "Azure Cache"
+            },
+            {
+                "command": "azureCache.copySecondaryConnectionString",
+                "title": "Copy secondary connection string",
                 "category": "Azure Cache"
             },
             {

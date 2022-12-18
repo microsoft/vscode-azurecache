@@ -12,6 +12,9 @@ export const StrAccessKeys = 'Access keys';
 export const StrPrimary = 'Primary';
 export const StrPrimaryAccessKey = 'Primary access key';
 export const StrPrimaryConnectionStr = 'Primary connection string (StackExchange.Redis)';
+export const StrSecondary = 'Secondary';
+export const StrSecondaryAccessKey = 'Secondary access key';
+export const StrSecondaryConnectionStr = 'Secondary connection string (StackExchange.Redis)';
 
 export const StrGeoReplication = 'Geo-replication';
 export const StrLinkedServers = 'Linked servers';
